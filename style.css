@@ -1,0 +1,45 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex; /* Use Flexbox for layout */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Space items evenly */
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px; /* Set logo height */
+}
+
+.site-title h1 {
+    color: purple;
+    margin: 0; /* Remove default margin */
+}
+
+nav {
+    margin-left: auto; /* Push nav to the right */
+}
+
+.categories {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Use Flexbox for nav items */
+    padding: 0; /* Remove default padding */
+}
+
+.categories li {
+    margin: 0 15px; /* Spacing between items */
+}
+
+.categories a {
+    color: white;
+    text-decoration: none; /* Remove underline */
+}
+
+.categories a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
