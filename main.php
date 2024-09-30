@@ -1,6 +1,6 @@
 <?php
-include('header.html');
-include('welcome.html');
+include('Header/header.html');
+include('Home/home.html');
 
 ?>
 

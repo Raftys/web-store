@@ -1,0 +1,56 @@
+/* Basic styling for the entire body */
+body {
+    margin: 0; /* Remove default margin */
+}
+
+/* Header styling */
+header {
+    background-color: limegreen; /* Lime green background */
+    padding: 20px; /* Padding around the header */
+}
+
+/* Flex container for header content */
+.header-content {
+    display: flex; /* Use flexbox to arrange items */
+    justify-content: space-between; /* Space between logo/title and categories */
+    align-items: center; /* Center items vertically */
+}
+
+/* Logo and title container */
+.logo-title {
+    display: flex; /* Align logo and title in a row */
+    align-items: center; /* Center vertically */
+}
+
+/* Logo image styling */
+.logo {
+    height: 50px; /* Adjust height as needed */
+    margin-right: 10px; /* Space between logo and title */
+}
+
+/* Site title styling */
+.site-title {
+    color: red; /* Red letters for the title */
+    font-size: 24px; /* Font size for the title */
+    margin: 0; /* Remove default margin */
+}
+
+/* Categories list styling */
+.categories {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use Flexbox to align items horizontally */
+    gap: 20px; /* Space between items */
+}
+
+/* Style for each category item */
+.categories li {
+    display: inline; /* Ensure items are displayed inline */
+}
+
+/* Style for links */
+.categories a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Change link color */
+    padding: 10px; /* Optional: Add padding around links */
+}
