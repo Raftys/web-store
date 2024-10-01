@@ -21,7 +21,7 @@
     margin: 20px;
     border-radius: 20px;
     position: relative; /* Required for positioning the pseudo-element */
-    background-image: url('/Images/temp_image.png'); /* Set the path to your image */
+    background-image: url('/Images/Logo.jpg'); /* Set the path to your image */
     background-size: cover; /* Scale the image to cover the entire container */
     background-position: center; /* Center the image in the container */
     height: 700px; /* Set the height of the container */

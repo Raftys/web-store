@@ -8,9 +8,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     const itemDiv = document.createElement('div');
                     itemDiv.classList.add('item');
                     itemDiv.innerHTML = `
-                        <h2>${item.name}</h2>
-                        <p>${item.description}</p>
-                        <p>Price: $${parseFloat(item.price).toFixed(2)}</p>
+                        <img src="${item.image}" alt="">
+                        <div class="item-text">
+                            <h2>${item.name}</h2>
+                            <p>${item.description}</p>
+                            <p>Price: ${parseFloat(item.price).toFixed(2)}€</p>
+                        </div>
                     `;
                     itemList.appendChild(itemDiv);
                 });
