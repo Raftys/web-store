@@ -1,27 +1,24 @@
-document.getElementById('productForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const productName = document.getElementById('productName').value;
-    const productPrice = document.getElementById('productPrice').value;
-
-    fetch('/add-product', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name: productName, price: productPrice })
-    })
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('fetch_products.php')
         .then(response => response.json())
         .then(data => {
-            displayProduct(data);
-            document.getElementById('productForm').reset();
+            const itemList = document.querySelector('.item-list');
+            if (data.length > 0) {
+                data.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('item');
+                    itemDiv.innerHTML = `
+                        <h2>${item.name}</h2>
+                        <p>${item.description}</p>
+                        <p>Price: $${parseFloat(item.price).toFixed(2)}</p>
+                    `;
+                    itemList.appendChild(itemDiv);
+                });
+            } else {
+                itemList.innerHTML = '<p>No items found.</p>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching items:', error);
         });
 });
-
-function displayProduct(product) {
-    const productList = document.getElementById('productList');
-    const productDiv = document.createElement('div');
-    productDiv.classList.add('product');
-    productDiv.innerHTML = `<h3>${product.name}</h3><p>Price: $${product.price}</p>`;
-    productList.appendChild(productDiv);
-}

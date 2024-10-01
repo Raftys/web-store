@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Listing</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Shop/shop.css">
+    <title>Item List</title>
+    <script src="Shop/shop.js" defer></script> <!-- Link to the JavaScript file -->
 </head>
 <body>
 <div class="container">
-    <h1>Product Listing</h1>
-    <form id="productForm">
-        <input type="text" id="productName" placeholder="Product Name" required>
-        <input type="number" id="productPrice" placeholder="Product Price" required>
-        <button type="submit">Add Product</button>
-    </form>
-    <div id="productList" class="product-list"></div>
+    <h1>Item List</h1>
+    <div class="item-list">
+        <!-- Items will be injected here by JavaScript -->
+    </div>
 </div>
-
-<script src="script.js"></script>
 </body>
 </html>
