@@ -19,6 +19,7 @@
 }
 .background-container {
     margin: 20px;
+    border-radius: 20px;
     position: relative; /* Required for positioning the pseudo-element */
     background-image: url('/Images/temp_image.png'); /* Set the path to your image */
     background-size: cover; /* Scale the image to cover the entire container */
