@@ -7,6 +7,7 @@ body {
 header {
     background-color: limegreen; /* Lime green background */
     padding: 20px; /* Padding around the header */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Add bottom shadow */
 }
 
 /* Flex container for header content */
@@ -26,6 +27,7 @@ header {
 .logo {
     height: 50px; /* Adjust height as needed */
     margin-right: 10px; /* Space between logo and title */
+    border-radius: 10px;
 }
 
 /* Site title styling */
@@ -57,4 +59,12 @@ header {
 
 .categories a:hover {
     text-decoration: underline;
+}
+
+.cart-icon {
+    width: 24px; /* Set width of the icon */
+    height: auto; /* Maintain aspect ratio */
+
+    vertical-align: middle; /* Align the icon vertically */
+    border-radius: 10px;
 }
