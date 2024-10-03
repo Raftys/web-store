@@ -10,8 +10,9 @@
 <body>
 <div class="container">
     <h1>Προϊόντα</h1>
-    <form action="product_preview.php" method="post" id="ProductForm">
-    <div class="item-list" onclick="this.closest('form').submit();">
+    <form action="product_preview.php" id="productForm" method="post">
+        <input type="hidden" name="product_id" id="product_id_input">
+    <div class="item-list">
         <!-- Items will be injected here by JavaScript -->
     </div>
 
