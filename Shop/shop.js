@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <p>${item.description}</p>
                             <p>Price: ${parseFloat(item.price).toFixed(2)}€</p>
                         </div>
+                        <button class="buy-button" >Προσθήκη</button>
                     `;
                     itemList.appendChild(itemDiv);
                 });
@@ -25,3 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error fetching items:', error);
         });
 });
+
+function handleclick(itemId) {
+    window.location.href = 'main.php?page=home'; // Redirect
+}

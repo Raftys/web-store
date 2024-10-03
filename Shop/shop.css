@@ -47,3 +47,20 @@ h1 {
 .item p {
     margin: 5px 0;
 }
+
+.buy-button {
+    position: relative; /* Positioning relative to the item */
+    padding: 10px 15px; /* Button padding */
+    background-color: lime; /* Button color */
+    color: #fff; /* Text color */
+    align-self: center;
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer; /* Pointer on hover */
+    font-size: 2em; /* Font size */
+}
+
+.buy-button:hover {
+    background-color: limegreen; /* Darker shade on hover */
+}
