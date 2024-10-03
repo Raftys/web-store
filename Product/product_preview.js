@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('fetch_products.php')
+    fetch('product_preview.php')
         .then(response => response.json())
         .then(data => {
             const itemList = document.querySelector('.item-list');
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <h2>${item.name}</h2>
                             <p>${item.description}</p>
                             <p>Price: ${parseFloat(item.price).toFixed(2)}€</p>
-                            <input type="hidden" name="product_id" value="${item.id}">
                         </div>
                         <button class="buy-button" >Προσθήκη</button>
                     `;
@@ -27,7 +26,3 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error fetching items:', error);
         });
 });
-
-function handleclick(itemId) {
-    window.location.href = 'main.php?page=home'; // Redirect
-}

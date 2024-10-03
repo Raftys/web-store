@@ -14,7 +14,7 @@ function connect_database()
 }
 
 function load_products($conn) {
-    $sql = "SELECT id, name, description, price, image FROM products";
+    $sql = "SELECT * FROM products";
     $result = $conn->query($sql);
 
     $items = [];
