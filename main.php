@@ -12,7 +12,14 @@ if ($page === 'shop') {
 } elseif ($page === 'home') {
     // Default to home page content
     include('Home/home.html'); // Make sure this file exists and is in the correct path
-} else {
+} elseif ($page === 'login') {
+    include('Account/html/login.html');
+} elseif ($page === 'signup') {
+    include('Account/html/signup.html');
+} elseif ($page === 'account') {
+    include('Account/html/account.html');
+}
+else {
     // Fallback if the page does not match
     echo "<h2>404 Not Found</h2><p>The page you're looking for does not exist.</p>";
 }

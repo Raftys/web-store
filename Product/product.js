@@ -1,4 +1,4 @@
-// product_preview.js
+// product.js
 
 // Function to get query parameters from the URL
 function getQueryParameter(name) {
@@ -11,6 +11,12 @@ function fetchProductDetails() {
     const productId = getQueryParameter('product_id'); // Get the product ID from the URL
 
     if (productId) {
+        fetch('../Header/header.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
         fetch('../product_preview.php', { // Make sure the path is correct relative to product.html
             method: 'POST',
             headers: {
@@ -42,3 +48,35 @@ function fetchProductDetails() {
 window.onload = function() {
     fetchProductDetails(); // Fetch product details on page load
 };
+
+function openModal() {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("imgInModal");
+    var productImg = document.getElementById("product-image");
+
+    modal.style.display = "block";
+    modalImg.src = productImg.src; // Set the modal image to the product image's src
+}
+
+// Close the modal
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+// product.js
+
+// Increment the quantity
+function incrementQuantity() {
+    var quantityInput = document.getElementById("quantity");
+    var quantity = parseInt(quantityInput.value);
+    quantityInput.value = quantity + 1;
+}
+
+// Decrement the quantity
+function decrementQuantity() {
+    var quantityInput = document.getElementById("quantity");
+    var quantity = parseInt(quantityInput.value);
+    if (quantity > 1) {
+        quantityInput.value = quantity - 1;
+    }
+}

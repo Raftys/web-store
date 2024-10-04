@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Fetch product details
         $result = load_product($conn, $product_id);
 
+
         // Check if a product was found
         if ($result && $result->num_rows > 0) {
             $item = $result->fetch_assoc(); // Fetch associative array

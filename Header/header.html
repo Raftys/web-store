@@ -1,27 +1,34 @@
+<?php
+session_start(); // Start session to access session variables
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
-    <link rel="stylesheet" href="Header/header_style.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="../Header/header.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-
 <header>
     <div class="header-content">
         <div class="logo-title">
-            <img src="Images/Logo.jpg" alt="Logo" class="logo"> <!-- Replace with your logo image -->
+            <img src="../Images/Logo.jpg" alt="Logo" class="logo"> <!-- Replace with your logo image -->
             <h1 class="site-title">Αγρόκτημα Μητσάκης</h1>
         </div>
         <nav>
             <ul class="categories">
-                <li><a href="main.php?page=home" >Αρχική</a></li>
-                <li><a href="main.php?page=shop">Αγορά</a></li>
-                <li><a href="main.php?page=cart" >
-                    <img src="Images/cart.png" class="cart-icon">
+                <li><a href="../main.php?page=home" >Αρχική</a></li>
+                <li><a href="../main.php?page=shop">Αγορά</a></li>
+                <li><a href="../main.php?page=cart" >
+                    <img src="../Images/cart.png" class="cart-icon">
                     Καλάθι</a></li>
-                <li><a href="main.php?page=contact" >Επικοινωνία</a></li>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                <li><a href="../main.php?page=account">Λογαριαμσός</a></li>
+                <?php else: ?>
+                <li><a href="../main.php?page=login">Σύνδεση</a></li>
+                <?php endif; ?>
+                <li><a href="../main.php?page=contact" >Επικοινωνία</a></li>
             </ul>
         </nav>
     </div>
