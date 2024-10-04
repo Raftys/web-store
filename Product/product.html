@@ -3,24 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
     <link rel="stylesheet" href="product.css">
+    <title>Product Details</title>
+    <script src="product_preview.js" defer></script> <!-- Link to the JavaScript file -->
 </head>
 <body>
-
-<div class="product-container">
-    <div class="product-image">
-        <!-- Placeholder image, you can change src dynamically using PHP -->
-        <img src="/<?php echo $image; ?>" /> <!-- Output image URL here -->
-    </div>
-    <div class="product-details">
-        <h1 class="product-title">Product Title</h1>
-        <p class="product-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis elit et lacus suscipit, ut ullamcorper velit sollicitudin.
-        </p>
-        <p class="product-price">$99.99</p>
-    </div>
+<div class="container">
+    <h1 id="product-title">Product Title</h1> <!-- Placeholder for product title -->
+    <img id="product-image" src="" alt="Product Image" style="max-width: 300px; max-height: 300px;"> <!-- Placeholder for product image -->
+    <p id="product-description">Product Description</p> <!-- Placeholder for product description -->
+    <p id="product-price">Price: €0.00</p> <!-- Placeholder for product price -->
 </div>
-
 </body>
 </html>

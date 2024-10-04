@@ -21,8 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     itemDiv.addEventListener('click', function () {
                         const productId = this.getAttribute('product_id'); // Get product ID from clicked item
-                        document.getElementById('product_id_input').value = productId; // Set hidden input value
-                        document.getElementById('productForm').submit(); // Submit the form
+                        window.location.href = `Product/product.html?product_id=${productId}`;
+                    });
+                    const buyButton = itemDiv.querySelector('.buy-button');
+                    buyButton.addEventListener('click', function (event) {
+                        event.stopPropagation(); // Prevent the itemDiv click event from firing
+                        alert("hi");
                     });
                 });
             } else {
@@ -33,7 +37,3 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error fetching items:', error);
         });
 });
-
-function handleclick(itemId) {
-    window.location.href = 'main.php?ProductZpage=home'; // Redirect
-}

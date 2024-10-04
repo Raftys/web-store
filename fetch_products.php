@@ -30,6 +30,6 @@ function load_products($conn) {
 }
 
 $conn =  connect_database();
-$items = load_products($conn);
+$items = json_encode(load_products($conn));
 header('Content-Type: application/json');
-echo json_encode($items);
+echo $items;
