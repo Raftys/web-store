@@ -1,7 +1,7 @@
 <?php
 // Database connection
 session_start();
-$conn = new mysqli('localhost', 'root', 'root', 'products');
+$conn = new mysqli('localhost', 'root', 'root', 'saltses');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $full_name = $_POST['full_name'];
@@ -12,14 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $zip_code = $_POST['zip_code'];
     $country = $_POST['country'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+    $root = 0;
 
-    $sql = "INSERT INTO users (full_name, email, phone, address, city, zip_code, country, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (full_name, email, phone, address, city, zip_code, country, password, root) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $password);
+    $stmt->bind_param('sssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $password, $root);
 
     if ($stmt->execute()) {
         $_SESSION['loggedin'] = false;
-        alert("Account Created Successfully. You can login now");
+        include "login.php";
         header('Location: main.php');
         exit();
     } else {

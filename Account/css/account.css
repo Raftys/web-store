@@ -22,12 +22,13 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
     padding: 20px; /* Padding inside the container */
     display: inline-block; /* Center the box */
+    text-align: left;
 }
 
 p {
     font-size: 16px; /* Regular text size */
     color: #555; /* Gray color for text */
-    margin: 10px 0; /* Space above and below each paragraph */
+
 }
 
 
@@ -56,9 +57,10 @@ form {
 }
 
 label {
-    margin-bottom: 5px;
+
     font-size: 14px;
     color: #333;
+    text-align: center;
 }
 
 input {
@@ -83,5 +85,25 @@ input {
 
 .button:hover {
     background-color: #0056b3; /* Darken on hover */
+}
+
+/* Style the container for each field to use flexbox */
+.field-container {
+    display: flex;           /* Use flexbox */
+    align-items: center;    /* Align items vertically centered */
+        /* Add some space between fields */
+}
+
+/* Style the label */
+.field-container label {
+    margin-right: 10px;     /* Space between label and input */
+}
+
+/* Style for the input */
+.field-container input {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 20px;
+    flex: 2; /* Allow the input to grow and fill space */
 }
 

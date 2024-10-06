@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli('localhost', 'root', 'root', 'products');
+$conn = new mysqli('localhost', 'root', 'root', 'saltses');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['name'] = $user['full_name'];
             $_SESSION['loggedin'] = true;
-            header('Location: main.php');
+            header('Location: /main.php');
             exit();
         } else {
             echo "Invalid credentials.";

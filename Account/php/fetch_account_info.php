@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli('localhost', 'root', 'root', 'products');
+$conn = new mysqli('localhost', 'root', 'root', 'saltses');
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];

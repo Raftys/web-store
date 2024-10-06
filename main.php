@@ -1,5 +1,4 @@
 <?php
-include "functions.php";
 // Define the default page
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 // Include the header file

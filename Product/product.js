@@ -17,7 +17,7 @@ function fetchProductDetails() {
                 document.getElementById('header-container').innerHTML = data;
             })
             .catch(error => console.error('Error loading header:', error));
-        fetch('../product_preview.php', { // Make sure the path is correct relative to product.html
+        fetch('../Product/product_preview.php', { // Make sure the path is correct relative to product.html
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

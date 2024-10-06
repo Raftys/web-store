@@ -1,25 +1,5 @@
 <?php
-function connect()
-{
-    $host = 'localhost';
-    $db = 'products';
-    $user = 'root'; // or your MySQL username
-    $pass = 'root'; // your MySQL password
-
-    $conn = new mysqli($host, $user, $pass, $db);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    return $conn;
-}
-
-function load_product($conn, $product_id) {
-    // Using prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
-    $stmt->bind_param("i", $product_id); // 'i' means that $product_id is an integer
-    $stmt->execute();
-    return $stmt->get_result();
-}
+include "../sql_functions.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the product_id is set and is an integer

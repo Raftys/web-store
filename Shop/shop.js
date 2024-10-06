@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('fetch_products.php')
+    fetch('../Shop/fetch_products.php')
         .then(response => response.json())
         .then(data => {
             const itemList = document.querySelector('.item-list');

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Account/css/account.css">
-    <script src="../Account/js/account.js"></script>
+    <script src="../Account/js/account.js" defer></script> <!-- Use defer to ensure JS loads after HTML -->
     <title>Account</title>
 </head>
 <body>
@@ -12,15 +12,43 @@
     <img src="../Images/user.png" alt="Account Image" class="account-image">
     <h1>Account Information</h1>
     <div id="account-details">
-        <p id="full_name"></p>
-        <p id="email"></p>
-        <p id="phone"></p>
-        <p id="address"></p>
-        <p id="city"></p>
-        <p id="zip_code"></p>
-        <p id="country"></p>
+        <div class="field-container">
+            <label for="full_name_input" style="display:block;"><strong>Full Name:</strong></label>
+            <p id="full_name"></p>
+            <input type="text" id="full_name_input" style="display:none;" value="" />
+        </div>
+        <div class="field-container">
+            <label for="email_input" style="display:block;"><strong>Email:</strong></label>
+            <p id="email"></p>
+            <input type="text" id="email_input" style="display:none;" />
+        </div>
+        <div class="field-container">
+            <label for="phone_input" style="display:block;"><strong>Phone:</strong></label>
+            <p id="phone"></p>
+            <input type="text" id="phone_input" style="display:none;" />
+        </div>
+        <div class="field-container">
+            <label for="address_input" style="display:block;"><strong>Address:</strong></label>
+            <p id="address"></p>
+            <input type="text" id="address_input" style="display:none;" />
+        </div>
+        <div class="field-container">
+            <label for="city_input" style="display:block;"><strong>City:</strong></label>
+            <p id="city"></p>
+            <input type="text" id="city_input" style="display:none;" />
+        </div>
+        <div class="field-container">
+            <label for="zip_code_input" style="display:block;"><strong>Zip Code:</strong></label>
+            <p id="zip_code"></p>
+            <input type="text" id="zip_code_input" style="display:none;" />
+        </div>
+        <div class="field-container">
+            <label for="country_input" style="display:block;"><strong>Country:</strong></label>
+            <p id="country"></p>
+            <input type="text" id="country_input" style="display:none;" />
+        </div>
     </div>
-    <button class="button">Edit</button>
+    <button class="button" id="edit-button" onclick="edit()">Edit</button>
 </div>
 </body>
 </html>
