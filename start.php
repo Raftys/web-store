@@ -13,6 +13,8 @@ if (!isset($_SESSION['session_cleaned'])) {
     // Optionally, set a cookie that lasts for the current session
     setcookie("session_cleaned", "true", time() + 3600); // Cookie lasts for 1 hour
 
+    $_SESSION['cart'] = 0;
+
     // Redirect to main.php to avoid re-running this code
     header("Location: main.php");
     exit();

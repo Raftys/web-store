@@ -1,7 +1,8 @@
 <?php
 // Database connection
 session_start();
-$conn = new mysqli('localhost', 'root', 'root', 'saltses');
+include "../../sql_functions.php";
+$conn = connect();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $full_name = $_POST['full_name'];

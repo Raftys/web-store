@@ -50,9 +50,9 @@ window.onload = function() {
 };
 
 function openModal() {
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("imgInModal");
-    var productImg = document.getElementById("product-image");
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("imgInModal");
+    const productImg = document.getElementById("product-image");
 
     modal.style.display = "block";
     modalImg.src = productImg.src; // Set the modal image to the product image's src
@@ -67,16 +67,29 @@ function closeModal() {
 
 // Increment the quantity
 function incrementQuantity() {
-    var quantityInput = document.getElementById("quantity");
-    var quantity = parseInt(quantityInput.value);
+    const quantityInput = document.getElementById("quantity");
+    const quantity = parseInt(quantityInput.value);
     quantityInput.value = quantity + 1;
 }
 
 // Decrement the quantity
 function decrementQuantity() {
-    var quantityInput = document.getElementById("quantity");
-    var quantity = parseInt(quantityInput.value);
+    const quantityInput = document.getElementById("quantity");
+    const quantity = parseInt(quantityInput.value);
     if (quantity > 1) {
         quantityInput.value = quantity - 1;
     }
+}
+
+
+function addToCart() {
+    const productId = getQueryParameter('product_id');
+    addItems(productId,parseInt(document.getElementById("quantity").value));
+    loadItemName(productId).then(itemName => {
+        if (itemName) { // Ensure itemName is valid
+            showNotification(`Το προϊόν ${itemName} έχει προστεθεί στο καλάθι σας.`);
+        } else {
+            showNotification("Προϊόν δεν βρέθηκε."); // Fallback message if item name is not retrieved
+        }
+    });
 }

@@ -26,7 +26,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     const buyButton = itemDiv.querySelector('.buy-button');
                     buyButton.addEventListener('click', function (event) {
                         event.stopPropagation(); // Prevent the itemDiv click event from firing
-                        alert("hi");
+                        addItems(item.id,1);
+                        loadItemName(item.id).then(itemName => {
+                            if (itemName) { // Ensure itemName is valid
+                                showNotification(`Το προϊόν ${itemName} έχει προστεθεί στο καλάθι σας.`);
+                            } else {
+                                showNotification("Προϊόν δεν βρέθηκε."); // Fallback message if item name is not retrieved
+                            }
+                        });
                     });
                 });
             } else {

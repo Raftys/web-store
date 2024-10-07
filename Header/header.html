@@ -1,5 +1,6 @@
 <?php
-session_start(); // Start session to access session variables
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,26 +14,28 @@ session_start(); // Start session to access session variables
 <header>
     <div class="header-content">
         <div class="logo-title">
-            <img src="../Images/Logo.jpg" alt="Logo" class="logo"> <!-- Replace with your logo image -->
+            <img src="../Images/Logo.jpg" alt="Logo of Αγρόκτημα Μητσάκης" class="logo"> <!-- Replace with your logo image -->
             <h1 class="site-title">Αγρόκτημα Μητσάκης</h1>
         </div>
         <nav>
             <ul class="categories">
-                <li><a href="../main.php?page=home" >Αρχική</a></li>
+                <li><a href="../main.php?page=home">Αρχική</a></li>
                 <li><a href="../main.php?page=shop">Αγορά</a></li>
-                <li><a href="../main.php?page=cart" >
-                    <img src="../Images/cart.png" class="cart-icon">
-                    Καλάθι</a></li>
+                <li>
+                    <a href="../main.php?page=cart">
+                        <img src="../Images/cart.png" class="cart-icon" alt="Cart Icon">
+                        <span id="cart-label">Καλάθι (<?php echo isset($_SESSION['totalItems']) ? $_SESSION['totalItems'] : 0; ?>)</span>
+                    </a>
+                </li>
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                <li><a href="../main.php?page=account">Λογαριαμσός</a></li>
+                <li><a href="../main.php?page=account">Λογαριασμός</a></li>
                 <?php else: ?>
                 <li><a href="../main.php?page=login">Σύνδεση</a></li>
                 <?php endif; ?>
-                <li><a href="../main.php?page=contact" >Επικοινωνία</a></li>
+                <li><a href="../main.php?page=contact">Επικοινωνία</a></li>
             </ul>
         </nav>
     </div>
 </header>
-
 </body>
 </html>

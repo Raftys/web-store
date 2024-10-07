@@ -1,7 +1,7 @@
 <?php
 session_start();
-$conn = new mysqli('localhost', 'root', 'root', 'saltses');
-
+include "../../sql_functions.php";
+$conn = connect();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];

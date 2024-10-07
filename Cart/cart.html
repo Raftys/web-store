@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Cart/cart.css">
+  <title>Cart</title>
+  <script src="Cart/cart.js" defer></script>
+</head>
+<body>
+<div class="container">
+  <h1>Shopping Cart</h1>
+  <table id="cart-table">
+    <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price per Item</th>
+      <th>Total Price</th>
+    </tr>
+    </thead>
+    <tbody id="cart-items">
+    <!-- Cart items will be injected here by JavaScript -->
+    </tbody>
+  </table>
+  <div id="total-container">
+    <h2 id="total-price">Total Price: €0.00</h2>
+  </div>
+  <button id="payment-button">Proceed to Payment</button>
+</div>
+</body>
+</html>

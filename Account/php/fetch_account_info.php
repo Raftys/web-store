@@ -1,7 +1,7 @@
 <?php
 session_start();
-$conn = new mysqli('localhost', 'root', 'root', 'saltses');
-
+include "../../sql_functions.php";
+$conn = connect();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT * FROM users WHERE id = ?";
