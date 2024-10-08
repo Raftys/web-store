@@ -1,5 +1,6 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
 include "../../sql_functions.php";
 $conn = connect();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -16,8 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['name'] = $user['full_name'];
-            $_SESSION['loggedin'] = true;
+            $_SESSION['logged_in'] = true;
             header('Location: /main.php');
             exit();
         } else {

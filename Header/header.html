@@ -27,7 +27,7 @@ if (session_status() == PHP_SESSION_NONE)
                         <span id="cart-label">Καλάθι (<?php echo isset($_SESSION['totalItems']) ? $_SESSION['totalItems'] : 0; ?>)</span>
                     </a>
                 </li>
-                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
                 <li><a href="../main.php?page=account">Λογαριασμός</a></li>
                 <?php else: ?>
                 <li><a href="../main.php?page=login">Σύνδεση</a></li>

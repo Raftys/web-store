@@ -1,4 +1,6 @@
 <?php
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
 // Define the default page
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 // Include the header file

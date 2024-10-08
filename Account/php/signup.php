@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param('sssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $password, $root);
 
     if ($stmt->execute()) {
-        $_SESSION['loggedin'] = false;
+        $_SESSION['logged_in'] = false;
         include "login.php";
         header('Location: main.php');
         exit();

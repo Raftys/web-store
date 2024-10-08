@@ -1,5 +1,6 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
 include "../../sql_functions.php";
 $user_id = $_SESSION['user_id'];
 $new_full_name = $_POST['full_name'];

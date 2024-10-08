@@ -1,5 +1,6 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
 include "../../sql_functions.php";
 $conn = connect();
 if (isset($_SESSION['user_id'])) {
