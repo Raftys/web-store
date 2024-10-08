@@ -5,6 +5,7 @@ function getQueryParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
 }
+product_info = new FormData();
 
 // Function to fetch product details based on the product ID
 function fetchProductDetails() {
@@ -30,6 +31,9 @@ function fetchProductDetails() {
             .then(data => {
                 if (data && !data.error) { // Check if there's data and no error
                     // Populate the product details in the HTML
+                    product_info.append("name",data.name);
+                    product_info.append("image",data.image);
+                    product_info.append("price",data.price);
                     document.getElementById('product-title').innerText = data.name; // Update title
                     document.getElementById('product-image').src = data.image; // Set the image src
                     document.getElementById('product-description').innerText = data.description; // Update description
@@ -84,7 +88,8 @@ function decrementQuantity() {
 
 function addToCart() {
     const productId = getQueryParameter('product_id');
-    addItems(productId,parseInt(document.getElementById("quantity").value));
+    const quantity = parseInt(document.getElementById("quantity").value);
+    addItems(productId,product_info.get("name"),product_info.get("price"),product_info.get("image"),quantity);
     loadItemName(productId).then(itemName => {
         if (itemName) { // Ensure itemName is valid
             showNotification(`Το προϊόν ${itemName} έχει προστεθεί στο καλάθι σας.`);

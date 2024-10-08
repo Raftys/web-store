@@ -11,7 +11,10 @@ $id = $_POST['id'];
 $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
 $_SESSION['cart'][] = [
     'id' => $id,
-    'value' => $quantity
+    'name' => $_POST['name'],
+    'price' => $_POST['price'],
+    'image' => $_POST['image'],
+    'quantity' => $quantity
 ];
 if (!isset($_SESSION['totalItems']))
     $_SESSION['totalItems'] = 0; // Initialize as an empty array

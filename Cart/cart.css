@@ -12,7 +12,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h1, h2 {
     text-align: center;
 }
 
@@ -23,7 +23,7 @@ table {
 
 th, td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -31,21 +31,72 @@ th {
     background-color: #f2f2f2;
 }
 
-#total-container {
-    text-align: right;
+.total-container {
     margin-top: 20px;
+}
+
+#total-price {
+    text-align: right;
+    margin-right: 10%;
+}
+
+#button-container {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Align items to the right */
+    margin-top: 20px; /* Add some space at the top */
 }
 
 button {
     padding: 10px 15px;
     background-color: lime;
+    font-size: 40px;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 button:hover {
     background-color: limegreen;
+}
+
+button:disabled {
+    background-color: #ccc; /* Change color when disabled */
+    cursor: not-allowed;
+}
+
+#additional-text {
+    margin-top: 10px; /* Space between the button and the text */
+    font-size: 14px; /* Font size */
+    color: red; /* Gray color */
+    text-align: center; /* Align text to the right */
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+#user-info-container {
+    width: 50%;
+    margin-left:120px;
+    padding: 20px;
+    background: #f9f9f9; /* Light grey background for the user info section */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    float: left;
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Arrange items vertically */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }

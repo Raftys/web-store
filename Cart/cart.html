@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="Cart/cart.css">
   <title>Cart</title>
   <script src="Cart/cart.js" defer></script>
+  <script src="Cart/process.js" defer></script>
 </head>
 <body>
 <div class="container">
@@ -13,10 +14,10 @@
   <table id="cart-table">
     <thead>
     <tr>
-      <th>Product Name</th>
-      <th>Quantity</th>
-      <th>Price per Item</th>
-      <th>Total Price</th>
+      <th>Όνομα Προϊόντος</th>
+      <th>Ποσότητα</th>
+      <th>Τιμή Προϊόντος</th>
+      <th>Συνολική Τιμή</th>
     </tr>
     </thead>
     <tbody id="cart-items">
@@ -24,9 +25,55 @@
     </tbody>
   </table>
   <div id="total-container">
-    <h2 id="total-price">Total Price: €0.00</h2>
+    <h2 id="total-price">Σύνολο: €0.00</h2>
   </div>
-  <button id="payment-button">Proceed to Payment</button>
 </div>
+
+<div id="user-info-container"> <!-- User info container -->
+  <h2>Εισάγετε τα στοιχεία σας</h2>
+  <div class="input-group">
+    <label for="full-name">Πλήρες Όνομα*</label>
+    <input type="text" id="full-name" required>
+  </div>
+  <div class="input-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+  </div>
+  <div class="input-group">
+    <label for="phone">Τηλέφωνο*</label>
+    <input type="tel" id="phone" required>
+  </div>
+  <div class="input-group">
+    <label for="address">Διεύθυνση*</label>
+    <input type="text" id="address" required>
+  </div>
+  <div class="input-group">
+    <label for="city">Πόλη*</label>
+    <input type="text" id="city" required>
+  </div>
+  <div class="input-group">
+    <label for="zip">Ταχυδρομικός Κώδικας*</label>
+    <input type="text" id="zip" required>
+  </div>
+  <div class="input-group">
+    <label for="country">Χώρα*</label>
+    <input type="text" id="country" required>
+  </div>
+  <div class="input-group">
+    <label for="BoxNow">BoxNow Locker Id</label>
+    <input type="text" id="boxNow" required>
+  </div>
+  <p><strong>!!Σημαντικό!!</strong>Μπορείτε να επιλέξετε το ID του locker από το οποίο
+    επιθυμείτε να παραλάβετε. Για να βρείτε το κατάλληλο locker, επισκεφθείτε την επίσημη
+    ιστοσελίδα της <a href="https://boxnow.gr/en/locker-finder" target="_blank">BoxNow</a>.
+    Αν χρειάζεστε βοήθεια, μπορείτε να διαβάσετε <a href="../Help/help.html" target="_blank">εδώ</a>.
+    Σε περίπτωση που δεν επιλέξετε κάποιο locker, η αποστολή θα πραγματοποιηθεί στο
+    κοντινότερο διαθέσιμο locker.</p>
+</div>
+<div id="button-container">
+  <button id="payment-button">Πληρωμή</button>
+  <p id="additional-text">Παρακαλούμε συμπληρώστε όλα τα απαιτούμενα πεδία με * πριν προχωρήσετε.</p>
+</div>
+
 </body>
 </html>

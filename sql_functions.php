@@ -36,3 +36,7 @@ function load_product($conn, $product_id) {
     $stmt->execute();
     return $stmt->get_result();
 }
+
+function loadCart() {
+    
+}

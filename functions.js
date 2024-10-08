@@ -1,7 +1,10 @@
 //add to cart
-function addItems(id, quantity) {
+function addItems(id, name, price, image, quantity) {
     const formData = new FormData();
     formData.append("id",id);
+    formData.append("name",name);
+    formData.append("price",price);
+    formData.append("image",image);
     formData.append("quantity",quantity)
     fetch('../cart.php', {
         method: 'POST',
@@ -71,4 +74,10 @@ function loadItemName(product_id) {
             }
         })
         .catch(error => console.error('Error fetching product details:', error));
+}
+
+function loadCart() {
+    let array = new array();
+
+
 }
