@@ -33,6 +33,9 @@ if (session_status() == PHP_SESSION_NONE)
                 <li><a href="../main.php?page=login">Σύνδεση</a></li>
                 <?php endif; ?>
                 <li><a href="../main.php?page=contact">Επικοινωνία</a></li>
+                <?php if (isset($_SESSION['root']) && $_SESSION['root'] === 1): ?>
+                <li><a href="../main.php?page=orders">Παραγγελείες</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>

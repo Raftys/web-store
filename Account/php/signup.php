@@ -1,7 +1,8 @@
 <?php
 // Database connection
-session_start();
-include "../../sql_functions.php";
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
+include_once "../../sql_functions.php";
 $conn = connect();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

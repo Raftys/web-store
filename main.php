@@ -21,6 +21,8 @@ if ($page === 'shop') {
     include('Account/html/account.html');
 } elseif ($page === 'cart') {
     include('Cart/cart.html');
+} elseif ($page === 'orders') {
+    include('Orders/orders.html');
 }
 else {
     // Fallback if the page does not match

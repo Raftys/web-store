@@ -47,7 +47,7 @@ document.getElementById('payment-button').addEventListener('click', function () 
             return response.json(); // Assuming your PHP script returns JSON
         })
         .then(data => {
-            alert(data['id']);
+            window.location.href = 'Payment/payment.html';
         })
         .catch(error => {
             alert("Error"+error);
