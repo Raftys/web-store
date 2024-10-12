@@ -14,15 +14,5 @@ $new_country = $_POST['country'];
 
 // Create connection
 $conn = connect();
+update_table('users',$user_id,$new_full_name, $new_email, $new_phone, $new_address, $new_city, $new_zip_code, $new_country);
 
-$sql = "UPDATE users SET full_name = '$new_full_name', email = '$new_email', phone = '$new_phone', address = '$new_address', city = '$new_city', zip_code = '$new_zip_code',  country = '$new_country', root = '1' WHERE id = 4";
-$stmt = $conn->prepare($sql);
-if ($stmt->execute()) {
-    echo json_encode(["success" => true, "message" => "Record updated successfully."]);
-} else {
-    echo json_encode(["success" => false, "message" => "Error updating record: " . $stmt->error]);
-}
-
-// Close the statement and connection
-$stmt->close();
-$conn->close();

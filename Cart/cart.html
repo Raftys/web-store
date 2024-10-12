@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="Cart/cart.css">
+  <link rel="stylesheet" href="/Cart/cart.css">
+  <link rel="stylesheet" href="../notification.css">
   <title>Cart</title>
-  <script src="Cart/cart.js" defer></script>
-  <script src="Cart/process.js" defer></script>
+  <script src="/Cart/js/cart.js" defer></script>
+  <script src="/Cart/js/user_info.js" defer></script>
+  <script src="/Cart/js/payment_method.js" defer></script>
+  <script src="/Cart/js/payment.js" defer></script>
+  <script src="/Cart/js/iban_iris_block.js" defer></script>
+  <script src="../functions.js"></script>
 </head>
 <body>
 <div class="container">
-  <h1>Shopping Cart</h1>
+  <div class="header-container">
+    <h1>Shopping Cart</h1>
+    <button id="clear_cart" onclick="reset_cart()">Άδειασμα Καλαθιού</button>
+  </div>
   <table id="cart-table">
     <thead>
     <tr>
@@ -32,8 +40,8 @@
 <div id="user-info-container"> <!-- User info container -->
   <h2>Εισάγετε τα στοιχεία σας</h2>
   <div class="input-group">
-    <label for="full-name">Πλήρες Όνομα*</label>
-    <input type="text" id="full-name" required>
+    <label for="full_name">Πλήρες Όνομα*</label>
+    <input type="text" id="full_name" required>
   </div>
   <div class="input-group">
     <label for="email">Email</label>
@@ -52,28 +60,62 @@
     <input type="text" id="city" required>
   </div>
   <div class="input-group">
-    <label for="zip">Ταχυδρομικός Κώδικας*</label>
-    <input type="text" id="zip" required>
+    <label for="zip_code">Ταχυδρομικός Κώδικας*</label>
+    <input type="text" id="zip_code" required>
   </div>
   <div class="input-group">
     <label for="country">Χώρα*</label>
     <input type="text" id="country" required>
   </div>
   <div class="input-group">
-    <label for="BoxNow">BoxNow Locker Id</label>
+    <label for="boxNow">BoxNow Locker Id</label>
     <input type="text" id="boxNow" required>
   </div>
-  <p><strong>!!Σημαντικό!!</strong>Μπορείτε να επιλέξετε το ID του locker από το οποίο
+  <p><strong>!Σημαντικό!</strong>Μπορείτε να επιλέξετε το ID του locker από το οποίο
     επιθυμείτε να παραλάβετε. Για να βρείτε το κατάλληλο locker, επισκεφθείτε την επίσημη
     ιστοσελίδα της <a href="https://boxnow.gr/en/locker-finder" target="_blank">BoxNow</a>.
     Αν χρειάζεστε βοήθεια, μπορείτε να διαβάσετε <a href="../Help/help.html" target="_blank">εδώ</a>.
     Σε περίπτωση που δεν επιλέξετε κάποιο locker, η αποστολή θα πραγματοποιηθεί στο
     κοντινότερο διαθέσιμο locker.</p>
 </div>
+<div id="payment-method-container">
+  <h2>Επιλέξτε Μέθοδο Πληρωμής</h2>
+  <div class="payment-options">
+    <label class="payment-option">
+      <input type="radio" id="bank-deposit" name="payment-method" value="bank" checked>
+      Κατάθεση σε Τράπεζα
+    </label>
+    <label class="payment-option">
+      <input type="radio" id="iris" name="payment-method" value="iris">
+      IRIS
+    </label>
+    <label class="payment-option">
+      <input type="radio" id="credit-card" name="payment-method" value="credit-card">
+      Πιστωτική Κάρτα
+    </label>
+  </div>
+
+  <div id="payment-details">
+    <p><strong>Μέθοδος Πληρωμής:</strong> <span id="selected-method">Κατάθεση σε Τράπεζα</span></p>
+    <p><strong>Σύνολο Παραγγελίας:</strong> <span id="total-order">€0.00</span></p>
+    <p><strong>Κόστος Αποστολής:</strong> <span id="delivery-fee">€5.00</span></p>
+    <p><strong>Κόστος Μεθόδου Πληρωμής:</strong> <span id="payment-fee">€0.00</span></p>
+    <p><strong>Συνολικό Ποσό Πληρωμής:</strong> <span id="final-amount">€5.00</span></p>
+  </div>
+</div>
+
 <div id="button-container">
   <button id="payment-button">Πληρωμή</button>
   <p id="additional-text">Παρακαλούμε συμπληρώστε όλα τα απαιτούμενα πεδία με * πριν προχωρήσετε.</p>
 </div>
-
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modal-body">
+      <!-- Content will be dynamically inserted here -->
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -45,6 +45,7 @@ th {
     flex-direction: column; /* Stack children vertically */
     align-items: center; /* Align items to the right */
     margin-top: 20px; /* Add some space at the top */
+    width: 40%;
 }
 
 button {
@@ -78,7 +79,7 @@ button:disabled {
 }
 
 #user-info-container {
-    width: 50%;
+    width: 40%;
     margin-left:120px;
     padding: 20px;
     background: #f9f9f9; /* Light grey background for the user info section */
@@ -99,4 +100,116 @@ button:disabled {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+#payment-method-container {
+    width: 30%;
+    float:right;
+    display: flex;
+    flex-direction: column;
+    margin-right: 120px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between each payment option */
+    margin-bottom: 20px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style the button */
+button#complete-button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Disabled button style */
+button#complete-button:disabled {
+    background-color: #ccc; /* Gray background for disabled state */
+    cursor: not-allowed; /* Disable cursor */
+}
+
+/* Button hover effect when enabled */
+button#complete-button:hover:enabled {
+    background-color: #218838; /* Darker green on hover */
+}
+.header-container {
+    display: flex;         /* Use flexbox layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center;   /* Center items vertically */
+    margin-bottom: 20px;   /* Add space below the header */
+}
+
+.header-container h1 {
+    margin: 0;             /* Remove default margin */
+}
+
+.header-container button {
+    padding: 10px 15px;    /* Add some padding to the button */
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.header-container button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+input[type="text"] {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }

@@ -39,19 +39,19 @@ function showNotification(message) {
     // Show notification with fade-in effect
     notification.style.display = 'block';
     setTimeout(() => {
-        notification.style.opacity = 1; // Fade in
+        notification.style.opacity = '1'; // Fade in
     }, 10); // Small timeout for the effect to take place
 
     // Set timeout to hide and remove notification after 4 seconds
     setTimeout(() => {
-        notification.style.opacity = 0; // Fade out
+        notification.style.opacity = '0'; // Fade out
         setTimeout(() => {
             notification.remove(); // Remove from DOM
         }, 300); // Wait for fade out transition to finish before removing
     }, 4000); // Show for 4 seconds
 }
 
-let name = "name";
+let item_name = "name";
 function loadItemName(product_id) {
     return fetch('../Product/product_preview.php', { // Make sure the path is correct relative to product.html
         method: 'POST',
@@ -66,8 +66,8 @@ function loadItemName(product_id) {
         .then(data => {
             if (data && !data.error) { // Check if there's data and no error
                 // Populate the product details in the HTML
-                name = data.name;
-                return name;
+                item_name = data.name;
+                return item_name;
             } else {
                 console.error('Error in data:', data.error);
                 return null;
@@ -76,8 +76,34 @@ function loadItemName(product_id) {
         .catch(error => console.error('Error fetching product details:', error));
 }
 
-function loadCart() {
-    let array = new array();
+function get_info() {
+    return fetch('../Account/php/fetch_account_info.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data && Object.keys(data).length > 0) {
+                setElementValueOrContent('full_name', data.full_name);
+                setElementValueOrContent('email', data.email);
+                setElementValueOrContent('phone', data.phone);
+                setElementValueOrContent('address', data.address);
+                setElementValueOrContent('city', data.city);
+                setElementValueOrContent('zip_code', data.zip_code);
+                setElementValueOrContent('country', data.country);
+            }
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
 
-
+function setElementValueOrContent(id, value) {
+    const element = document.getElementById(id);
+    if (element) {
+        if (element.tagName === 'INPUT') {
+            // If it's an input or textarea, set the value
+            element.value = value;
+        } else {
+            // Otherwise, set the innerHTML
+            element.innerHTML = value;
+        }
+    } else {
+        console.warn(`Element with ID '${id}' not found.`);
+    }
 }

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn = connect();
 
         // Fetch product details
-        $result = load_product($conn, $product_id);
+        $result = select_all_from_id($conn, $product_id,'products');
 
 
         // Check if a product was found

@@ -1,4 +1,6 @@
 <?php
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
 function connect()
 {
     $host = 'localhost';
@@ -13,9 +15,25 @@ function connect()
     return $conn;
 }
 
+function select_all($conn, $table) {
+    $sql = "SELECT * FROM $table";
+    return $conn->query($sql);
+}
+
+function select_all_from_id($conn, $id, $table) {
+    $sql = "SELECT * FROM $table WHERE id = '$id'";
+    return $conn->query($sql);
+}
+
+function select_value_from_id($conn, $id, $id_value, $table, $value) {
+    $sql = "SELECT * FROM $table WHERE $id = $id_value";
+    return $conn->query($sql)->fetch_assoc()[$value];
+}
+
+
+
 function load_products($conn) {
-    $sql = "SELECT * FROM products";
-    $result = $conn->query($sql);
+    $result = select_all($conn, 'products');
 
     $items = [];
 
@@ -29,14 +47,23 @@ function load_products($conn) {
     return $items;
 }
 
-function load_product($conn, $product_id) {
-    // Using prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
-    $stmt->bind_param("i", $product_id); // 'i' means that $product_id is an integer
+
+function guest_user($full_name,$email, $phone, $address, $city, $zip_code, $country) {
+    $full_name = 'Guest_'.$full_name;
+    $conn = connect();
+    $sql = "INSERT INTO users (full_name, email, phone, address, city, zip_code, country) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country);
     $stmt->execute();
-    return $stmt->get_result();
+    return $conn->insert_id;
 }
 
-function loadCart() {
-    
+function update_table($table,$id,$new_full_name, $new_email, $new_phone, $new_address, $new_city, $new_zip_code, $new_country) {
+    $conn = connect();
+
+    $sql = "UPDATE $table SET full_name = '$new_full_name', email = '$new_email', phone = '$new_phone', address = '$new_address', city = '$new_city', zip_code = '$new_zip_code',  country = '$new_country', root = '1' WHERE id = $id";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
 }

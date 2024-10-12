@@ -1,25 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-   get_info();
+   get_info().then(() => {});
 });
 
-function get_info() {
-    fetch('../Account/php/fetch_account_info.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data) {
-                document.getElementById('full_name').innerHTML =  data.full_name;
-                document.getElementById('email').innerHTML =  data.email;
-                document.getElementById('phone').innerHTML = data.phone;
-                document.getElementById('address').innerHTML =  data.address;
-                document.getElementById('city').innerHTML =  data.city;
-                document.getElementById('zip_code').innerHTML =  data.zip_code;
-                document.getElementById('country').innerHTML = data.country;
-            } else {
-                alert('No user data found');
-            }
-        })
-        .catch(error => console.error('Error fetching data:', error));
-}
 
 function edit() {
     document.getElementById('edit-button').innerText = 'Save';
@@ -54,6 +36,10 @@ function edit() {
             .catch(error => {
                 console.error('Error:', error);
             });
-
     }
 }
+
+function logoff() {
+    window.location.href = '../start.php';
+}
+

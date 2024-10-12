@@ -1,5 +1,6 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
 
 // Check if this is the first visit or if the session was previously cleaned
 if (!isset($_SESSION['session_cleaned'])) {
