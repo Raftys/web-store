@@ -48,12 +48,11 @@ function load_products($conn) {
 }
 
 
-function guest_user($full_name,$email, $phone, $address, $city, $zip_code, $country) {
-    $full_name = 'Guest_'.$full_name;
+function create_customer($full_name, $email, $phone, $address, $city, $zip_code, $country) {
     $conn = connect();
-    $sql = "INSERT INTO users (full_name, email, phone, address, city, zip_code, country) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO customers (full_name, email, phone, address, city, zip_code, country, bow_now) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('sssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country);
+    $stmt->bind_param('ssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $box_now);
     $stmt->execute();
     return $conn->insert_id;
 }

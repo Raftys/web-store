@@ -45,7 +45,7 @@ function completePayment() {
     const receipt = document.getElementById("receipt").value;
     if (receipt) {
         modal.style.display = "none";  // Close the modal
-        showNotification("Η παραγγελία υποβλήθηκε!");
+        showNotification("Η παραγγελία υποβλήθηκε!","notification");
         setTimeout(() => {
             //window.location.href = '../reset_cart.php';
         }, 4010);

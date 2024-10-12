@@ -1,18 +1,5 @@
 // login.js
 
-document.getElementById('login-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent default form submission
-    // Gather input values
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // For demonstration purposes, log the values (you can replace this with an API call)
-    console.log('Login Attempt:', { email, password });
-
-    // Clear form after submission
-    document.getElementById('login-form').reset();
-});
-
 // Simulated Google Login
 document.getElementById('google-login').addEventListener('click', function() {
     // You would implement Google Login integration here
@@ -26,4 +13,27 @@ document.getElementById('forgot-password').addEventListener('click', function() 
         alert('Password reset link sent to ' + email);
         // Implement the logic to send the email with a 6-digit code
     }
+});
+
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    const formData = new FormData(this);
+
+
+    // Use fetch to send a POST request
+    fetch(this.action, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json()) // Parse JSON response
+        .then(data => {
+            if (data.status === 'error') {
+                // Show alert if there's an error
+                showNotification(data.message,"alert");
+            } else {
+                // Handle successful login if needed
+                window.location.href = '/main.php'; // Redirect on success
+            }
+        })
+        .catch(error => console.error('Error:', error));
 });

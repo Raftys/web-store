@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         addItems(item.id,item.name,item.price,item.image,1);
                         loadItemName(item.id).then(itemName => {
                             if (itemName) { // Ensure itemName is valid
-                                showNotification(`Το προϊόν ${itemName} έχει προστεθεί στο καλάθι σας.`);
+                                showNotification(`Το προϊόν ${itemName} έχει προστεθεί στο καλάθι σας.`,"notification");
                             } else {
-                                showNotification("Προϊόν δεν βρέθηκε."); // Fallback message if item name is not retrieved
+                                showNotification("Προϊόν δεν βρέθηκε.","notification"); // Fallback message if item name is not retrieved
                             }
                         });
                     });

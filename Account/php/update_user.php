@@ -15,4 +15,6 @@ $new_country = $_POST['country'];
 // Create connection
 $conn = connect();
 update_table('users',$user_id,$new_full_name, $new_email, $new_phone, $new_address, $new_city, $new_zip_code, $new_country);
+echo json_encode("Done");
+exit();
 

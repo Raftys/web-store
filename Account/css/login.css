@@ -29,6 +29,7 @@ input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
 }
 
 button {
@@ -55,4 +56,7 @@ button:hover {
 
 p {
     text-align: center;
+}
+label {
+    margin-right: 20px;
 }

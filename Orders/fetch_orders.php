@@ -3,17 +3,18 @@ session_start();
 include_once '../sql_functions.php'; // Include your database connection functions
 $conn = connect(); // Connect to the database
 
-// Fetch all orders along with their associated items, user details, and product details
+// Fetch all orders along with their associated items and customer details
 $sql = "
 SELECT 
     o.id AS order_id, 
-    u.full_name AS customer_name, 
-    u.email AS customer_email, 
-    u.phone AS customer_phone, 
-    u.address AS customer_address, 
-    u.city AS customer_city, 
-    u.zip_code AS customer_zip_code, 
-    u.country AS customer_country,
+    u.id AS user_id,  -- Fetch user_id from the users table
+    c.full_name AS customer_name, 
+    c.email AS customer_email, 
+    c.phone AS customer_phone, 
+    c.address AS customer_address, 
+    c.city AS customer_city, 
+    c.zip_code AS customer_zip_code, 
+    c.country AS customer_country,
     o.order_date, 
     o.total_amount, 
     o.status, 
@@ -28,6 +29,8 @@ FROM
     orders o
 JOIN 
     users u ON o.user_id = u.id
+JOIN 
+    customers c ON o.customer_id = c.id  -- Use customer_id to join with customers table
 LEFT JOIN 
     order_items oi ON o.id = oi.order_id
 LEFT JOIN 
@@ -35,7 +38,10 @@ LEFT JOIN
 ORDER BY 
     o.order_date DESC"; // Order by date, newest first
 
-$result = $conn->query($sql);
+// Prepare the statement to prevent SQL injection
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $orders = []; // Array to hold orders
 
@@ -78,9 +84,10 @@ if ($result->num_rows > 0) {
 }
 
 // Close the connection
-$conn->close();
+$stmt->close(); // Close the statement
+$conn->close(); // Close the connection
 
 // Return JSON response
 header('Content-Type: application/json');
 echo json_encode(array_values($orders)); // Return as an indexed array
-
+?>

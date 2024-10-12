@@ -19,13 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['logged_in'] = true;
             $_SESSION['root'] = $user['root'];
-            header('Location: /main.php');
-            exit();
-        } else {
-            echo "Invalid credentials.";
-        }
-    } else {
-        echo "Invalid credentials.";
-    }
+            echo json_encode(['status' => 'success']);
+            // Stop further execution
+        } else
+            echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+    } else
+        echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+    exit();
 }
 

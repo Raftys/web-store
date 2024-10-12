@@ -4,17 +4,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function edit() {
-    document.getElementById('edit-button').innerText = 'Save';
+    let button = document.getElementById('edit-button').innerText;
     const fields = ['full_name', 'email', 'phone', 'address', 'city', 'zip_code', 'country'];
-    fields.forEach(field => {
-        const textElement = document.getElementById(field);
-        const inputElement = document.getElementById(field + '_input');
-        textElement.style.display = 'none';
-        inputElement.style.display = 'block';
-        inputElement.value=document.getElementById(field).innerText;
-    })
-    document.getElementById('edit-button').onclick = function () {
-        const fields = ['full_name', 'email', 'phone', 'address', 'city', 'zip_code', 'country'];
+    if(button === 'Edit') {
+        document.getElementById('edit-button').innerText = 'Save';
+        fields.forEach(field => {
+            const textElement = document.getElementById(field);
+            const inputElement = document.getElementById(field + '_input');
+            textElement.style.display = 'none';
+            inputElement.style.display = 'block';
+            inputElement.value=document.getElementById(field).innerText;
+        })
+    }
+    if(button === 'Save') {
+        document.getElementById('edit-button').innerText = 'Edit';
         const formData = new FormData();
         fields.forEach(field => {
             const textElement = document.getElementById(field);
@@ -30,7 +33,7 @@ function edit() {
             .then(response => response.json())
             .then(() => {
                 // Display success or error message
-                alert("Info Updated!")
+                get_info().then(() => {});
                 document.getElementById('edit-button').innerText = 'Edit';
             })
             .catch(error => {

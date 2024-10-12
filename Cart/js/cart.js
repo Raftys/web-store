@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     button.disabled = true; // Disable button
     button.style.opacity = '0.5'; // Set button opacity to 0.5
     get_info().then(()=> {
-        checkInputs();
+        if ( document.getElementById('total-price').innerText.replace(/[^0-9.-]+/g, '') > 0 )
+            checkInputs();
     });
 });
 let totalPrice = 0;

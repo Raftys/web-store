@@ -27,10 +27,10 @@ function addItems(id, name, price, image, quantity) {
 }
 
 // Function to create and display notification
-function showNotification(message) {
+function showNotification(message,type) {
     // Create notification div
     const notification = document.createElement('div');
-    notification.classList.add('notification');
+    notification.classList.add(type);
     notification.innerText = message;
 
     // Append to body

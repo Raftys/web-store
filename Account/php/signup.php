@@ -20,12 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('sssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $password, $root);
 
-    if ($stmt->execute()) {
+
+    try {
+        $stmt->execute();
         $_SESSION['logged_in'] = false;
         include "login.php";
-        header('Location: main.php');
+        echo json_encode(['status' => 'success']);
         exit();
-    } else {
-        echo "Error: " . $stmt->error;
+    } catch(Exception $e) {
+        echo json_encode(['status' => 'error', 'message' => 'Email Already Exists.']);
+
     }
 }
