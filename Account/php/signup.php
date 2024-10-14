@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $city = $_POST['city'];
     $zip_code = $_POST['zip_code'];
     $country = $_POST['country'];
-    $box_now = $_POST['box_now'];
+    $box_now = !empty($_POST['box_now']) ? $_POST['box_now'] : '0';
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
     $root = 0;
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['status' => 'success']);
         exit();
     } catch(Exception $e) {
-        echo json_encode(['status' => 'error', 'message' => 'Email Already Exists.']);
+        echo json_encode(['status' => 'error', 'message' => $box_now]);
 
     }
 }

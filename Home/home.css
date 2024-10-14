@@ -11,12 +11,17 @@
     background-color: red;
     border-radius: 0 20px 20px 0; /* Round top-left and bottom-left corners */
     box-shadow: 20px 24px 28px rgba(0, 0, 0, 0);
-
-}
-.column2 {
-    background-color: white;
     padding: 20px;
 }
+.column2 {
+    background-color: lightgray;
+    border-radius:  20px; /* Round top-left and bottom-left corners */
+    box-shadow: 20px 24px 28px rgba(0, 0, 0, 0);
+    padding: 20px;
+    margin:20px;
+}
+
+
 .background-container {
     margin: 20px;
     border-radius: 20px;
@@ -50,4 +55,11 @@
 .background-container p {
     position: relative; /* Position relative to maintain stacking context */
     z-index: 1; /* Set z-index above the blur */
+}
+.background-container img {
+    position: relative; /* Keep the image on top */
+    z-index: 2; /* Ensure it's above the background */
+    max-width: 30%; /* Adjust as needed to fit within the container */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px;
 }

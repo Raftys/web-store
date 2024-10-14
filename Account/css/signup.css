@@ -28,7 +28,7 @@ input {
 
 button {
     padding: 10px;
-    background-color: #27ae60;
+    background-color: lime;
     color: white;
     border: none;
     border-radius: 4px;
@@ -36,7 +36,13 @@ button {
 }
 
 button:hover {
-    background-color: #219653;
+    background-color: limegreen;
+}
+
+button:disabled {
+    background-color: limegreen; /* Darker gray color when disabled */
+    cursor: not-allowed; /* Show a "not-allowed" cursor when disabled */
+    opacity: 0.6; /* Reduce opacity for a more "disabled" look */
 }
 
 #google-login {
@@ -48,8 +54,25 @@ button:hover {
     background-color: #c13531;
 }
 
+.help-link {
+    margin-left: 10px; /* Space between the input and the link */
+    align-self: flex-start; /* Aligns the link to the start of the flex container */
+    transform: translateY(-3px); /* Moves the link 3 pixels up */
+    text-decoration: none; /* Removes the underline from the link */
+    padding-top: 12px;
+    color: blue; /* Set the link color (optional, matches the button) */
+}
 
+.help-link:hover {
+    text-decoration: underline; /* Underline on hover for better visibility */
+}
 
+.note {
+    color: #ff0000; /* Set the text color (red for emphasis) */
+    text-align: center; /* Center the text */
+    margin-bottom: 15px; /* Space below the note */
+    font-size: 14px; /* Adjust the font size as needed */
+}
 
 label {
     margin-right: 20px;

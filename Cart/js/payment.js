@@ -50,7 +50,7 @@ function completePayment() {
     modal.style.display = "none";  // Close the modal
     showNotification("Η παραγγελία υποβλήθηκε!","notification");
     setTimeout(() => {
-        //window.location.href = '../reset_cart.php';
+        window.location.href = '../reset_cart.php';
     }, 4010);
 }
 

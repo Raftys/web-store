@@ -12,6 +12,7 @@ SELECT
     o.receipt AS receipt,
     u.id AS user_id,  -- Fetch user_id from the users table
     c.full_name AS customer_name, 
+    c.id AS customer_id,
     c.email AS customer_email, 
     c.phone AS customer_phone, 
     c.address AS customer_address, 
@@ -72,6 +73,7 @@ if ($result->num_rows > 0) {
         if (!isset($orders[$order_id])) {
             $orders[$order_id] = [
                 'order_id' => $order_id,
+                'customer_id' => $row['customer_id'],
                 'customer_name' => $row['customer_name'],
                 'customer_email' => $row['customer_email'],
                 'customer_phone' => $row['customer_phone'],
@@ -93,13 +95,8 @@ if ($result->num_rows > 0) {
         // Add the item to the order's items array
         if ($row['product_id']) {
             $orders[$order_id]['items'][] = [
-                'product_id' => $row['product_id'],
                 'product_name' => $row['product_name'], // Product name
-                'product_description' => $row['product_description'], // Product description
-                'product_image' => $row['product_image'], // Product image URL
                 'quantity' => $row['item_quantity'],
-                'price' => $row['item_price'],
-                'item_total' => $row['item_total']
             ];
         }
     }
@@ -112,4 +109,4 @@ $conn->close(); // Close the connection
 // Return JSON response
 header('Content-Type: application/json');
 echo json_encode(array_values($orders)); // Return as an indexed array
-?>
+

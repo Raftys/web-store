@@ -4,9 +4,6 @@ let orders = []; // Declare a global variable to store orders
 async function fetchOrders() {
     try {
         const response = await fetch('Orders/fetch_orders.php'); // URL to your PHP file
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
         orders = await response.json(); // Store the orders globally
         displayOrders(orders); // Call displayOrders to show all orders
     } catch (error) {
@@ -16,20 +13,16 @@ async function fetchOrders() {
 
 async function updateStatus(orderId, newStatus) {
     try {
-        const response = await fetch('Orders/update_order_status.php', {
+        await fetch('Orders/update_order_status.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ order_id: orderId, status: newStatus })
         });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const result = await response.json();
-        console.log('Status updated:', result);
+        showNotification("Η κατάσταση ενημερώθηκε","notification");
     } catch (error) {
-        console.error('Error updating status:', error);
+        showNotification("Σφάλμα κατά την ενημέρωση της κατάστασης","alert");
     }
 }
 
@@ -45,23 +38,27 @@ function displayOrders(ordersToDisplay) {
             const orderCard = document.createElement('div');
             orderCard.className = 'order-card';
             orderCard.innerHTML = `
-                <h2>Order ID: ${order.order_id}</h2>
-                <p><strong>Customer Name:</strong> ${order.customer_name}</p>
-                <p><strong>Products:</strong> ${order.items.map(item => `${item.product_name} (${item.quantity})`).join(', ')}</p>
-                <p><strong>Delivery Address:</strong> ${order.customer_address}</p>
-                <p><strong>Box Now Locker Id:</strong> ${order.box_now}</p>
-                <p><strong>Payment Method:</strong> ${order.payment_method}</p>
-                <p><strong>Receipt:</strong> ${order.receipt}</p>
+                <h2>Αριθμός Παραγγελίας: ${order.order_id}</h2>
+                <p><strong>Ονοματεπώνυμο:</strong> ${order.customer_name}</p>
+                <p><strong>Προϊόντα:</strong> ${order.items.map(item => `${item.product_name} (${item.quantity})`).join(', ')}</p>
+                <p><strong>Διεύθυνση Παράδοσης:</strong> ${order.customer_address} ${order.customer_city} ${order.customer_country} ${order.customer_zip_code}</p>
+                <p><strong>Box Now Locker Id:</strong> 
+                    <span class="box_now_customer" style="display: ${order.root !== 1 ? 'inline' : 'none'};">${order.box_now}</span>
+                    <input type="text" name="box_now" class="box_now_admin" value="${order.box_now}" style="display: ${order.root === 1 ? 'inline' : 'none'};" />
+                    ${order.root === 1 ? `<button class="update-box-now" onclick="updateBoxNow(${order.order_id}, ${order.customer_id}, this)">Ενήμερωση</button>` : ''}
+                </p>
+                <p><strong>Μέθοδος Πληρωμής:</strong> ${order.payment_method}</p>
+                <p><strong>Απόδειξη:</strong> ${order.receipt}</p>
                 <p><strong>Συνολική Τιμή:</strong> ${order.total_amount}</p>
                 <p>
-                    <strong>Status:</strong>
+                    <strong>Κατάσταση:</strong>
                     ${order.root ? `
                         <select onchange="updateStatus(${order.order_id}, this.value)">
-                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
-                            <option value="processed" ${order.status === 'processed' ? 'selected' : ''}>Processed</option>
-                            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Shipped</option>
-                            <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
-                            <option value="canceled" ${order.status === 'canceled' ? 'selected' : ''}>Canceled</option>
+                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Αναμένει</option>
+                            <option value="processed" ${order.status === 'processed' ? 'selected' : ''}>Επεξεργάζεται</option>
+                            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Απεσταλμένη</option>
+                            <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Παραδοθείσα</option>
+                            <option value="canceled" ${order.status === 'canceled' ? 'selected' : ''}>Ακυρωμένη</option>
                         </select>
                     ` : `
                         <span>${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
@@ -74,6 +71,27 @@ function displayOrders(ordersToDisplay) {
         ordersList.innerHTML = '<p>No orders found.</p>'; // Message when no orders are present
     }
 }
+
+// Function to update Box Now Locker ID
+async function updateBoxNow(order_id,customer_id, buttonElement) {
+    const inputField = buttonElement.previousElementSibling;
+    const newBoxNowId = inputField.value; // Get the new ID from the input field
+
+    try {
+        await fetch('Orders/update_box_now.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ order_id: order_id, customer_id: customer_id, box_now: newBoxNowId })
+        });
+        showNotification("Ενημερώθηκε το Box Now Locker","notification");
+    } catch (error) {
+        showNotification("Αποτυχία ενημέρωσης του Box Now Locker","alert");
+    }
+}
+
+
 
 // Function to search orders
 function searchOrders() {

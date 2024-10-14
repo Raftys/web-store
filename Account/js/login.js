@@ -7,13 +7,13 @@ document.getElementById('google-login').addEventListener('click', function() {
 });
 
 // Handle "Forgot Password?"
-document.getElementById('forgot-password').addEventListener('click', function() {
+/*document.getElementById('forgot-password').addEventListener('click', function() {
     const email = prompt('Please enter your email to receive a password reset link:');
     if (email) {
         alert('Password reset link sent to ' + email);
         // Implement the logic to send the email with a 6-digit code
     }
-});
+});*/
 
 document.getElementById('login-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission

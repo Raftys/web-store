@@ -38,7 +38,6 @@ function fetchCartItems() {
 }
 
 document.getElementById('clear_cart').addEventListener('click', function() {
-    //document.getElementById('cart-label').innerText = `Καλάθι (0)`;
     const totalOrderText = document.getElementById('total-order');
     totalOrderText.textContent = '0';
     window.location.href='../reset_cart.php'

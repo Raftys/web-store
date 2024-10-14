@@ -369,7 +369,7 @@
 
 /* Close Button */
 .close {
-    color: #aaa; /* Light gray */
+    color: gray; /* Light gray */
     float: right; /* Position to the right */
     font-size: 28px; /* Font size */
     font-weight: bold; /* Bold text */
@@ -378,7 +378,7 @@
 
 .close:hover,
 .close:focus {
-    color: #e74c3c; /* Change color on hover */
+    color: red; /* Change color on hover */
     text-decoration: none; /* Remove underline */
 }
 
@@ -400,7 +400,7 @@
 
 /* Button */
 .modal-button {
-    background-color: #4CAF50; /* Green background for button */
+    background-color: lime; /* Green background for button */
     color: white; /* White text */
     padding: 10px 20px; /* Padding */
     border: none; /* No border */
@@ -416,8 +416,16 @@
 }
 
 .modal-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: lime; /* Darker green on hover */
     transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.modal-button:disabled {
+    background-color: limegreen; /* Darker gray for disabled state */
+    color: white; /* Keep text color white */
+    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+    opacity: 0.7; /* Slightly transparent to indicate disabled state */
+    pointer-events: none; /* Prevent clicking */
 }
 
 /* Bold Text */
