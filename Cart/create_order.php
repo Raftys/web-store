@@ -12,18 +12,21 @@ $address = isset($_POST['address']) ? $_POST['address'] : '';
 $city = isset($_POST['city']) ? $_POST['city'] : '';
 $zip_code = isset($_POST['zip_code']) ? $_POST['zip_code'] : '';
 $country = isset($_POST['country']) ? $_POST['country'] : '';
+$box_now = isset($_POST['box_now']) ? $_POST['box_now'] : '';
+$payment_method = isset($_POST['payment_method']) ? $_POST['payment_method'] : '';
+$receipt = isset($_POST['receipt']) ? $_POST['receipt'] : '';
 
 
 $user_id = null; // Default value
 $conn = connect();
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true)
     $user_id = $_SESSION['user_id'];
-$customer_id  = create_customer($full_name, $email, $phone, $address, $city, $zip_code, $country);
+$customer_id  = create_customer($full_name, $email, $phone, $address, $city, $zip_code, $country, $box_now);
 
 $status = 'pending';
 
-$stmt = $conn->prepare("INSERT INTO orders (user_id, customer_id, total_amount, status) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("iids", $user_id, $customer_id, $total_amount, $status); // "ids" means integer, decimal, string
+$stmt = $conn->prepare("INSERT INTO orders (user_id, customer_id, total_amount, status, payment_method, receipt) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("iidsss", $user_id, $customer_id, $total_amount, $status, $payment_method,$receipt); // "ids" means integer, decimal, string
 // Execute the statement
 $stmt->execute();
 

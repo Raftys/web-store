@@ -5,30 +5,33 @@ let closeButton = document.getElementsByClassName("close")[0];
 
 // Function to open the modal
 function openModal(contentType) {
+
     modal.style.display = "block";
 
     if (contentType === "bank") {
         // Bank scenario content
         modalContent.innerHTML = `
-            <h2>Bank Details</h2>
-            <p>Bank Name 1: IBAN1234567890</p>
-            <p>Bank Name 2: IBAN0987654321</p>
-            <p>Bank Name 3: IBAN1122334455</p>
+            <h2>Πληροφορίες Τράπεζας</h2>
+            <p><span class="bold-text">Τράπεζα Πειραιώς:</span> GR 290172 2490 0052 4909 3136868</p>
+            <p>Το συνολικό ποσό που πρέπει να σταλθεί είναι <span id="final_amount" class="bold-text"></span></p>
             <input type="text" id="receipt" placeholder="Enter Payment Receipt Number">
-            <button disabled id="complete-button" onclick="completePayment()">Ολοκλήρωση</button>
+            <button class="modal-button" id="complete-button" onclick="completePayment()">Ολοκλήρωση</button>
         `;
     } else if (contentType === "iris") {
         // IRIS scenario content
         modalContent.innerHTML = `
             <h2>IRIS</h2>
-            <p>Phone Number: 123456789</p>
+            <p><span class="bold-text">Τηλέφωνο:</span> 6945793397</p>
+            <p>Το συνολικό ποσό που πρέπει να σταλθεί είναι <span id="final_amount" class="bold-text"></span></p>
             <input type="text" id="receipt" placeholder="Enter Payment Receipt Number">
-            <button id= "complete-button" onclick="completePayment()">Ολοκλήρωση</button>
+            <button class="modal-button" id="complete-button" onclick="completePayment()">Ολοκλήρωση</button>
         `;
-    } else if (contentType === "credit-card"){
+    } else if (contentType === "credit-card") {
         modalContent.innerHTML = `<h2>Coming Soon...</h2>`;
     }
+    document.getElementById('final_amount').textContent=getFinalAmount()+'€';
 }
+
 
 // Function to handle the payment completion button click
 

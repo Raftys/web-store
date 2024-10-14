@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function edit() {
     let button = document.getElementById('edit-button').innerText;
-    const fields = ['full_name', 'email', 'phone', 'address', 'city', 'zip_code', 'country'];
+    const fields = ['full_name', 'email', 'phone', 'address', 'city', 'zip_code', 'country', 'box_now'];
     if(button === 'Edit') {
         document.getElementById('edit-button').innerText = 'Save';
         fields.forEach(field => {
@@ -40,9 +40,5 @@ function edit() {
                 console.error('Error:', error);
             });
     }
-}
-
-function logoff() {
-    window.location.href = '../start.php';
 }
 

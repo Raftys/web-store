@@ -28,4 +28,5 @@ else {
     // Fallback if the page does not match
     echo "<h2>404 Not Found</h2><p>The page you're looking for does not exist.</p>";
 }
+include('Footer/footer.html');
 

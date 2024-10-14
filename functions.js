@@ -88,6 +88,7 @@ function get_info() {
                 setElementValueOrContent('city', data.city);
                 setElementValueOrContent('zip_code', data.zip_code);
                 setElementValueOrContent('country', data.country);
+                setElementValueOrContent('box_now', data.box_now);
             }
         })
         .catch(error => console.error('Error fetching data:', error));

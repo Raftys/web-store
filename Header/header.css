@@ -61,10 +61,86 @@ header {
     text-decoration: underline;
 }
 
+/* Cart icon styling */
 .cart-icon {
     width: 24px; /* Set width of the icon */
     height: auto; /* Maintain aspect ratio */
-
     vertical-align: middle; /* Align the icon vertically */
     border-radius: 10px;
 }
+
+/* User menu container */
+.user-menu-container {
+    position: relative;
+    display: inline-block;
+    top: -10px; /* Adjusts vertical alignment */
+}
+
+/* User icon (circular avatar) */
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Make the icon round */
+    cursor: pointer; /* Pointer cursor on hover */
+    border: 2px solid #ccc; /* Add a subtle border */
+    transition: border-color 0.3s ease;
+}
+
+.user-icon:hover {
+    border-color: limegreen; /* Change border color on hover */
+}
+
+/* Hidden dropdown menu */
+.user-dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 0; /* Align to the right of the user icon */
+    top: 50px; /* Position below the user icon */
+    background-color: #fff; /* White background */
+    min-width: 180px; /* Set minimum width */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* More defined shadow for the dropdown */
+    border-radius: 8px; /* Rounded corners */
+    z-index: 1; /* Ensure it appears above other elements */
+    overflow: hidden; /* Prevent overflow from breaking the design */
+}
+
+/* List within the dropdown */
+.user-dropdown-menu ul {
+    list-style-type: none; /* Remove default list styles */
+    margin: 20px;
+    padding: 0; /* Remove default padding */
+}
+
+/* Dropdown list items */
+.user-dropdown-menu li {
+    padding: 12px 15px; /* More padding for spacing */
+}
+
+/* Dropdown links (using div for JavaScript navigation) */
+.user-dropdown-menu div {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Darker link color */
+    font-size: 14px; /* Font size */
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition effects */
+}
+
+.user-dropdown-menu div:hover {
+    background-color: limegreen; /* Highlight on hover */
+    color: #fff; /* Change text color to white */
+}
+
+/* Add an icon for each menu item */
+.user-dropdown-menu div .menu-icon {
+    width: 16px; /* Icon width */
+    height: 16px; /* Icon height */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Show dropdown menu on hover */
+.user-menu-container:hover .user-dropdown-menu {
+    display: block; /* Display the dropdown when hovering over the user icon */
+}
+

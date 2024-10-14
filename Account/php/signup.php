@@ -13,12 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $city = $_POST['city'];
     $zip_code = $_POST['zip_code'];
     $country = $_POST['country'];
+    $box_now = $_POST['box_now'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
     $root = 0;
 
-    $sql = "INSERT INTO users (full_name, email, phone, address, city, zip_code, country, password, root) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (full_name, email, phone, address, city, zip_code, country, password, root, box_now) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('sssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $password, $root);
+    $stmt->bind_param('ssssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $password, $root, $box_now);
 
 
     try {

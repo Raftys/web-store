@@ -40,6 +40,7 @@ function displayOrders(ordersToDisplay) {
 
     // Check if there are orders
     if (ordersToDisplay.length > 0) {
+        ordersToDisplay.sort((a, b) => new Date(b.order_date) - new Date(a.order_date));
         ordersToDisplay.forEach(order => {
             const orderCard = document.createElement('div');
             orderCard.className = 'order-card';
@@ -48,17 +49,23 @@ function displayOrders(ordersToDisplay) {
                 <p><strong>Customer Name:</strong> ${order.customer_name}</p>
                 <p><strong>Products:</strong> ${order.items.map(item => `${item.product_name} (${item.quantity})`).join(', ')}</p>
                 <p><strong>Delivery Address:</strong> ${order.customer_address}</p>
+                <p><strong>Box Now Locker Id:</strong> ${order.box_now}</p>
                 <p><strong>Payment Method:</strong> ${order.payment_method}</p>
+                <p><strong>Receipt:</strong> ${order.receipt}</p>
                 <p><strong>Συνολική Τιμή:</strong> ${order.total_amount}</p>
                 <p>
                     <strong>Status:</strong>
-                    <select onchange="updateStatus(${order.order_id}, this.value)">
-                        <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
-                        <option value="processed" ${order.status === 'processed' ? 'selected' : ''}>Processed</option>
-                        <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Shipped</option>
-                        <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
-                        <option value="canceled" ${order.status === 'canceled' ? 'selected' : ''}>Canceled</option>
-                    </select>
+                    ${order.root ? `
+                        <select onchange="updateStatus(${order.order_id}, this.value)">
+                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+                            <option value="processed" ${order.status === 'processed' ? 'selected' : ''}>Processed</option>
+                            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Shipped</option>
+                            <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+                            <option value="canceled" ${order.status === 'canceled' ? 'selected' : ''}>Canceled</option>
+                        </select>
+                    ` : `
+                        <span>${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
+                    `}
                 </p>
             `;
             ordersList.appendChild(orderCard); // Add order card to the list

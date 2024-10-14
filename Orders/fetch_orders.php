@@ -1,5 +1,6 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
 include_once '../sql_functions.php'; // Include your database connection functions
 $conn = connect(); // Connect to the database
 
@@ -7,6 +8,8 @@ $conn = connect(); // Connect to the database
 $sql = "
 SELECT 
     o.id AS order_id, 
+    o.payment_method AS payment_method,
+    o.receipt AS receipt,
     u.id AS user_id,  -- Fetch user_id from the users table
     c.full_name AS customer_name, 
     c.email AS customer_email, 
@@ -15,6 +18,7 @@ SELECT
     c.city AS customer_city, 
     c.zip_code AS customer_zip_code, 
     c.country AS customer_country,
+    c.box_now AS box_now,
     o.order_date, 
     o.total_amount, 
     o.status, 
@@ -34,12 +38,26 @@ JOIN
 LEFT JOIN 
     order_items oi ON o.id = oi.order_id
 LEFT JOIN 
-    products p ON oi.product_id = p.id
-ORDER BY 
-    o.order_date DESC"; // Order by date, newest first
+    products p ON oi.product_id = p.id";
+
+// Get user_id from the session if available
+$user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : null;
+$root = isset($_SESSION['root']) ? (int)$_SESSION['root'] : null;
+
+// Append WHERE clause if user_id is available
+if ($user_id !== null && $root !== 1) {
+    $sql .= " WHERE u.id = ?"; // Add the WHERE clause for the user_id
+}
 
 // Prepare the statement to prevent SQL injection
 $stmt = $conn->prepare($sql);
+
+// Bind the parameter if the user_id was added to the WHERE clause
+if ($user_id !== null && $root !== 1) {
+    $stmt->bind_param('i', $user_id);
+}
+
+// Execute the statement
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -61,8 +79,12 @@ if ($result->num_rows > 0) {
                 'customer_city' => $row['customer_city'],
                 'customer_zip_code' => $row['customer_zip_code'],
                 'customer_country' => $row['customer_country'],
+                'payment_method' => $row['payment_method'],
+                'receipt' => $row['receipt'],
+                'box_now' => $row['box_now'],
                 'order_date' => $row['order_date'],
                 'total_amount' => $row['total_amount'],
+                'root' => $_SESSION['root'],
                 'status' => $row['status'],
                 'items' => [] // Initialize items array
             ];

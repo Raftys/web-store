@@ -17,6 +17,8 @@ function completePayment() {
     const city = document.getElementById('city').value;
     const zip_code = document.getElementById('zip_code').value;
     const country = document.getElementById('country').value;
+    const box_now = document.getElementById('box_now').value
+    const receipt = document.getElementById('receipt').value;
     order_data.append('full_name',full_name);
     order_data.append('email',email);
     order_data.append('phone',phone);
@@ -24,6 +26,9 @@ function completePayment() {
     order_data.append('city',city);
     order_data.append('zip_code',zip_code);
     order_data.append('country',country);
+    order_data.append('box_now', box_now);
+    order_data.append('payment_method',getSelectedPaymentMethod());
+    order_data.append('receipt',receipt)
 
     fetch('Cart/create_order.php', { // Make sure the path is correct relative to product.html
         method: 'POST',
@@ -42,14 +47,13 @@ function completePayment() {
             alert("Error"+error);
             console.error('Error fetching cart items:', error)
         });
-    const receipt = document.getElementById("receipt").value;
-    if (receipt) {
-        modal.style.display = "none";  // Close the modal
-        showNotification("Η παραγγελία υποβλήθηκε!","notification");
-        setTimeout(() => {
-            //window.location.href = '../reset_cart.php';
-        }, 4010);
-    } else {
-        alert("Please enter a payment receipt number.");
-    }
+    modal.style.display = "none";  // Close the modal
+    showNotification("Η παραγγελία υποβλήθηκε!","notification");
+    setTimeout(() => {
+        //window.location.href = '../reset_cart.php';
+    }, 4010);
+}
+
+function getFinalAmount() {
+    return document.getElementById('final-amount').innerText.replace(/[^0-9.-]+/g, '');
 }

@@ -48,19 +48,19 @@ function load_products($conn) {
 }
 
 
-function create_customer($full_name, $email, $phone, $address, $city, $zip_code, $country) {
+function create_customer($full_name, $email, $phone, $address, $city, $zip_code, $country, $box_now) {
     $conn = connect();
-    $sql = "INSERT INTO customers (full_name, email, phone, address, city, zip_code, country, bow_now) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO customers (full_name, email, phone, address, city, zip_code, country, box_now) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $box_now);
     $stmt->execute();
     return $conn->insert_id;
 }
 
-function update_table($table,$id,$new_full_name, $new_email, $new_phone, $new_address, $new_city, $new_zip_code, $new_country) {
+function update_table($table,$id,$new_full_name, $new_email, $new_phone, $new_address, $new_city, $new_zip_code, $new_country, $new_box_now) {
     $conn = connect();
 
-    $sql = "UPDATE $table SET full_name = '$new_full_name', email = '$new_email', phone = '$new_phone', address = '$new_address', city = '$new_city', zip_code = '$new_zip_code',  country = '$new_country', root = '1' WHERE id = $id";
+    $sql = "UPDATE $table SET full_name = '$new_full_name', email = '$new_email', phone = '$new_phone', address = '$new_address', city = '$new_city', zip_code = '$new_zip_code',  country = '$new_country', box_now ='$new_box_now', root = '0' WHERE id = $id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $stmt->close();

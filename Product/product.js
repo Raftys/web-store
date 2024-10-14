@@ -37,7 +37,7 @@ function fetchProductDetails() {
                     document.getElementById('product-title').innerText = data.name; // Update title
                     document.getElementById('product-image').src = data.image; // Set the image src
                     document.getElementById('product-description').innerText = data.description; // Update description
-                    document.getElementById('product-price').innerText = `Price: €${parseFloat(data.price).toFixed(2)}`; // Update price
+                    document.getElementById('product-price').innerText = `Τιμή: ${parseFloat(data.price).toFixed(2)}€`; // Update price
                 } else {
                     console.error('Error in data:', data.error);
                 }

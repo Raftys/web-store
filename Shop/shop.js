@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div class="item-text">
                             <h2>${item.name}</h2>
                             <p>${item.description}</p>
-                            <p>Price: ${parseFloat(item.price).toFixed(2)}€</p>                       
+                            <p>Τιμή: ${parseFloat(item.price).toFixed(2)}€</p>                       
                         </div>
                         <button class="buy-button" >Προσθήκη</button>
                     `;

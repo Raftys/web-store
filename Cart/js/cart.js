@@ -13,6 +13,7 @@ function fetchCartItems() {
     fetch('Cart/fetch_cart.php')
         .then(response => response.json())
         .then(data => {
+            if (data !== 'Error') {
                 const cartItemsContainer = document.getElementById('cart-items');
 
                 data.forEach(item => {
@@ -31,12 +32,14 @@ function fetchCartItems() {
                 setPaymentValues(totalPrice);
 
                 document.getElementById('total-price').innerText = `Σύνολο: €${totalPrice.toFixed(2)}`;
+            }
         })
         .catch(error => console.error('Error fetching cart items:', error));
 }
 
-function reset_cart() {
+document.getElementById('clear_cart').addEventListener('click', function() {
+    //document.getElementById('cart-label').innerText = `Καλάθι (0)`;
     const totalOrderText = document.getElementById('total-order');
     totalOrderText.textContent = '0';
     window.location.href='../reset_cart.php'
-}
+});
