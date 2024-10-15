@@ -48,7 +48,7 @@ h1 {
     background: white;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 20px; /* Add more padding */
+    padding: 5px; /* Add more padding */
     margin: 10px 0; /* Vertical margin for spacing */
     width: 100%; /* Full width of the parent */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
