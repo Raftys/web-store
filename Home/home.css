@@ -15,12 +15,17 @@
 }
 .column2 {
     background-color: lightgray;
-    border-radius:  20px; /* Round top-left and bottom-left corners */
+    border-radius:  30px; /* Round top-left and bottom-left corners */
     box-shadow: 20px 24px 28px rgba(0, 0, 0, 0);
     padding: 20px;
     margin:20px;
 }
 
+.image-radius {
+    width: 100%; /* Ύψος εικόνας */
+    height: auto; /* Αυτόματο ύψος για διατήρηση αναλογιών */
+    border-radius: 10px; /* Στρογγυλεμένες γωνίες */
+}
 
 .background-container {
     margin: 20px;

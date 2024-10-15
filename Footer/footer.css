@@ -54,6 +54,10 @@
     line-height: 1.5; /* Adjust line height for better readability */
 }
 
+.email {
+    margin-left: 40px; /* Further indent phone numbers */
+    line-height: 1.5; /* Adjust line height for better readability */
+}
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .footer-content {
