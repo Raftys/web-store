@@ -6,7 +6,7 @@ function connect()
     $host = 'localhost';
     $db = 'saltses';
     $user = 'root'; // or your MySQL username
-    $pass = 'raf2001D@'; // your MySQL password
+    $pass = 'root'; // your MySQL password
 
     $conn = new mysqli($host, $user, $pass, $db);
     if ($conn->connect_error) {

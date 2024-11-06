@@ -8,10 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     const itemDiv = document.createElement('div');
                     itemDiv.classList.add('item');
                     itemDiv.setAttribute("product_id",item.id);
+                    let offerHTML = '';
+                    if (item.offer != null) {
+                        offerHTML = `<p id="product-offer" class="product-offer">${item.offer}</p>`;
+                    }
                     itemDiv.innerHTML = `
                         <img src="${item.image}" alt="">
                         <div class="item-text">
-                            <h2>${item.name}</h2>
+                            <h2 style="color: ${item.offer != null ? 'red' : 'initial'}">${item.name}</h2>
+                            ${offerHTML}
                             <p>${item.description}</p>
                             <p>Τιμή: ${parseFloat(item.price).toFixed(2)}€</p>                       
                         </div>

@@ -1,23 +1,67 @@
-/* product.css */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f0f2f5;
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
+/* Product Page Layout */
 .product-page {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: flex-start;
+    gap: 30px;
     padding: 40px;
     max-width: 1200px;
     margin: 0 auto;
+    background-color: #fff;
+}
+
+/* Thumbnail Gallery - Stack thumbnails vertically on the left side */
+.thumbnail-gallery {
+    display: flex;
+    flex-direction: column; /* Stack thumbnails vertically */
+    gap: 15px;
+    width: 80px; /* Ensure the gallery takes up a fixed width */
+    margin-right: 20px; /* Add space between thumbnails and the main image */
+    align-items: center; /* Center the thumbnails horizontally */
+    justify-content: center; /* Vertically center the thumbnails */
+    height: 100%; /* Allow gallery to adjust its height */
+    position: relative;
+    margin-top: 10px; /* Adjust this value to place the thumbnails lower */
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Product Image */
+.product-image {
+    position: relative;
+    width: 500px; /* Ensure it takes up a fixed width */
+    height: auto;
 }
 
 .product-image img {
-    max-width: 450px;
+    max-width: 100%;
     width: 100%;
     height: auto;
     border-radius: 12px;
@@ -29,9 +73,9 @@ body {
     transform: scale(1.05);
 }
 
+/* Product Details */
 .product-details {
     max-width: 600px;
-    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -56,9 +100,10 @@ body {
     margin: 20px 0;
 }
 
+/* Buy Button */
 .buy-now {
     background-color: #27ae60;
-    color: #fff;
+    color: white;
     padding: 12px 30px;
     border: none;
     border-radius: 8px;
@@ -72,41 +117,32 @@ body {
     transform: translateY(-3px);
 }
 
-.reviews-section {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.reviews-section h2 {
-    font-size: 28px;
+/* Quantity Box Styles */
+.quantity-container {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-.review {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 10px;
-}
-
-.review p {
-    margin: 5px 0;
-}
-
-.review strong {
+.quantity-btn {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px;
+    border: none;
     font-size: 18px;
-    color: #333;
+    cursor: pointer;
 }
 
-.review .rating {
-    color: #ffcc00;
-    font-size: 20px;
+#quantity {
+    width: 50px;
+    text-align: center;
+    font-size: 18px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-/* Modal styling */
+/* Modal for Enlarged Image */
 .modal {
     display: none;
     position: fixed;
@@ -142,27 +178,73 @@ body {
     cursor: pointer;
 }
 
-/* Quantity Box Styles */
-.quantity-container {
-    display: flex;
-    align-items: center;
+/* Arrows for Image Navigation */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    font-size: 40px;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    transform: translateY(-50%);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Reviews Section */
+.reviews-section {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section h2 {
+    font-size: 28px;
     margin-bottom: 20px;
 }
 
-.quantity-btn {
-    background-color: #27ae60;
-    color: white;
-    padding: 10px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
+.review {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
 }
 
-#quantity {
-    width: 50px;
-    text-align: center;
+.review p {
+    margin: 5px 0;
+}
+
+.review strong {
     font-size: 18px;
-    margin: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    color: #333;
+}
+
+.review .rating {
+    color: #ffcc00;
+    font-size: 20px;
+}
+
+/* Style for the product offer */
+#product-offer {
+    font-size: 20px; /* Increase font size */
+    color: red; /* Set text color to red */
+    font-weight: bold; /* Make it bold */
+    margin-top: 10px; /* Add some space above */
+
 }

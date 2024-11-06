@@ -1,7 +1,7 @@
 <?php
 $total_amount = isset($_POST['total']) ? floatval($_POST['total']) : 0;
 
-include "../sql_functions.php";
+include "../Functions/sql_functions.php";
 if (session_status() == PHP_SESSION_NONE)
     session_start();
 

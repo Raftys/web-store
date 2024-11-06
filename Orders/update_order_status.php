@@ -2,7 +2,7 @@
 // update_order_status.php
 header('Content-Type: application/json');
 
-require_once '../sql_functions.php'; // Include your database connection functions
+require_once '../Functions/sql_functions.php'; // Include your database connection functions
 $conn = connect(); // Connect to the database
 
 $data = json_decode(file_get_contents('php://input'), true); // Get the POST data

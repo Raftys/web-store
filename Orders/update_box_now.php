@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 // Database connection (assume you have set up your DB connection here)
-include_once '../sql_functions.php';  // Adjust the path as necessary
+include_once '../Functions/sql_functions.php';  // Adjust the path as necessary
 
 // Get the raw POST data
 $data = json_decode(file_get_contents('php://input'), true);

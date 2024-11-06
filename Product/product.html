@@ -6,32 +6,45 @@
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="../notification.css">
     <title>Product Details</title>
-    <script src="product.js" defer></script> <!-- Link to the JavaScript file -->
-    <script src="/Functions/functions.js"></script>
+    <script src="product.js" defer></script>
+    <script src="../Functions/functions.js" defer></script>
 </head>
 <body>
 <div id="header-container"></div> <!-- Header loaded dynamically -->
+
 <div class="product-page">
+    <!-- Thumbnail Gallery (empty initially, filled by JavaScript) -->
+    <div class="thumbnail-gallery"></div>
+
+    <!-- Main Product Image -->
     <div class="product-image">
-        <img id="product-image" alt="Product Image" onclick="openModal()" src=""> <!-- Add src dynamically -->
+        <img id="product-image" alt="Product Image" onclick="openModal()" src="">
     </div>
+
+    <!-- Product Details -->
     <div class="product-details">
-        <h1 id="product-title">Product Title</h1> <!-- Placeholder for product title -->
-        <p id="product-description">A detailed product description goes here.</p> <!-- Placeholder for product description -->
-        <p id="product-price">Price: €0.00</p> <!-- Placeholder for product price -->
+        <h1 id="product-title">Product Title</h1>
+        <p id="product-offer" class="product-offer"></p>
+        <p id="product-description">A detailed product description goes here.</p>
+        <p id="product-price">Price: €0.00</p>
+
         <div class="quantity-container">
             <button class="quantity-btn" onclick="decrementQuantity()">-</button>
-
-            <label for="quantity"></label><input type="number" id="quantity" value="1" min="1" readonly>
+            <input type="number" id="quantity" value="1" min="1" readonly>
             <button class="quantity-btn" onclick="incrementQuantity()">+</button>
         </div>
+
         <button class="buy-now" id="buy-button" onclick="addToCart()">Προσθήκη</button>
     </div>
 </div>
 
+<!-- Modal for Enlarged Image View -->
 <div id="imageModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img class="modal-content" id="imgInModal" alt="Enlarged product image" src="">
+
+    <span class="prev">&#10094;</span>
+    <span class="next">&#10095;</span>
 </div>
 
 <!-- Reviews Section -->

@@ -1,7 +1,7 @@
 <?php
 if (session_status() == PHP_SESSION_NONE)
     session_start();
-include_once '../sql_functions.php'; // Include your database connection functions
+include_once '../Functions/sql_functions.php'; // Include your database connection functions
 $conn = connect(); // Connect to the database
 
 // Fetch all orders along with their associated items and customer details

@@ -2,7 +2,7 @@
 // Database connection
 if (session_status() == PHP_SESSION_NONE)
     session_start();
-include_once "../../sql_functions.php";
+include_once "../Functions/sql_functions.php";
 $conn = connect();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
