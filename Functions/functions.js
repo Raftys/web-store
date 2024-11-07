@@ -1,10 +1,11 @@
 //add to cart
-function addItems(id, name, price, image, quantity) {
+function addItems(id, name, price, image, offer, quantity,) {
     const formData = new FormData();
     formData.append("id",id);
     formData.append("name",name);
     formData.append("price",price);
     formData.append("image",image);
+    formData.append("offer",offer);
     formData.append("quantity",quantity)
     fetch('../cart.php', {
         method: 'POST',
@@ -107,4 +108,12 @@ function setElementValueOrContent(id, value) {
     } else {
         console.warn(`Element with ID '${id}' not found.`);
     }
+}
+
+let logged_in =0;
+function setLogged_in(value) {
+    this.logged_in = value;
+}
+function getLogged_in() {
+    return logged_in === 1;  // Will return true if logged_in is 1, false if it is 0
 }

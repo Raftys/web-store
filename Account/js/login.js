@@ -32,6 +32,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
                 showNotification(data.message,"alert");
             } else {
                 // Handle successful login if needed
+                setLogged_in(1);
                 window.location.href = '/main.php'; // Redirect on success
             }
         })

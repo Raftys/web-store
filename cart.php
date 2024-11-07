@@ -14,6 +14,7 @@ $_SESSION['cart'][] = [
     'name' => $_POST['name'],
     'price' => $_POST['price'],
     'image' => $_POST['image'],
+    'offer' => $_POST['offer'],
     'quantity' => $quantity
 ];
 if (!isset($_SESSION['totalItems']))

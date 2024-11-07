@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const buyButton = itemDiv.querySelector('.buy-button');
                     buyButton.addEventListener('click', function (event) {
                         event.stopPropagation(); // Prevent the itemDiv click event from firing
-                        addItems(item.id,item.name,item.price,item.image,1);
+                        addItems(item.id,item.name,item.price,item.image,item.offer,1);
                         loadItemName(item.id).then(itemName => {
                             if (itemName) { // Ensure itemName is valid
                                 showNotification(`Το προϊόν ${itemName} έχει προστεθεί στο καλάθι σας.`,"notification");

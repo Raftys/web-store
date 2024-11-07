@@ -3,10 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const button = document.getElementById('payment-button');
     button.disabled = true; // Disable button
     button.style.opacity = '0.5'; // Set button opacity to 0.5
-    get_info().then(()=> {
-        if ( document.getElementById('total-price').innerText.replace(/[^0-9.-]+/g, '') > 0 )
-            checkInputs();
-    });
+    if(logged_in)
+        get_info().then(()=> {
+            if ( document.getElementById('total-price').innerText.replace(/[^0-9.-]+/g, '') > 0 )
+                checkInputs();
+        });
 });
 let totalPrice = 0;
 function fetchCartItems() {
@@ -20,9 +21,11 @@ function fetchCartItems() {
                     const row = document.createElement('tr');
                     const totalItemPrice = item.price * item.quantity;
                     totalPrice += totalItemPrice;
-
                     row.innerHTML = `
-                        <td>${item.name}</td>
+                        <td style="display: flex; align-items: center;">
+                            <img src="${item.image}" alt="${item.name}" style="width:50px; height:auto; margin-right: 8px;">
+                            <span style="color: ${item.offer !== 'null' ? 'red' : 'initial'}">${item.name}</span>
+                        </td>
                         <td>${item.quantity}</td>
                         <td>€${item.price}</td>
                         <td>€${totalItemPrice}</td>

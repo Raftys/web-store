@@ -36,6 +36,7 @@ function fetchProductDetails() {
                     product_info.append("name", data.name);
                     product_info.append("image", data.image);
                     product_info.append("price", data.price);
+                    product_info.append("offer",data.offer);
 
                     // Store the image URLs for modal gallery
                     product_info.append("images", JSON.stringify(data.images));
@@ -143,6 +144,6 @@ function decrementQuantity() {
 function addToCart() {
     const productId = getQueryParameter('product_id');
     const quantity = parseInt(document.getElementById("quantity").value);
-    addItems(productId, product_info.get("name"), product_info.get("price"), product_info.get("image"), quantity);
+    addItems(productId, product_info.get("name"), product_info.get("price"), product_info.get("image"), product_info.get("offer"), quantity);
     showNotification(`Το προϊόν ${product_info.get("name")} έχει προστεθεί στο καλάθι σας.`, "notification");
 }
