@@ -1,0 +1,45 @@
+/* From Uiverse.io by vinodjangid07 */
+.edit_button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80px;
+    height: 40px;
+    border: none;
+    background-color: var(--background_green);
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 var(--shadow_green);
+    transition-duration: .3s;
+    scale:80%;
+}
+
+.edit_svg {
+    width: 13px;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    fill: var(--text);
+    transition-duration: .3s;
+}
+
+.edit_button:hover {
+    color: transparent;
+}
+
+.edit_button:hover svg {
+    right: 43%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition-duration: .3s;
+}
+
+.edit_button:active {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 2px 2px 0 var(--shadow_green);
+}

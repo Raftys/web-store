@@ -1,0 +1,66 @@
+/* Big main title style */
+.big_title {
+    width: auto;
+    font-size: xxx-large;
+    font-weight: bold;
+    text-align: center;
+    color: var(--big_title);
+    margin: 12px;
+}
+
+/* Section title style */
+.title {
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    color: var(--big_title);
+    margin: 12px;
+}
+
+/* Large paragraph text */
+.big_text {
+    font-size: large;
+    text-align: center;
+    color: var(--big_text);
+    margin: 8px;
+}
+
+/* Regular paragraph text */
+.text {
+    font-size: medium;
+    text-align: justify;
+    color: var(--big_text);
+    margin: 8px;
+}
+
+.card_title {
+    width: auto;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-bottom: 1px solid #efeff3;
+    font-weight: 700;
+    font-size: 11px;
+    color: #63656b;
+}
+
+.changing_color_text {
+    color: green;
+    font-size: x-large;
+    animation: color_change 5s infinite ease-in-out;
+}
+
+@keyframes color_change {
+    0%, 100% {
+        color: green;
+    }
+    50% {
+        color: red;
+    }
+}
+
+
+
+

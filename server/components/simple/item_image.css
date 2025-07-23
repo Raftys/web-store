@@ -1,0 +1,30 @@
+/* Large image style */
+.big_image {
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+    margin: 8px;
+}
+
+/* Regular image style */
+.regular_image {
+    width: 30%;
+    height: auto;
+    border-radius: 10px;
+    margin: 8px;
+}
+
+/* Small image style */
+.small_image {
+    width: 15%;
+    height: auto;
+    border-radius: 10px;
+    margin: 8px;
+}
+
+/* Tiny image style */
+.tiny_image {
+    height: 50px;
+    border-radius: 10px;
+    margin: 8px;
+}

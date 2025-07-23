@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/auth/auth.css">
+    <title>Login</title>
+    <script src="../../assets/js/auth/auth.js" defer></script>
+</head>
+<body>
+<!-- Main container with shadow styling -->
+<div class="flex_container">
+
+    <!-- Login In form -->
+    <form class="form_auth flex_container shadow small" id="form_auth">
+        <!-- Form title -->
+        <h1 class="big_title" id="auth_title">Log In</h1>
+        <!-- Form subtitle/message -->
+        <p class="big_text" id="auth_message">Log In to your account</p>
+
+        <!-- Input fields container -->
+        <div class="flex_container column">
+
+            <!-- Email input -->
+            <div class="flex_input">
+                <label class="input_label" for="email">*Email</label>
+                <input class="input_field" name="Email" placeholder="Email" type="email" id="email" required>
+            </div>
+
+            <!-- Password input -->
+            <div class="flex_input">
+                <label class="input_label" for="password">*Κωδικός</label>
+                <input class="input_field" name="Password" placeholder="Password" type="password" id="password" required>
+            </div>
+
+        </div>
+
+        <!-- Submit button -->
+        <button class="simple_button" type="submit" id="auth_submit">Log In</button>
+
+        <!-- Link to sign up page -->
+        <div class="flex_container">
+            <p class="text">Don't Have An Account?</p>
+            <a href="../../main.php?page=signup">Sign Up</a>
+        </div>
+        <div class="flex_container">
+            <a href="../../main.php?page=login">Forgot Password?</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

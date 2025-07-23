@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Document language set to English -->
+<head>
+  <meta charset="UTF-8"> <!-- Character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive viewport -->
+  <link rel="stylesheet" href="../../assets/css/root/footer.css"> <!-- Link to footer styles -->
+  <title>Footer</title> <!-- Page title -->
+</head>
+<body>
+
+<footer>
+  <!-- Footer main title, centered at the top -->
+  <h2 class="big_title">Αγρόκτημα Μητσάκης</h2>
+
+  <!-- Container for footer content arranged in a row -->
+  <div class="flex_container row top">
+
+    <!-- Left column: Contact Help Section -->
+    <div class="flex_container column left flex">
+      <h2 class="title">Χρειάζεστε βοήθεια;</h2>
+
+      <!-- Messenger contact item -->
+      <div class="flex_container margin">
+        <img src="../../assets/icons/messenger.svg" alt="Messenger"> <!-- Messenger icon -->
+        <a href="https://m.me/61553339634469" target="_blank" class="text">Messenger</a> <!-- Link to Messenger chat -->
+      </div>
+
+      <!-- First phone contact -->
+      <div class="flex_container margin">
+        <img src="../../assets/icons/phone.svg" alt="Messenger"> <!-- Phone icon -->
+        <p class="text">6941508136</p> <!-- Phone number -->
+      </div>
+
+      <!-- Second phone contact -->
+      <div class="flex_container margin">
+        <img src="../../assets/icons/phone.svg" alt="Messenger"> <!-- Phone icon -->
+        <p class="text">6945793397</p> <!-- Phone number -->
+      </div>
+
+      <!-- Email contact -->
+      <div class="flex_container margin">
+        <p class="text">georgemitsakis@yahoo.com</p> <!-- Email address -->
+      </div>
+    </div>
+
+    <!-- Middle column: Social Media Links -->
+    <div class="flex_container column flex">
+      <h2 class="title">Κοινωνικά</h2>
+      <?php include($_SERVER['DOCUMENT_ROOT'].'/components/built/social/social.html'); ?> <!-- Include social icons/links -->
+    </div>
+
+    <!-- Right column: Legal links -->
+    <div class="flex_container column right flex">
+      <h2 class="title">Νομικά</h2>
+      <a class="text" href="../settings/Privacy_Policy.html">Πολιτική Απορρήτου</a> <!-- Privacy Policy -->
+      <a class="text" href="../settings/Term_Of_Service.html">Όροι Υπηρεσίας</a> <!-- Terms of Service -->
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

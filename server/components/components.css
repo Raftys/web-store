@@ -1,0 +1,50 @@
+/* Themes and colors */
+@import url('design/colors.css');
+@import url('design/theme.css');
+
+/* ============================= */
+/* Simple Components */
+/* ============================= */
+
+/* Container */
+@import url('simple/container_flex.css');
+
+/* Card */
+@import url('simple/card.css');
+
+/* Items */
+@import url('simple/item_text.css');
+@import url('simple/item_image.css');
+@import url('simple/item_input.css');
+
+/* Buttons */
+@import url('simple/button_add.css');
+@import url('simple/button_edit.css');
+@import url('simple/button_simple.css');
+@import url('simple/button_x.css');
+
+
+/* ============================= */
+/* Built Components */
+/* ============================= */
+/* Product */
+@import url('built/product/product.css');
+
+/* Social */
+@import url('built/social/social.css');
+
+/* Toast */
+@import url('built/toast/toast.css');
+
+/* Addresses */
+@import url('built/address/address.css');
+
+/* Form */
+@import url('built/form/form.css');
+@import url('built/form/payment.css');
+
+/* Components *//*
+@import url('built/toast/_toasts.css');
+@import url('built/dropdown/dropdown.css');
+@import url('built/form/form.css');*/
+/* {outline: 1px solid rgba(255, 0, 0, 0.5); }

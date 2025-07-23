@@ -1,0 +1,34 @@
+.add_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: var(--primary-bg);
+    background: linear-gradient(
+            0deg,
+            var(--green-600) 0%,
+            var(--green-400) 100%
+    );
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em var(--green-700);
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+
+    /* Enable smooth transform and shadow transition */
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add_button svg {
+    margin-right: 6px;
+    transition: transform 0.15s ease;
+}
+
+/* Click (active) animation: quick scale down and shadow shrink */
+.add_button:active {
+    transform: scale(0.9);
+    box-shadow: 0 0.3em 0.7em -0.5em var(--green-800);
+}

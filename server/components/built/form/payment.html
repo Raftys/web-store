@@ -1,0 +1,36 @@
+<div class="form_overlay" id="payment_window">
+   <div class="flex_container simple_card column" style="width: auto;" id="payment_window_inside">
+       <div class="flex_container">
+           <!-- From Uiverse.io by zanina-yassine -->
+           <div class="tab-container">
+               <input type="radio" name="tab" id="tab1" class="tab tab--1" />
+               <label class="tab_label" for="tab1">IRIS</label>
+
+               <input type="radio" name="tab" id="tab2" class="tab tab--2" />
+               <label class="tab_label" for="tab2">IBAN</label>
+
+               <input type="radio" name="tab" id="tab3" class="tab tab--3" />
+               <label class="tab_label" for="tab3">VISA</label>
+
+               <div class="indicator"></div>
+           </div>
+
+           <button class="x_button">
+               <span class="x_X"></span>
+               <span class="x_Y"></span>
+               <div class="x_close">Close</div>
+           </button>
+       </div>
+           <div>
+               <h2 class="title" id="payment_title">Title</h2>
+               <p class="text" id="payment_message">text</p>
+               <p class="text" id="payment_total">text</p>
+               <div class="flex_input">
+                   <label class="input_label" for="receipt">Receipt Number</label>
+                   <input class="input_field" type="text" id="receipt" placeholder="Receipt Number" required>
+                   <button class="simple_button" id="payment_complete">Complete</button>
+               </div>
+           </div>
+       </div>
+
+</div>

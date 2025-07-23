@@ -1,0 +1,71 @@
+/* From Uiverse.io by javierBarroso */
+.x_button {
+    position: relative;
+    width: 3em;
+    height: 3em;
+    border: none;
+    background: rgba(180, 83, 107, 0.11);
+    border-radius: 5px;
+    transition: background 0.5s;
+    transform: scale(0.8);
+}
+
+.x_X {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 1.5px;
+    background-color: rgb(255, 255, 255);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.x_Y {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 1.5px;
+    background-color: #fff;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.x_close {
+    position: absolute;
+    display: flex;
+    padding: 0.8rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    top: -70%;
+    left: 50%;
+    width: 3em;
+    height: 1.7em;
+    font-size: 12px;
+    background-color: rgb(19, 22, 24);
+    color: rgb(187, 229, 236);
+    border: none;
+    border-radius: 3px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.x_button:hover {
+    background-color: rgb(211, 21, 21);
+}
+
+.x_button:active {
+    background-color: rgb(130, 0, 0);
+}
+
+.x_button:hover > .x_close {
+    animation: close 0.2s forwards 0.25s;
+}
+
+@keyframes x_close {
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,14 @@
+.address_click {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.address_edit_click {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-left: 2px solid var(--primary);
+}

@@ -1,0 +1,33 @@
+/* Input container with vertical stacking and spacing */
+.flex_input {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 8px;
+}
+
+/* Styling for the input label */
+.input_label {
+    width: auto;
+    text-align: left;
+}
+
+/* Base styling for the input field */
+.input_field {
+    width: auto;
+    height: 36px;
+    padding: 0 0 0 12px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 1px rgba(239, 239, 239, 0.5));
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+/* Styling when the input is focused */
+.input_field:focus {
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 2px #242424;
+    background-color: transparent;
+}

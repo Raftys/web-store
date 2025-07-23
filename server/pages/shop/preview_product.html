@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/shop/preview_product.css">
+    <title>Product Details</title>
+    <script src="../../assets/js/shop/product.js" defer></script>
+    <script src="../../assets/js/product_functions.js" defer></script>
+</head>
+<body>
+
+<div class="flex_container row" style="align-items: flex-start">
+    <!-- Thumbnail Gallery (empty initially, filled by JavaScript) -->
+    <div class="thumbnail_gallery"></div>
+
+    <!-- Main Product Image -->
+    <div class="simple_card">
+        <img id="product_image" alt="Product Image"  src="">
+    </div>
+
+    <!-- Product Details -->
+    <div class="simple_card column">
+        <h1 class="title" id="product_title">Product Title</h1>
+        <p class='changing_color_text'  style="margin: 8px" id="product_offer" ></p>
+        <p class="text" id="product_description">A detailed product description goes here.</p>
+
+        <div class="flex_container column money_container">
+            <p class="text" style="margin: 0" id="product_price_per_item">Per Item: 3</p>
+            <label id='product_price' class="product_price" >$23.99</label>
+            <div class="product_quantity">
+                <button class='decrease_button' onclick="decrementQuantity()">-</button>
+                <label id="quantity">1</label>
+                <button class='increase_button' onclick="incrementQuantity()">+</button>
+            </div>
+        </div>
+        <button class="add_button" id="add_button">
+            <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+            >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path>
+            </svg>
+            <span>Add</span>
+        </button>
+    </div>
+</div>
+
+<!-- Modal for Enlarged Image View -->
+<div id="image_modal" class="image_modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="image_modal_content" id="image_in_model" alt="Enlarged product image" src="">
+
+    <span class="prev_image">&#10094;</span>
+    <span class="next_image">&#10095;</span>
+</div>
+
+
+
+
+<!-- Reviews Section -->
+<section class="reviews-section">
+    <h2>Customer Reviews</h2>
+    <div class="review">
+        <p><strong>John Doe</strong></p>
+        <p>⭐️⭐️⭐️⭐️⭐️</p>
+        <p>This product is amazing! Highly recommend it.</p>
+    </div>
+    <div class="review">
+        <p><strong>Jane Smith</strong></p>
+        <p>⭐️⭐️⭐️⭐️</p>
+        <p>Great quality, but the delivery was a bit slow.</p>
+    </div>
+</section>
+</body>
+</html>

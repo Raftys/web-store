@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"> <!-- Language set to English, with a light theme attribute -->
+<head>
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive viewport -->
+    <title>Αγρόκτημα Μητσάκης</title> <!-- Page title -->
+
+    <!-- Stylesheets for header and common components -->
+    <link rel="stylesheet" href="../../assets/css/root/header.css">
+    <link rel="stylesheet" href="../../components/components.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../assets/images/logo.png" type="image/x-icon" >
+
+    <!-- JavaScript files; header.js loads immediately, functions.js deferred -->
+    <script src="../../assets/js/root/header.js"></script> <!-- Load JS after HTML parsing -->
+    <script src="../../assets/js/functions.js" defer></script>
+    <script src="../../assets/js/html_functions.js" defer></script>
+    <script src="../../components/built/form/form.js" defer></script>
+</head>
+<body>
+<header>
+    <div class="flex_container space_between">
+        <!-- Logo and Title Section -->
+        <div class="flex_container row">
+            <img src ="../../assets/images/logo.png" alt="Logo of Αγρόκτημα Μητσάκης" class="tiny_image"> <!-- Site logo -->
+            <h1 class="title">Αγρόκτημα Μητσάκης</h1> <!-- Site main title -->
+        </div>
+
+        <!-- Navigation and User Section -->
+        <div class="header_buttons_container">
+
+            <!-- Home Button -->
+            <button class="header_button" data-tooltip="Αρχική" onclick="window.location.href='../../main.php'">
+                <img src="../../assets/icons/home.svg" alt="Header Home" class="toast_icon"/>
+            </button>
+
+            <!-- Shop Button -->
+            <button class="header_button" data-tooltip="Αγορά" onclick="window.location.href='../../main.php?page=shop'">
+                <img src="../../assets/icons/store.svg" alt="Header Shop" class="toast_icon"/>
+            </button>
+
+            <!-- Cart Button with dynamic item count -->
+            <button class="header_button" data-tooltip="Το Καλάθι Μου" onclick="window.location.href='../../main.php?page=cart'">
+                <img src="../../assets/icons/cart.svg" alt="Header Cart" class="toast_icon"/>
+                <span class="header_button_counter" id="cart_label">
+                  (<?php echo isset($_SESSION['totalItems']) ? $_SESSION['totalItems'] : 0; ?>)
+                </span>
+            </button>
+
+            <!-- User Profile Button -->
+            <button class="header_button" data-tooltip="Ο Λογαριασμός Μου" id="header_profile">
+                <img src="../../assets/icons/profile.svg" alt="Header Profile" class="toast_icon"/>
+            </button>
+
+            <!-- Overlay for profile panel background dimming -->
+            <div id="overlay" class="profile_overlay"></div>
+
+            <!-- Profile Panel (hidden/shown when user clicks profile button) -->
+            <div id="header_account_panel" class="profile_header_panel">
+                <div class="profile_panel_header">
+                    <div class="profile_close_button">
+                        <?php include($_SERVER['DOCUMENT_ROOT'].'/components/built/buttons/x.html'); ?> <!-- Close button icon -->
+                    </div>
+                    <img src="../../assets/icons/profile.svg" alt="Header Profile" class="regular_image"/> <!-- Profile icon -->
+                    <h2 id="profile_name">My Profile</h2> <!-- Profile heading -->
+                </div>
+
+                <!-- Conditional content: show if user is logged in -->
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
+                <nav class="flex_container column shadow">
+                    <button class="simple_button profile_button" onclick="window.location.href='../main.php?page=account'">My Account</button>
+                    <button class="simple_button profile_button">My Addresses</button>
+                    <button class="simple_button profile_button" onclick="window.location.href='../main.php?page=orders'">My Orders</button>
+                    <button class="simple_button profile_button" onclick="window.location.href='../start.php'" style="margin-top: 40px; background: var(--background_red)">Logout</button>
+                </nav>
+                <!-- Show login/register buttons if not logged in -->
+                <?php else: ?>
+                <nav class="flex_container column shadow">
+                    <button class="simple_button profile_button" onclick="window.location.href='../main.php?page=login'">Login</button>
+                    <button class="simple_button profile_button" onclick="window.location.href='../main.php?page=signup'">Register</button>
+                </nav>
+                <?php endif; ?>
+            </div>
+
+        </div>
+    </div>
+</header>
+</body>
+
+</html>

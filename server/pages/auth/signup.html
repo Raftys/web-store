@@ -1,0 +1,71 @@
+<!-- Document type declaration -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head section with metadata, styles, and scripts -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/auth/auth.css">
+    <title>Create Account</title>
+    <script src="../../assets/js/auth/auth.js" defer></script>
+</head>
+
+<body>
+<!-- Main container with shadow styling -->
+<div class="flex_container">
+
+    <!-- Sign Up form -->
+    <form class="form_auth flex_container shadow small " id="form_auth">
+        <!-- Form title -->
+        <h1 class="big_title" id="auth_title">Sing Up</h1>
+        <!-- Form subtitle/message -->
+        <p class="big_text" id="auth_message">Sing Up a new account</p>
+
+        <!-- Input fields container -->
+        <div class="flex_container column">
+
+            <!-- Full Name input -->
+            <div class="flex_input">
+                <label class="input_label" for="full_name">*Πλήρες Όνομα</label>
+                <input class="input_field" name="Full_Name" placeholder="Full Name" type="text" id="full_name" required>
+            </div>
+
+            <!-- Email input -->
+            <div class="flex_input">
+                <label class="input_label" for="email">*Email</label>
+                <input class="input_field" name="Email" placeholder="Email" type="email" id="email" required>
+            </div>
+
+            <!-- Phone Number input -->
+            <div class="flex_input">
+                <label class="input_label" for="phone_number">*Τηλέφωνο</label>
+                <input class="input_field" name="Phone_Number" placeholder="Phone number" type="text" id="phone_number" required>
+            </div>
+
+            <!-- Password input -->
+            <div class="flex_input">
+                <label class="input_label" for="password">*Κωδικός</label>
+                <input class="input_field" name="Password" placeholder="Password" type="password" id="password" required>
+            </div>
+
+            <!-- Repeat Password input -->
+            <div class="flex_input">
+                <label class="input_label" for="re_password">*Επανάληψη Κωδικού</label>
+                <input class="input_field" name="Repeat_Password" placeholder="Repeat Password" type="password" id="re_password" required>
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <button class="simple_button" type="submit" id="auth_submit">Sing Up</button>
+
+        <!-- Link to log in page -->
+        <div class="flex_container">
+            <p class="text">Already Have An Account?</p>
+            <a href="../../main.php?page=login">Log In</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

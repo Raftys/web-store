@@ -1,0 +1,12 @@
+
+/* General footer styles */
+footer {
+    background-color: limegreen;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.flex {
+    flex: 1;
+}

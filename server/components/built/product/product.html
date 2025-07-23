@@ -1,0 +1,30 @@
+<div class="product simple_card" style="flex-direction: row">
+    <img src="../../../assets/images/Products/1/product1_a.png" alt="Product Image" id="product_image" class="small_image">
+    <div>
+        <span id="product_name">Cheese Burger</span>
+        <p id="product_small_description">Extra Spicy</p>
+    </div>
+    <div class="flex_container column" style="margin-left: auto;" id="money_container">
+        <div class="product_quantity">
+            <button class='decrease_button'>-</button>
+            <label id="quantity">1</label>
+            <button class='increase_button'>+</button>
+            <button class="add_button" style="display: none" id="add-text">
+                <svg
+                        height="24"
+                        width="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path>
+                </svg>
+                <span>Add</span>
+            </button>
+        </div>
+        <div class="flex_container row">
+            <p class="text" id="product_price_per_item">3</p>
+            <label id='product_price' class="product_price" >$23.99</label>
+        </div>
+    </div>
+</div>

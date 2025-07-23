@@ -1,0 +1,164 @@
+/* Basic styling for the entire body */
+body {
+    margin: 0;
+}
+
+/* Body state to disable scrolling (e.g. when overlay is open) */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Header main container */
+header {
+    background-color: var(--background_green);
+    padding: 20px;
+    box-shadow: 0 10px 15px var(--shadow);
+}
+
+/* Container for header buttons */
+.header_buttons_container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 280px;
+    height: 40px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* Individual header button */
+.header_button {
+    outline: 0 ;
+    border: 0;
+    width: auto;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+/* Counter number next to button icon */
+.header_button_counter {
+    display: inline-block;
+    padding-left: 8px;
+}
+
+/* Tooltip text for header button */
+.header_button::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--shadow_deeper);
+    color: var(--text);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    user-select: none;
+}
+
+/* Tooltip arrow for header button */
+.header_button::before {
+    content: "";
+    position: absolute;
+    bottom: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--shadow_deeper) transparent transparent transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+/* Hover effect on header button */
+.header_button:hover {
+    transform: translateY(-3px);
+}
+
+/* Show tooltip on hover */
+.header_button:hover::after,
+.header_button:hover::before {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Overlay background behind profile panel */
+.profile_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 900;
+    display: none;
+}
+
+/* Sliding profile panel on the side */
+.profile_header_panel {
+    position: fixed;
+    top: 0;
+    right: -40%;
+    width: 25%;
+    max-width: 400px;
+    height: 100%;
+    background-color: #ffffff;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.25);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/* Profile panel open state */
+.profile_header_panel.open {
+    width: 25%;
+    right: 0;
+}
+
+/* Profile panel closed state */
+.profile_header_panel.close {
+    right: -40%;
+}
+
+/* Header area of the profile panel */
+.profile_panel_header {
+    position: relative;
+    background: #3b82f6;
+    padding: 40px 20px 20px;
+    text-align: center;
+    color: white;
+    border-top-left-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Close button inside the profile panel */
+.profile_close_button {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+}
+
+.profile_button {
+    width: 100%;
+}

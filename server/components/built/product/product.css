@@ -1,0 +1,75 @@
+.product {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.product span {
+    font-size: medium;
+    font-weight: 600;
+    color: #47484b;
+    display: block;
+}
+
+.product p {
+    font-size: small;
+    font-weight: 600;
+    color: #7a7c81;
+}
+
+.product_price {
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 20px;
+    color: #2B2B2F;
+    font-weight: 900;
+}
+
+.product_quantity {
+    display: flex;
+    align-items: center;
+    height: auto;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 7px;
+    gap: 8px;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 1px rgba(239, 239, 239, 0.5));
+}
+
+/* The label or number in the middle */
+.product_quantity label {
+    min-width: 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #47484b;
+    line-height: 1;
+    padding: 0 4px;
+}
+
+/* The +/- buttons */
+.decrease_button, .increase_button {
+    background-color: #27ae60;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background-color 0.2s ease;
+}
+
+
+.product_quantity button:hover {
+    background-color: #219150;
+}
