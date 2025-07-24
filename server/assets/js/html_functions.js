@@ -18,3 +18,8 @@ async function loadHtmlComponent(path) {
         return null;
     }
 }
+// Utility function to get query parameters from the URL
+function getQueryParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}

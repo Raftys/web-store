@@ -11,6 +11,7 @@
 
 /* Card */
 @import url('simple/card.css');
+@import url('simple/checkout.css');
 
 /* Items */
 @import url('simple/item_text.css');
@@ -42,6 +43,7 @@
 /* Form */
 @import url('built/form/form.css');
 @import url('built/form/payment.css');
+
 
 /* Components *//*
 @import url('built/toast/_toasts.css');

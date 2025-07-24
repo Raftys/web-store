@@ -3,59 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/profile/account.css">
     <script src="../../assets/js/profile/account.js" defer></script> <!-- Use defer to ensure JS loads after HTML -->
     <title>Account</title>
 </head>
 <body>
-<div class="container">
-    <img src="../../assets/images/user.png" alt="Account Image" class="account-image">
-    <h1>Πληροφορίες Λογαριασμού</h1>
-    <div id="account-details">
-        <?php include($_SERVER['DOCUMENT_ROOT'].'/components/table/table.html'); ?>
-        <div class="field-container">
-            <div class="custom_toast"></div>
-            <label for="full_name_input" style="display:block;"><strong>Ονοματεπώνυμο:</strong></label>
-            <p id="full_name"></p>
-            <input type="text" id="full_name_input" style="display:none;" value="" />
+<div class="flex_container column">
+    <h1 class="big_title">Πληροφορίες Λογαριασμού</h1>
+    <div class="flex_container row">
+        <div class="simple_card left_column">
+            <img src="../../assets/images/user.png" alt="Account Image" class="big_image">
+            <button class="simple_button">Settings</button>
+            <button class="simple_button" onclick="window.location.href='../start.php'" style="margin-top: 40px; background: var(--background_red)">Log Out</button>
         </div>
-        <div class="field-container">
-            <label for="email_input" style="display:block;"><strong>Email:</strong></label>
-            <p id="email"></p>
-            <input type="text" id="email_input" style="display:none;" />
+        <div class="simple_card right_column">
+            <div class="flex_input">
+                <label for="full_name">Full Name*</label>
+                <input class="input_field" type='text' placeholder="Full Name" id="full_name" onkeyup="toggleButton()" required>
+            </div>
+            <div class="flex_input">
+                <label for="email">Email*</label>
+                <input class="input_field" type='email' placeholder="Email" id="email" onkeyup="toggleButton()" required>
+            </div>
+            <div class="flex_input">
+                <label for="phone">Phone Number*</label>
+                <input class="input_field" type='tel' placeholder="Phone Number" id="phone" onkeyup="toggleButton()" required>
+            </div>
+            <button class="simple_button" id="save" onclick="changeUserInfo()">Save</button>
         </div>
-        <div class="field-container">
-            <label for="phone_input" style="display:block;"><strong>Τηλέφωνο:</strong></label>
-            <p id="phone"></p>
-            <input type="text" id="phone_input" style="display:none;" />
-        </div>
-        <div class="field-container">
-            <label for="address_input" style="display:block;"><strong>Διεύθηνση:</strong></label>
-            <p id="address"></p>
-            <input type="text" id="address_input" style="display:none;" />
-        </div>
-        <div class="field-container">
-            <label for="city_input" style="display:block;"><strong>Πόλη:</strong></label>
-            <p id="city"></p>
-            <input type="text" id="city_input" style="display:none;" />
-        </div>
-        <div class="field-container">
-            <label for="zip_code_input" style="display:block;"><strong>Ταχυδρομικός Κώδικας:</strong></label>
-            <p id="zip_code"></p>
-            <input type="text" id="zip_code_input" style="display:none;" />
-        </div>
-        <div class="field-container">
-            <label for="country_input" style="display:block;"><strong>Χώρα:</strong></label>
-            <p id="country"></p>
-            <input type="text" id="country_input" style="display:none;" />
-        </div>
-        <div class="field-container">
-            <label for="box_now" style="display:block;"><strong>Box Now Locker Id:</strong></label>
-            <p id="box_now"></p>
-            <input type="text" id="box_now_input" style="display:none;" />
+        <div class="simple_card right_column">
+            <div class='addresses' id="addresses"></div>
+            <button class="simple_button" id="add_new_address" onclick="openAddressForm()"> Add New Address</button>
         </div>
     </div>
-    <button class="button" id="edit-button" onclick="edit()">Edit</button>
 </div>
 </body>
 </html>

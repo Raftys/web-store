@@ -1,12 +1,3 @@
-.cart_products {
-    display: flex;
-    width: auto;
-    flex-direction: column;
-    padding: 20px;
-    max-height: 280px;
-    overflow-y: auto;
-}
-
 .reset_button {
     background: var(--red-500);
     width: max-content;
@@ -34,52 +25,6 @@
 .coupon_form input {
     width: 100%;
 }
-
-.checkout_details {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    padding: 10px;
-    gap: 5px;
-}
-
-.checkout_details span {
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.checkout_details span:nth-child(odd) {
-    font-size: 15px;
-    font-weight: 800;
-    color: #707175;
-    margin: auto auto auto 0;
-}
-
-.checkout_details span:nth-child(even) {
-    font-size: 13px;
-    font-weight: 600;
-    color: #47484b;
-    margin: auto 0 auto auto;
-}
-
-.checkout_footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 10px 10px 20px;
-    background-color: #efeff3;
-}
-
-
-.test {
-    border-radius: 12px;     /* rounded corners, adjust as needed */
-    background-color: #f0f0f0;  /* or any color you want */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
 
 .addresses {
     overflow-y: auto;

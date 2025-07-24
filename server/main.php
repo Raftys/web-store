@@ -34,7 +34,9 @@ if ($page === 'shop') {
 } elseif ($page === 'cart') {
     include('pages/cart/cart.html');
 } elseif ($page === 'orders') {
-    include('pages/shop/orders.html');
+    include('pages/orders/orders.html');
+} elseif ($page === 'order_info') {
+    include('pages/orders/order_info.html');
 } elseif ($page === 'product') {
     include('pages/shop/preview_product.html');
 }

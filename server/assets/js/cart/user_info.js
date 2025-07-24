@@ -148,9 +148,7 @@ async function openAddressForm(address = null) {
         }
 
         if (!match) {
-            console.log("Updating Address");
             await updateAddress(inputValues);
-            console.log("Reloading Address");
             await getUserInfo();  // Refresh addresses
         }
 

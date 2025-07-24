@@ -8,12 +8,6 @@ window.onload = function () {
     fetchProductDetails();
 };
 
-// Utility function to get query parameters from the URL
-function getQueryParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
-
 // Fetch product details using the product ID from the URL
 function fetchProductDetails() {
     const productId = getQueryParameter('product_id');

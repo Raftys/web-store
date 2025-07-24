@@ -3,9 +3,9 @@ let orders = []; // Declare a global variable to store orders
 // Function to fetch orders
 async function fetchOrders() {
     try {
-        const response = await fetch('Orders/fetch_orders.php'); // URL to your PHP file
+        const response = await fetch('../../include/orders/fetch_orders.php'); // URL to your PHP file
         orders = await response.json(); // Store the orders globally
-        displayOrders(orders); // Call displayOrders to show all orders
+        await displayOrders(); // Call displayOrders to show all orders
     } catch (error) {
         console.error('Error fetching orders:', error);
     }
@@ -20,53 +20,40 @@ async function updateStatus(orderId, newStatus) {
             },
             body: JSON.stringify({ order_id: orderId, status: newStatus })
         });
-        showNotification("Η κατάσταση ενημερώθηκε","notification");
+        await showNotification("Η κατάσταση ενημερώθηκε","notification");
     } catch (error) {
-        showNotification("Σφάλμα κατά την ενημέρωση της κατάστασης","alert");
+        await showNotification("Σφάλμα κατά την ενημέρωση της κατάστασης","alert");
     }
 }
 
 // Function to display orders
-function displayOrders(ordersToDisplay) {
+async function displayOrders(display_orders = null) {
     const ordersList = document.getElementById('orders-list');
     ordersList.innerHTML = ''; // Clear existing content
 
+    if (display_orders === null) {
+        display_orders = orders;
+    }
+
     // Check if there are orders
-    if (ordersToDisplay.length > 0) {
-        ordersToDisplay.sort((a, b) => new Date(b.order_date) - new Date(a.order_date));
-        ordersToDisplay.forEach(order => {
-            const orderCard = document.createElement('div');
-            orderCard.className = 'order-card';
-            orderCard.innerHTML = `
-                <h2>Αριθμός Παραγγελίας: ${order.order_id}</h2>
-                <p><strong>Ονοματεπώνυμο:</strong> ${order.customer_name}</p>
-                <p><strong>Προϊόντα:</strong> ${order.items.map(item => `${item.product_name} (${item.quantity})`).join(', ')}</p>
-                <p><strong>Διεύθυνση Παράδοσης:</strong> ${order.customer_address} ${order.customer_city} ${order.customer_country} ${order.customer_zip_code}</p>
-                <p><strong>Box Now Locker Id:</strong> 
-                    <span class="box_now_customer" style="display: ${order.root !== 1 ? 'inline' : 'none'};">${order.box_now}</span>
-                    <input type="text" name="box_now" class="box_now_admin" value="${order.box_now}" style="display: ${order.root === 1 ? 'inline' : 'none'};" />
-                    ${order.root === 1 ? `<button class="update-box-now" onclick="updateBoxNow(${order.order_id}, ${order.customer_id}, this)">Ενήμερωση</button>` : ''}
-                </p>
-                <p><strong>Μέθοδος Πληρωμής:</strong> ${order.payment_method}</p>
-                <p><strong>Απόδειξη:</strong> ${order.receipt}</p>
-                <p><strong>Συνολική Τιμή:</strong> ${order.total_amount}</p>
-                <p>
-                    <strong>Κατάσταση:</strong>
-                    ${order.root ? `
-                        <select onchange="updateStatus(${order.order_id}, this.value)">
-                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Αναμένει</option>
-                            <option value="processed" ${order.status === 'processed' ? 'selected' : ''}>Επεξεργάζεται</option>
-                            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Απεσταλμένη</option>
-                            <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Παραδοθείσα</option>
-                            <option value="canceled" ${order.status === 'canceled' ? 'selected' : ''}>Ακυρωμένη</option>
-                        </select>
-                    ` : `
-                        <span>${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
-                    `}
-                </p>
-            `;
-            ordersList.appendChild(orderCard); // Add order card to the list
-        });
+    if (Object.keys(display_orders).length> 0) {
+        const productTemplate = await loadHtmlComponent('../../components/built/card/orders.html');
+        console.log(display_orders);
+        for (const pos in display_orders) {
+            const orderInfo = display_orders[pos];// Order details
+            const productCard = productTemplate.cloneNode(true);
+            productCard.setAttribute('id', pos);
+            //productCard.querySelector('#product_image').src = item.image;
+            productCard.querySelector('#order_id').textContent = 'Order Id: ' + orderInfo.id;
+            productCard.querySelector('#total_price').textContent = 'Total: ' + orderInfo.total_price + '€';
+            productCard.querySelector('#status_image').src = '../../../assets/icons/status/' + orderInfo.status + '.svg';
+            productCard.querySelector('#status_text').textContent = orderInfo.status.charAt(0).toUpperCase()+orderInfo.status.slice(1);
+
+            productCard.addEventListener('click', () =>{
+                window.location.href = `main.php?page=order_info&order_id=${orderInfo.id}`;
+            })
+            ordersList.append(productCard);
+        }
     } else {
         ordersList.innerHTML = '<p>No orders found.</p>'; // Message when no orders are present
     }
@@ -94,10 +81,13 @@ async function updateBoxNow(order_id,customer_id, buttonElement) {
 
 
 // Function to search orders
-function searchOrders() {
+async function searchOrders() {
     const searchValue = document.getElementById('search-bar').value.toLowerCase();
-    const filteredOrders = orders.filter(order => order.order_id.toString().includes(searchValue));
-    displayOrders(filteredOrders);
+    let filteredOrders = [];
+    for (const orderId in orders) {
+        if (orders[orderId].id.includes(searchValue)) filteredOrders.push(orders[orderId]);
+    }
+    await displayOrders(filteredOrders);
 }
 
 // Fetch orders on page load

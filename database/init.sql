@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS orders (
     total_price    DECIMAL(10, 2) NOT NULL,
     payment_method VARCHAR(255) NOT NULL,
     receipt        VARCHAR(255) NOT NULL,
-    status         ENUM ('pending', 'processed', 'shipped', 'delivered', 'canceled') DEFAULT 'pending' NULL,
+    status         ENUM ('pending', 'processing', 'shipped', 'delivered', 'canceled') DEFAULT 'pending' NULL,
     full_name      VARCHAR(255) NULL,
     email          VARCHAR(255) NULL,
     phone          VARCHAR(50) NULL,
