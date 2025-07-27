@@ -1,4 +1,4 @@
-// Increment the quantity
+// Increment the quantity of the product
 function incrementQuantity(productCard = null, item = null) {
     if(item == null) {
         const quantity = parseInt(document.getElementById("quantity").textContent);
@@ -12,7 +12,7 @@ function incrementQuantity(productCard = null, item = null) {
     }
 }
 
-// Decrement the quantity
+// Decrement the quantity of the product
 function decrementQuantity(productCard = null, item = null) {
     if (item == null) {
         const quantity = parseInt(document.getElementById("quantity").textContent);
@@ -29,9 +29,9 @@ function decrementQuantity(productCard = null, item = null) {
         productCard.querySelector('#quantity').textContent = String(new_quantity);
         productCard.querySelector('#product_price').textContent='Total: ' + (item.price*new_quantity).toFixed(2) + '€';
     }
-
 }
 
+// Update the displayed price based on the quantity
 function updatePrice(quantity) {
     // Get quantity
     const priceDisplay = document.getElementById('product_price');
@@ -40,6 +40,8 @@ function updatePrice(quantity) {
         priceDisplay.innerText = `Τιμή: ${totalPrice}€`;
     }
 }
+
+// Prepare the FormData object with product information
 function prepareItems(item) {
     let product_info = new FormData();
     product_info.append('name',item.name);
@@ -49,12 +51,12 @@ function prepareItems(item) {
     product_info.append('offer',"no");
     product_info.append("quantity",item.quantity);
     return product_info;
-
 }
 
-//add to cart
+// Add an item to the cart by sending a POST request
 function addItem(item) {
     const formData = prepareItems(item)
+    formData.append('action','add');
     fetch('../../include/cart/cart.php', {
         method: 'POST',
         body: formData

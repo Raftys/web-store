@@ -42,7 +42,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     $accessToken = isset($_COOKIE['access_token']) ? $_COOKIE['access_token'] : " ";
 
     if (validateAccessToken()) {
-        $user_info = select_all_from_id($_SESSION['user_info']['user_id'],'customers');
+        $user_info = select_all_from_id($_SESSION['user_info']['user_id'],'users');
         $address =  $_POST['address_id'];
     } else {
         exit();

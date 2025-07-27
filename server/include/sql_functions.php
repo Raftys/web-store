@@ -146,6 +146,16 @@ function insert($table, $insert_keys, $insert_values) {
     return doQuery($sql);
 }
 
+function delete($table, $id, $value) {
+    // Quote value properly
+    $quoted_value = ($value === null) ? "NULL" : "'" . addslashes($value) . "'";
+
+    // Build SQL
+    $sql = "DELETE FROM `$table` WHERE `$id` = $quoted_value";
+
+    return doQuery($sql);
+}
+
 
 // Converts a MySQLi result set into an array of associative arrays.
 // Each array element represents a row from the result set.

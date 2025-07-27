@@ -7,16 +7,11 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 // Include the header file
 include_once('include/sql_functions.php');
 include_once("include/auth/jwt.php");
-
 // Connect to database.
 connect();
 
-$accessToken = isset($_COOKIE['access_token']) ? $_COOKIE['access_token'] : null;
 
-if ($accessToken && validateAccessToken($accessToken)) {
-    $_SESSION['logged_in'] = true;
-    $_SESSION['user_info'] = decodeAccessToken($accessToken);
-}
+authProcess();
 
 include('pages/root/header.html');
 

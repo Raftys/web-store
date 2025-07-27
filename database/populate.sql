@@ -1,8 +1,8 @@
-INSERT INTO customers (full_name, email, phone, is_user, password) VALUES
+INSERT INTO users (full_name, email, phone, is_user, password) VALUES
                                                                        ('Admin User', 'admin@example.com', '111-222-3333', TRUE, 'admin_password_hash'),
                                                                        ('Regular User', 'user@example.com', '444-555-6666', FALSE, 'user_password_hash');
 
-INSERT INTO address (customer_id, address, city, zip_code, country, box_now)
+INSERT INTO addresses (customer_id, address, city, zip_code, country, box_now)
 VALUES (1, '123 Main St', 'New York', '10001', 'USA', NULL);
 
 INSERT INTO products (name, offer, description, price, quantity, main_image) VALUES
@@ -14,11 +14,11 @@ INSERT INTO products (name, offer, description, price, quantity, main_image) VAL
 
 INSERT INTO product_images (product_id,image_path) VALUES
                                                        ('1','assets/images/products/1/product1_b.png'),
-                                                       ('1','assets/images/products/1/product1_c.png')
+                                                       ('1','assets/images/products/1/product1_c.png');
 
 
 
 INSERT INTO coupons (name,code,type,value) VALUES
                                                ('Coupon 1','cpn1','money','5'),
                                                ('Coupon 2','cpn2','percentage','50'),
-                                               ('Coupon 3', 'cpn3','shipping', 0)
+                                               ('Coupon 3', 'cpn3','shipping', 0);

@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Item List</title>
     <script src="../../assets/js/shop/shop.js" defer></script> <!-- Link to the JavaScript file -->
+    <script src="../../assets/js/shop/super_user.js" defer></script> <!-- Link to the JavaScript file -->
     <script src="../../assets/js/product_functions.js" defer></script>
 </head>
 <body>
 <div class="flex_container column">
+    <button class="simple_button" style="display: none" id="add_product" onclick="openProductForm()">Add New Product</button>
     <h1 class="title">Προϊόντα</h1>
         <input type="hidden" name="product_id" id="product_id_input">
     <div class="flex_container column" id="item_list">

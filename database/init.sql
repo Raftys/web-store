@@ -2,25 +2,26 @@
 
 -- Ensure the tables are created only if they don't already exist
 -- This prevents errors on subsequent container restarts if data persists
-CREATE TABLE IF NOT EXISTS customers (
+CREATE TABLE IF NOT EXISTS users (
     id        INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
     email     VARCHAR(100) NOT NULL,
     phone     VARCHAR(15)  NOT NULL,
     is_user   BOOLEAN DEFAULT FALSE,
-    password  VARCHAR(100) NOT NULL
+    password  VARCHAR(100) NOT NULL,
+    super_user BOOLEAN NOT NULL DEFAULT FALSE
     );
 
-CREATE TABLE IF NOT EXISTS address (
+CREATE TABLE IF NOT EXISTS addresses (
     id          INT AUTO_INCREMENT PRIMARY KEY,
-    customer_id INT NOT NULL,  -- Foreign key to customers
+    customer_id INT NOT NULL,  -- Foreign key to users
     address     VARCHAR(255) NOT NULL,
     city        VARCHAR(100) NOT NULL,
     zip_code    VARCHAR(10)  NOT NULL,
     country     VARCHAR(100) NOT NULL,
     box_now     VARCHAR(255) DEFAULT NULL,
 
-    FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
+    FOREIGN KEY (customer_id) REFERENCES users(id) ON DELETE CASCADE
     );
 
 CREATE TABLE IF NOT EXISTS products (
@@ -71,7 +72,7 @@ CREATE TABLE IF NOT EXISTS orders (
     country        VARCHAR(100) NULL,
     box_now        VARCHAR(100) NULL,
     customer_id    INT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
+    FOREIGN KEY (customer_id) REFERENCES users(id)
     );
 
 

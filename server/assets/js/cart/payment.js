@@ -1,66 +1,67 @@
-document.getElementById('total_price_button').addEventListener('click', () => {
-    loadPaymentWindow().then(r => console.log("Opened"));
-})
+// Trigger loading payment window on button click
+document.getElementById('total_price_button').addEventListener('click', async () => {
+    await loadPaymentWindow();
+});
 
-
+// Dynamically load and display payment options
 async function loadPaymentWindow() {
     const payment = await loadHtmlComponent('../../components/built/form/payment.html');
-
-    setPaymentMessage(payment,"IRIS", "<strong>Τηλέφωνο:</strong> 6945793397");
+    setPaymentMessage(payment, "IRIS", "<strong>Τηλέφωνο:</strong> 6945793397");
 
     payment.querySelector('#payment_complete').disabled = true;
+    payment.querySelector('#payment_total').innerHTML = `<strong>Total Price:</strong> ${parseFloat(document.getElementById('cart_total_price').textContent).toFixed(2)}€`;
 
-    payment.querySelector('#payment_total').innerHTML = '<strong>Total Price:</strong> ' + parseFloat(document.getElementById('cart_total_price').textContent).toFixed(2) + '€';
-
-    payment.querySelector('.x_button').addEventListener('click', () => {
-        event.stopPropagation();
+    // Close payment window
+    payment.querySelector('.x_button').addEventListener('click', e => {
+        e.stopPropagation();
         document.getElementById('payment_window').remove();
-    })
+    });
 
-    payment.querySelector('#tab1').addEventListener('click', () => {
-        event.stopPropagation();
-        setPaymentMessage(payment,"IRIS", "<strong>Τηλέφωνο:</strong> 6945793397");
-    })
+    // Tab event listeners
+    payment.querySelector('#tab1').addEventListener('click', e => {
+        e.stopPropagation();
+        setPaymentMessage(payment, "IRIS", "<strong>Τηλέφωνο:</strong> 6945793397");
+    });
 
-    payment.querySelector('#tab2').addEventListener('click', () => {
-        event.stopPropagation();
-        setPaymentMessage(payment,"IBAN", "<strong>Τράπεζα Πειραιώς:</strong> GR 290172 2490 0052 4909 3136868");
-    })
+    payment.querySelector('#tab2').addEventListener('click', e => {
+        e.stopPropagation();
+        setPaymentMessage(payment, "IBAN", "<strong>Τράπεζα Πειραιώς:</strong> GR 290172 2490 0052 4909 3136868");
+    });
 
-    payment.querySelector('#tab3').addEventListener('click', () => {
-        event.stopPropagation();
-        setPaymentMessage(payment,"VISA", "<strong> Coming soon!</strong> ");
-    })
+    payment.querySelector('#tab3').addEventListener('click', e => {
+        e.stopPropagation();
+        setPaymentMessage(payment, "VISA", "<strong>Coming soon!</strong>");
+    });
 
-    payment.querySelector('#receipt').addEventListener('input', () => {
-        event.stopPropagation();
-        payment.querySelector('#payment_complete').disabled = payment.querySelector('#receipt').value.trim() === '';
-    })
+    // Enable submit only if receipt input is not empty
+    payment.querySelector('#receipt').addEventListener('input', e => {
+        e.stopPropagation();
+        payment.querySelector('#payment_complete').disabled = e.target.value.trim() === '';
+    });
 
-    payment.querySelector('#payment_complete').addEventListener('click', () => {
-        event.stopPropagation();
-        completeOrder()
-    })
+    // Submit order
+    payment.querySelector('#payment_complete').addEventListener('click', e => {
+        e.stopPropagation();
+        completeOrder();
+    });
 
-    document.body.append(payment)
+    document.body.append(payment);
 }
 
+// Update payment content based on tab selected
 function setPaymentMessage(payment, title, message) {
-    if (title === 'VISA') {
-        payment.querySelector('#payment_message').className='title';
-        payment.querySelector('.flex_input').style.display = 'none';
-        payment.querySelector('#payment_total').style.display = 'none';
-    } else {
-        payment.querySelector('#payment_message').className='text';
-        payment.querySelector('.flex_input').style.display = 'flex';
-        payment.querySelector('#payment_total').style.display = 'block';
-    }
+    const isVisa = title === 'VISA';
+    payment.querySelector('#payment_message').className = isVisa ? 'title' : 'text';
+    payment.querySelector('.flex_input').style.display = isVisa ? 'none' : 'flex';
+    payment.querySelector('#payment_total').style.display = isVisa ? 'none' : 'block';
     payment.querySelector('#payment_title').innerHTML = title;
     payment.querySelector('#payment_message').innerHTML = message;
 }
 
+// Submit order with form data and show notification
 async function completeOrder() {
     const order_info = new FormData();
+
     // User info
     order_info.append('full_name', document.getElementById('full_name').value);
     order_info.append('email', document.getElementById('email').value);
@@ -68,8 +69,7 @@ async function completeOrder() {
 
     // Address info
     const address_info = getSelectedAddress();
-    console.log(address_info);
-    if (document.getElementById('addresses') !== null) {
+    if (document.getElementById('addresses')) {
         order_info.append('address_id', address_info);
     } else {
         order_info.append('address', address_info.address);
@@ -80,61 +80,53 @@ async function completeOrder() {
     }
 
     // Price info
-    order_info.append('sub_total', document.getElementById('cart_sub_total').innerText.replace(/[^\d.,-]/g, '').trim());
-    order_info.append('coupon', document.getElementById('cart_coupon').innerText.replace(/[^\d.,-]/g, '').trim());
-    order_info.append('shipping', document.getElementById('shipping_fee').innerText.replace(/[^\d.,-]/g, '').trim());
-    order_info.append('total_price', document.getElementById('cart_total_price').innerText.replace(/[^\d.,-]/g, '').trim());
-    coupon = document.getElementById('cart_coupon').innerText.trim();
-    order_info.append('coupon', coupon === "Free Shipping" ? "Free Shipping" : coupon.replace(/[^\d.,-]/g, ''));
-    // Payment Info
+    const extractNumber = id => document.getElementById(id).innerText.replace(/[^\d.,-]/g, '').trim();
+    order_info.append('sub_total', extractNumber('cart_sub_total'));
+    order_info.append('coupon', document.getElementById('cart_coupon').innerText.trim() === "Free Shipping"
+        ? "Free Shipping"
+        : extractNumber('cart_coupon'));
+    order_info.append('shipping', extractNumber('shipping_fee'));
+    order_info.append('total_price', extractNumber('cart_total_price'));
+
+    // Payment info
     order_info.append('payment_method', getPaymentMethod());
     order_info.append('receipt', document.getElementById('receipt').value);
 
-    fetch('include/orders/create_order.php', { // Make sure the path is correct relative to product.html
+    // Send order to server
+    fetch('include/orders/create_order.php', {
         method: 'POST',
-        body: order_info // No need to set Content-Type; FormData takes care of that
+        body: order_info
     })
         .then(response => {
-            // Check if the response i  s OK
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            if(response.ok) {
-                //resetCart();
-                //document.getElementById('payment_window').remove();
-                //window.location.href = '../../main.php';
-                console.log("HelloWorld");
-            }
+            if (!response.ok) throw new Error('Network error: ' + response.statusText);
+            console.log("Order Submitted");
+             resetCart();
+             document.getElementById('payment_window').remove();
+             window.location.href = '../../main.php';
         })
         .catch(error => {
-            alert("Error" + error);
-            console.error('Error fetching cart items:', error)
+            alert("Error: " + error);
+            console.error('Order submission failed:', error);
         });
-    await showNotification("Η παραγγελία υποβλήθηκε!", "notification");
 
+    await showNotification("Η παραγγελία υποβλήθηκε!", "notification");
 }
 
-// Find the checked radio input
+// Return selected payment method from tab
 function getPaymentMethod() {
     const selectedTab = document.querySelector('.tab-container input[name="tab"]:checked');
-
-    if (selectedTab) {
-
-        // Optional: act on the selected tab
-        switch (selectedTab.id) {
-            case 'tab1':
-                return 'IRIS'
-            case 'tab2':
-                return 'IBAN';
-            case 'tab3':
-                return 'VISA';
-        }
+    if (!selectedTab) return 'IRIS';
+    switch (selectedTab.id) {
+        case 'tab1': return 'IRIS';
+        case 'tab2': return 'IBAN';
+        case 'tab3': return 'VISA';
+        default: return 'IRIS';
     }
-    return 'IRIS';
 }
 
+// Get selected address (from dropdown or manual input)
 function getSelectedAddress() {
-    if (document.getElementById('addresses') !== null) {
+    if (document.getElementById('addresses')) {
         return addresses[address.replace(/\D/g, '')].id;
     }
     return {

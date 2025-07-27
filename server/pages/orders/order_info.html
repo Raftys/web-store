@@ -12,6 +12,18 @@
     <h1 class="big_title" id="order_title" >Order Id: </h1>
     <img src="" alt="status" class="tiny_image" id="status_image">
     <p class="small_text" id="status_text">Hello</p>
+    <?php if (isset($_SESSION['super_user']) && $_SESSION['super_user'] === '1'): ?>
+    <div class="dropdown_container" onmouseleave="toggleDropdown(false)">
+        <button class="dropdown_title" onmouseenter="toggleDropdown(true)" >Change Status &nbsp; ▼</button>
+        <div class="dropdown_items">
+            <p onclick="updateStatus('pending')" >Pending</p>
+            <p onclick="updateStatus('processing')">Processing</p>
+            <p onclick="updateStatus('shipped')">Shipped</p>
+            <p onclick="updateStatus('delivered')">Delivered</p>
+            <p onclick="updateStatus('canceled')">Canceled</p>
+        </div>
+    </div>
+    <?php endif; ?>
 </div>
 <div class="flex_container column">
     <div class="flex_container">
@@ -22,18 +34,18 @@
         <div class="simple_card left_column">
             <h1 class="title">Payment Info</h1>
             <div class="checkout_details">
-                <span>Your cart subtotal:</span>
-                <span id="sub_total"></span>
-                <span>Discount through applied coupons:</span>
-                <span id="coupon"></span>
-                <span>Shipping fees:</span>
-                <span id="shipping"></span>
                 <span>Payment Method:</span>
                 <span id="payment_method"></span>
                 <span>Receipt:</span>
                 <span id="receipt"></span>
                 <span>Date:</span>
                 <span id="date"></span>
+                <span>Your cart subtotal:</span>
+                <span id="sub_total"></span>
+                <span>Discount through applied coupons:</span>
+                <span id="coupon"></span>
+                <span>Shipping fees:</span>
+                <span id="shipping"></span>
             </div>
             <label class="product_price" id="total_price">Total Price:</label>
         </div>
@@ -74,10 +86,11 @@
                 </div>
                 <div class="flex_input">
                     <label for="box_now">Box Now</label>
-                    <input class="input_field" type='text' placeholder="Box Now" id="box_now" disabled>
+                    <input class="input_field" type='text' placeholder="Box Now" id="box_now" onkeyup="toggleUpdateButton()">
                 </div>
             </div>
         </div>
+        <button class="simple_button" id="apply_button" onclick="updateBoxNow()" disabled>Update Box Now ID</button>
     </div>
 </div>
 

@@ -1,3 +1,4 @@
+// Load an HTML component from a given path and return its first element
 async function loadHtmlComponent(path) {
     try {
         const response = await fetch(path);
@@ -18,7 +19,8 @@ async function loadHtmlComponent(path) {
         return null;
     }
 }
-// Utility function to get query parameters from the URL
+
+// Get a query parameter value by name from the current URL
 function getQueryParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);

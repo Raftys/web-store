@@ -1,51 +1,34 @@
-// ================================================================================================ //
-// header.js
-// ================================================================================================ //
-
-// Wait until the DOM is fully loaded before attaching event listeners
+// Set up event listeners after DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
+    const profileBtn = document.getElementById('header_profile');
+    const closeBtn = document.getElementById('header_x_button');
+    const overlay = document.getElementById('overlay');
 
-    // ================================================================================================ //
-    // Profile Panel Functions
-    // ================================================================================================ //
+    if (profileBtn) {
+        profileBtn.addEventListener('click', () => toggleProfilePanel('open'));
+    }
 
-    // Open the profile panel when clicking the profile button in the header
-    document.getElementById('header_profile').addEventListener('click', () => {
-        toggleProfilePanel('open');
-    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => toggleProfilePanel('close'));
+    }
 
-    // Close the profile panel when clicking the "X" button inside the panel
-    document.getElementById('header_x_button').addEventListener('click', () => {
-        toggleProfilePanel('close');
-    });
-
-    // Close the profile panel when clicking on the background overlay
-    document.getElementById('overlay').addEventListener('click', () => {
-        toggleProfilePanel('close');
-    });
-
-    // ================================================================================================ //
-
+    if (overlay) {
+        overlay.addEventListener('click', () => toggleProfilePanel('close'));
+    }
 });
 
 
-// ================================================================================================ //
-// toggleProfilePanel
-// Shows or hides the profile panel by toggling CSS classes
-// Also shows/hides the overlay and disables/enables body scroll
-// ================================================================================================ //
+// Show or hide the profile panel and adjust UI accordingly
 function toggleProfilePanel(value) {
+    console.log("Hello");
     const panel = document.getElementById('header_account_panel');
-
-    // Determine which classes to add and remove based on 'open' or 'close' argument
+    console.log(panel);
     let [add, remove] = value === 'open' ? ['open', 'close'] : ['close', 'open'];
     panel.classList.add(add);
     panel.classList.remove(remove);
 
-    // Show or hide the semi-transparent overlay behind the panel
     document.getElementById('overlay').style.display = (add === 'open' ? 'block' : 'none');
 
-    // Prevent or allow page scrolling when the panel is open
     if (add === 'open') {
         document.body.classList.add('no-scroll');
     } else {

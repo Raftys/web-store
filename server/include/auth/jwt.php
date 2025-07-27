@@ -31,8 +31,7 @@ function generateJWT($payload, $expirySeconds) {
 }
 
 function generateAccessAndRefreshTokens($userId) {
-    global $secretKey;
-    $accessTokenExpiry = 15 * 60;       // 15 minutes
+    $accessTokenExpiry = 5;       // 15 minutes
     $refreshTokenExpiry = 7 * 24 * 3600; // 7 days
 
     $accessTokenPayload = [
@@ -54,52 +53,31 @@ function generateAccessAndRefreshTokens($userId) {
 }
 
 function validateAccessToken() {
-    $token = isset($_COOKIE['access_token']) ? $_COOKIE['access_token'] : " ";
+    $token = isset($_COOKIE['access_token']) ? $_COOKIE['access_token'] : '';
     global $secretKey;
     $parts = explode('.', $token);
-    if (count($parts) !== 3) {
-        return false; // Invalid token format
-    }
+    if (count($parts) !== 3) return false;
 
     list($header64, $payload64, $signature64) = $parts;
-
-    // Decode header and payload
     $header = json_decode(base64UrlDecode($header64), true);
     $payload = json_decode(base64UrlDecode($payload64), true);
-    if (!$header || !$payload) {
-        return false; // Invalid JSON
-    }
 
-    // Verify the algorithm is what you expect (e.g. HS256)
-    if (empty($header['alg']) || $header['alg'] !== 'HS256') {
-        return false;
-    }
+    if (!$header || !$payload || $header['alg'] !== 'HS256') return false;
 
-    // Verify signature
-    $data = $header64 . '.' . $payload64;
-    $expectedSig = hash_hmac('sha256', $data, $secretKey, true);
-    $expectedSig64 = rtrim(strtr(base64_encode($expectedSig), '+/', '-_'), '=');
+    $data = "$header64.$payload64";
+    $expectedSig = base64UrlEncode(hash_hmac('sha256', $data, $secretKey, true));
+    if (!hash_equals($expectedSig, $signature64)) return false;
 
-    if (!hash_equals($expectedSig64, $signature64)) {
-        return false; // Signature invalid
-    }
-
-    // Check expiration time if set
+    // Expired token — check refresh
     if (isset($payload['exp']) && time() >= $payload['exp']) {
-        // Token expired — try to refresh if refresh token exists
-        if (isset($_COOKIE['refresh_token'])) {
-            $newTokens = refreshAccessToken($_COOKIE['refresh_token']);
-            if ($newTokens) {
-                // Tokens refreshed successfully
-                return true;
-            }
-        }
-        return false; // Expired and refresh failed or no refresh token
+        if (!isset($_COOKIE['refresh_token'])) return false;
+        $newTokens = tryRefreshAccessToken($_COOKIE['refresh_token']);
+        return $newTokens ?: false; // Return tokens if refresh worked
     }
 
-    // All checks passed
-    return true;
+    return ['valid' => true, 'payload' => $payload];
 }
+
 
 function decodeAccessToken($token) {
     $parts = explode('.', $token);
@@ -134,40 +112,45 @@ function setTokens($customer_id) {
     ]);
 }
 
-
-function refreshAccessToken($refreshToken) {
-
-    // Decode the refresh token to get its payload
+function tryRefreshAccessToken($refreshToken) {
     $payload = decodeAccessToken($refreshToken);
-    if (!$payload) {
-        return null;
-    }
+    if (!$payload || (isset($payload['type']) ? $payload['type'] : '') !== 'refresh') return false;
 
-    // Check that this is actually a refresh token
-    if (!isset($payload['type']) || $payload['type'] !== 'refresh') {
-        return null;
-    }
-
-    // Get the user ID from the payload
     $userId = $payload['user_id'];
-
-    // Create new tokens
-    $newTokens = generateAccessAndRefreshTokens($userId);
-
-    // Set the new cookies
-    setcookie("access_token", $newTokens["access_token"], [
-        'expires' => time() + 3600,
-        'path' => '/',
-        'secure' => true,
-        'httponly' => true,
-        'samesite' => 'Strict'
-    ]);
-
-    setcookie("refresh_token", $newTokens["refresh_token"], [
-        'expires' => time() + 60*60*24*30,
-        'path' => '/',
-        'secure' => true,
-        'httponly' => true,
-        'samesite' => 'Strict'
-    ]);
+    return generateAccessAndRefreshTokens($userId);
 }
+
+function authProcess() {
+    $auth = validateAccessToken();
+
+    if ($auth && isset($auth['valid'])) {
+        $_SESSION['logged_in'] = true;
+        $_SESSION['user_info'] = $auth['payload'];
+        return true;
+
+    } elseif ($auth && isset($auth['access_token'])) {
+        // Refreshed tokens
+        $_SESSION['logged_in'] = true;
+        $_SESSION['user_info'] = decodeAccessToken($auth['access_token']);
+
+        setcookie("access_token", $auth['access_token'], [
+            'expires' => time() + 3600,
+            'path' => '/',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Strict'
+        ]);
+
+        setcookie("refresh_token", $auth['refresh_token'], [
+            'expires' => time() + 60 * 60 * 24 * 30,
+            'path' => '/',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Strict'
+        ]);
+        return true;
+    }
+    $_SESSION['logged_in'] = false;
+    return false;
+}
+

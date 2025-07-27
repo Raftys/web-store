@@ -1,4 +1,4 @@
-// Function to create and display notification
+// Show a notification toast with a message and type (info or error)
 async function showNotification(message, type="info") {
     try {
         const path = '/components/built/toast/toast.html';
@@ -8,7 +8,6 @@ async function showNotification(message, type="info") {
             console.log('Failed to load toast HTML');
             return;
         }
-
 
         const toastHtml = await response.text();
         const container = document.createElement('div');
@@ -36,7 +35,7 @@ async function showNotification(message, type="info") {
         const toast_message = toast.querySelector('.toast_text');
         toast_message.textContent = message;
 
-        // Ensure toast shows on top and visible
+        // Style toast to be fixed and visible on screen
         Object.assign(toast.style, {
             position: 'fixed',
             top: '40px',
@@ -46,17 +45,16 @@ async function showNotification(message, type="info") {
             display: 'flex',
         });
 
-
         document.body.appendChild(toast);
 
-        // Add close button behavior
+        // Add close button functionality
         const closeBtn = toast.querySelector('.cross_icon');
         if (closeBtn) {
             closeBtn.style.cursor = 'pointer';
             closeBtn.addEventListener('click', () => toast.remove());
         }
 
-        // Optional auto-remove after 4 seconds
+        // Automatically remove toast after 5 seconds
         setTimeout(() => {
             toast.remove();
         }, 5000);
@@ -65,57 +63,18 @@ async function showNotification(message, type="info") {
     }
 }
 
-
-
-let item_name = "name";
-function loadItemName(product_id) {
-    return fetch('../../../include/shop/product_preview.php', { // Make sure the path is correct relative to product.html
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-            'product_id': product_id // Send the product ID to the PHP script
-        })
-    })
-        .then(response => response.json()) // Parse the JSON response
-        .then(data => {
-            if (data && !data.error) { // Check if there's data and no error
-                // Populate the product details in the HTML
-                item_name = data.name;
-                return item_name;
-            } else {
-                console.error('Error in data:', data.error);
-                return null;
-            }
-        })
-        .catch(error => console.error('Error fetching product details:', error));
-}
-
+// Set the value or content of an element by ID
 function setElementValueOrContent(id, value) {
     const element = document.getElementById(id);
     if (element) {
         if (element.tagName === 'INPUT') {
-            // If it's an input or textarea, set the value
+            // If element is an input, set its value
             element.value = value;
         } else {
-            // Otherwise, set the innerHTML
+            // Otherwise, set innerHTML content
             element.innerHTML = value;
         }
     } else {
         console.warn(`Element with ID '${id}' not found.`);
     }
-}
-
-let logged_in =0;
-function setLogged_in(value) {
-    this.logged_in = value;
-}
-function getLogged_in() {
-    return logged_in === 1;  // Will return true if logged_in is 1, false if it is 0
-}
-
-function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
 }

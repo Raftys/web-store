@@ -1,94 +1,72 @@
-let orders = []; // Declare a global variable to store orders
+let orders = []; // Global array to store fetched orders
+let super_user = 'null'; // Flag for user access level
 
-// Function to fetch orders
+// Fetch orders from the server
 async function fetchOrders() {
     try {
-        const response = await fetch('../../include/orders/fetch_orders.php'); // URL to your PHP file
-        orders = await response.json(); // Store the orders globally
-        await displayOrders(); // Call displayOrders to show all orders
+        const formData = new FormData();
+        formData.append('action', 'fetch');
+        if (super_user === 'super') formData.append('user', 'super');
+
+        const response = await fetch('../../include/orders/orders.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        orders = await response.json();
+
+        // Normalize to 2D array structure
+        if (typeof orders[0] === 'undefined') {
+            orders = [orders];
+        }
+
+        await displayOrders();
     } catch (error) {
         console.error('Error fetching orders:', error);
     }
 }
 
-async function updateStatus(orderId, newStatus) {
-    try {
-        await fetch('Orders/update_order_status.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ order_id: orderId, status: newStatus })
-        });
-        await showNotification("Η κατάσταση ενημερώθηκε","notification");
-    } catch (error) {
-        await showNotification("Σφάλμα κατά την ενημέρωση της κατάστασης","alert");
-    }
-}
-
-// Function to display orders
+// Render all orders to the DOM
 async function displayOrders(display_orders = null) {
     const ordersList = document.getElementById('orders-list');
-    ordersList.innerHTML = ''; // Clear existing content
+    ordersList.innerHTML = '';
 
-    if (display_orders === null) {
-        display_orders = orders;
-    }
+    display_orders = display_orders || orders;
 
-    // Check if there are orders
-    if (Object.keys(display_orders).length> 0) {
+    if (Object.keys(display_orders).length > 0) {
         const productTemplate = await loadHtmlComponent('../../components/built/card/orders.html');
-        console.log(display_orders);
+
         for (const pos in display_orders) {
-            const orderInfo = display_orders[pos];// Order details
+            const orderInfo = display_orders[pos];
             const productCard = productTemplate.cloneNode(true);
+
             productCard.setAttribute('id', pos);
-            //productCard.querySelector('#product_image').src = item.image;
             productCard.querySelector('#order_id').textContent = 'Order Id: ' + orderInfo.id;
             productCard.querySelector('#total_price').textContent = 'Total: ' + orderInfo.total_price + '€';
+            productCard.querySelector('#date').textContent = 'Date: ' + orderInfo.order_date;
             productCard.querySelector('#status_image').src = '../../../assets/icons/status/' + orderInfo.status + '.svg';
-            productCard.querySelector('#status_text').textContent = orderInfo.status.charAt(0).toUpperCase()+orderInfo.status.slice(1);
+            productCard.querySelector('#status_text').textContent = orderInfo.status.charAt(0).toUpperCase() + orderInfo.status.slice(1);
 
-            productCard.addEventListener('click', () =>{
-                window.location.href = `main.php?page=order_info&order_id=${orderInfo.id}`;
-            })
+            productCard.addEventListener('click', () => {
+                window.location.href = `main.php?page=order_info${super_user === 'super' ? `&user=super` : ''}&order_id=${orderInfo.id}`;
+            });
+
             ordersList.append(productCard);
         }
     } else {
-        ordersList.innerHTML = '<p>No orders found.</p>'; // Message when no orders are present
+        ordersList.innerHTML = '<p>No orders found.</p>';
     }
 }
 
-// Function to update Box Now Locker ID
-async function updateBoxNow(order_id,customer_id, buttonElement) {
-    const inputField = buttonElement.previousElementSibling;
-    const newBoxNowId = inputField.value; // Get the new ID from the input field
-
-    try {
-        await fetch('Orders/update_box_now.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ order_id: order_id, customer_id: customer_id, box_now: newBoxNowId })
-        });
-        showNotification("Ενημερώθηκε το Box Now Locker","notification");
-    } catch (error) {
-        showNotification("Αποτυχία ενημέρωσης του Box Now Locker","alert");
-    }
-}
-
-
-
-// Function to search orders
+// Filter and display orders by search input
 async function searchOrders() {
     const searchValue = document.getElementById('search-bar').value.toLowerCase();
-    let filteredOrders = [];
-    for (const orderId in orders) {
-        if (orders[orderId].id.includes(searchValue)) filteredOrders.push(orders[orderId]);
-    }
+    const filteredOrders = orders.filter(order => order.id.includes(searchValue));
     await displayOrders(filteredOrders);
 }
 
-// Fetch orders on page load
-window.onload = fetchOrders;
+// Initialize and fetch orders on page load
+window.onload = async function () {
+    super_user = getQueryParameter('user');
+    await fetchOrders();
+};

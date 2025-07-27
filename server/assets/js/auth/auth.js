@@ -1,12 +1,8 @@
-// ================================================================================================ //
-// auth.js
-// ================================================================================================ //
+// Enable input field validation/styling checks
 customInputCheck('.flex_container.column input');
 
 
-// ================================================================================================ //
-// Form Submit Handler
-// ================================================================================================ //
+// Handles login or signup form submission
 document.getElementById('form_auth').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent default form submission
 

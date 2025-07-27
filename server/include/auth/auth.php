@@ -14,15 +14,16 @@ function login() {
     $password = $_POST['Password'];
 
     // Query the database for the user by email
-    $user = get("customers","email","=",$email,["id","password"],false);
+    $user = get("users","email","=",$email,['id','password','super_user'],false);
 
     // Check if user exists
-    if(count($user) === 2) {
+    if(count($user) === 3) {
         // Verify the password
         if (password_verify($password, $user['password'])) {
             // Set tokens and mark user as logged in
             setTokens($user['id']);
             $_SESSION['logged_in']= true;
+            $_SESSION['super_user'] = $user['super_user'];
             echo json_encode(['status' => 'success']);
         } else {
             // Invalid password
@@ -48,7 +49,7 @@ function signup() {
     $password = password_hash($password_1, PASSWORD_DEFAULT);
 
     // Check if email already exists in the database
-    $result = get("customers", "email","=",$email,"email",false);
+    $result = get("users", "email","=",$email,"email",false);
     if (count($result) > 0) {
         // Email is already in use
         echo "Email already exists: ", count($result);
@@ -56,7 +57,7 @@ function signup() {
     }
 
     // Insert new customer into the database
-    $sql_customer = "INSERT INTO customers (full_name, email, phone, password, is_user) VALUES (?, ?, ?, ?, ?)";
+    $sql_customer = "INSERT INTO users (full_name, email, phone, password, is_user) VALUES (?, ?, ?, ?, ?)";
     $customer_id = doQuery($sql_customer, "ssssi", $full_name, $email, $phone, $password, 0);
 
     // Set tokens and mark user as logged in

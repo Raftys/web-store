@@ -25,6 +25,7 @@
 @import url('simple/button_x.css');
 
 
+
 /* ============================= */
 /* Built Components */
 /* ============================= */
@@ -43,6 +44,13 @@
 /* Form */
 @import url('built/form/form.css');
 @import url('built/form/payment.css');
+@import url('built/form/addItem.css');
+
+/* Dropdown */
+@import url('built/dropdown/dropdown.css');
+
+/* Images */
+@import url('built/images/upload.css');
 
 
 /* Components *//*
