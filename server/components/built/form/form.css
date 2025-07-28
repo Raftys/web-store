@@ -5,7 +5,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--tertiary_low);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,9 +18,9 @@
     gap: 10px;
     padding: 20px;
     border-radius: 20px;
-    background-color: var(--background);
-    color: var(--text);
-    border: 1px solid var(--shadow);
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: 1px solid var(--tertiary_low);
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -58,20 +58,20 @@
     width: 16px;
     border-radius: 50%;
     left: 0;
-    background-color: var(--background_green);
+    background-color: var(--primary_low);
 }
 
 .form_message {
     font-size: 15px;
-    color: var(--primary);
+    color: var(--primary_low);
 }
 .form label {
     position: relative;
 }
 
 .form label .form_input {
-    background-color: var(--shadow);
-    color: var(--primary-bg);
+    background-color: var(--tertiary_low);
+    color: var(--primary);
     width: auto;
     padding: 20px 05px 05px 10px;
     outline: 0;
@@ -80,7 +80,7 @@
 }
 
 .form label .form_input + span {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--secondary);
     position: absolute;
     left: 10px;
     top: 0;
@@ -95,7 +95,6 @@
 }
 
 .form label .form_input:focus + span {
-    color: var(--primary);
     top: 0;
     font-size: 0.7em;
     font-weight: 600;
@@ -103,20 +102,6 @@
 
 .form_input {
     font-size: medium;
-}
-
-.submit {
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;
-    color: var(--background);
-    font-size: 16px;
-    background-color: var(--primary);
-}
-
-.submit:hover {
-    background-color: rgba(120, 251, 0, 0.59);
 }
 
 @keyframes pulse {

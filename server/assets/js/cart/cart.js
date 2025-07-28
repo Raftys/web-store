@@ -22,7 +22,7 @@ function fetchCartItems() {
 
             if (data !== 'Error' && data.length > 0) {
                 document.getElementById('clear_cart').style.display = 'block';
-                const productTemplate = await loadHtmlComponent('../../components/built/product/product.html');
+                const productTemplate = await loadHtmlComponent('../../components/built/card/product.html');
 
                 data.forEach(item => {
                     const card = productTemplate.cloneNode(true);
@@ -30,8 +30,10 @@ function fetchCartItems() {
                     card.querySelector('#product_image').src = item.image;
                     card.querySelector('#product_name').textContent = item.name;
                     card.querySelector('#quantity').textContent = item.quantity;
-                    card.querySelector('#product_price').textContent = `Total: ${item.price * item.quantity}€`;
-                    card.querySelector('#product_price_per_item').textContent = `Per Item: ${item.price}€`;
+                    card.querySelector('#product_price').textContent = `Total: ${(item.price * item.quantity).toFixed(2)}€`;
+                    card.querySelector('#product_price_per_item').textContent = `Per Item: ${parseFloat(item.price).toFixed(2)}€`;
+                    card.querySelector('#add-text').remove();
+                    card.querySelector('.product_quantity').style.justifyContent = 'center'
 
                     // Handle quantity decrease
                     card.querySelector('.decrease_button').addEventListener('click', async (e) => {

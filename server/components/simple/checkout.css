@@ -13,14 +13,14 @@
 .checkout_details span:nth-child(odd) {
     font-size: 15px;
     font-weight: 800;
-    color: #707175;
+    color: var(--tertiary);
     margin: auto auto auto 0;
 }
 
 .checkout_details span:nth-child(even) {
     font-size: 13px;
     font-weight: 600;
-    color: #47484b;
+    color:var(--tertiary);
     margin: auto 0 auto auto;
 }
 
@@ -29,7 +29,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 10px 10px 20px;
-    background-color: #efeff3;
+    background: var(--tertiary_low)
 }
 
 .cart_products {

@@ -1,0 +1,83 @@
+.normal_container {
+    display: flex;
+    width: auto;             /* Fixed width */
+    height: 600px;            /* Fixed height */
+    margin: 16px;             /* Center horizontally */
+    background-color: var(--secondary_low);
+    color: var(--tertiary_low);
+    padding: 20px;
+}
+
+.small_container {
+    display: flex;
+    width: auto;             /* Fixed width */
+    height: 400px;            /* Fixed height */
+    margin: 16px;             /* Center horizontally */
+    background-color: var(--secondary_low);
+    color: var(--tertiary_low);
+    padding: 20px;
+}
+
+.flex_container {
+    display: flex;
+    margin: 20px;
+}
+
+.flex_small_margin {
+    display: flex;
+    margin: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.direction_column {
+    flex-direction: column;
+}
+
+.shadow_radius {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--tertiary_low);
+}
+
+.centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.starting {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.left {
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.right {
+    justify-content: right;
+    align-items: flex-end;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;  /* stack cards vertically */
+    gap: 16px;               /* space between .simple_card items */
+    flex: 1;
+}

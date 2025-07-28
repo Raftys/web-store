@@ -1,0 +1,15 @@
+/* Reviews Section */
+.reviews-section {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.review {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--tertiary_low);
+    padding-bottom: 10px;
+}

@@ -18,17 +18,17 @@ async function showNotification(message, type="info") {
         switch (type) {
             case "info":
                 toast_title.textContent = "Info Message";
-                toast.querySelector('.wave').style.fill= 'var(--blue-500)';
-                toast.querySelector('.icon_container').style.background= 'var(--blue-500)';
-                toast.querySelector('.toast_icon').style.color= 'var(--blue-700)';
-                toast.querySelector('.toast_title').style.color= 'var(--blue-500)';
+                toast.querySelector('.wave').style.fill= 'var(--blue)';
+                toast.querySelector('.icon_container').style.background= 'var(--blue)';
+                toast.querySelector('.toast_icon').style.color= 'var(--secondary)';
+                toast.querySelector('.toast_title').style.color= 'var(--blue)';
                 break;
             case "error":
                 toast_title.textContent = "Error Message";
-                toast.querySelector('.wave').style.fill= 'var(--red-500)';
-                toast.querySelector('.icon_container').style.background= 'var(--red-500)';
-                toast.querySelector('.toast_icon').style.color= 'var(--red-700)';
-                toast.querySelector('.toast_title').style.color= 'var(--red-500)';
+                toast.querySelector('.wave').style.fill= 'var(--red)';
+                toast.querySelector('.icon_container').style.background= 'var(--red)';
+                toast.querySelector('.toast_icon').style.color= 'var(--secondary)';
+                toast.querySelector('.toast_title').style.color= 'var(--red)';
                 break;
         }
 

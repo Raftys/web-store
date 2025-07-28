@@ -1,0 +1,91 @@
+{
+  "_General" : "=========================== General ===========================",
+  "company_name": "Mitsakis Farm",
+
+  "Account General" : "=========================== Account General ===========================",
+  "logout": "Logout",
+  "login": "Login",
+  "signin": "Register",
+  "full_name": "Full Name*",
+  "email": "Email*",
+  "password":  "Password*",
+  "repeat_password": "Repeat Password*",
+  "phone": "Phone Number*",
+  "address": "Address*",
+  "zip_code": "Zip Code*",
+  "city": "City*",
+  "country": "Country*",
+  "box_now": "Box Now Locker ID",
+
+  "_Auth Page" : "=========================== Auth ===========================",
+  "header_home": "Home",
+  "header_shop":  "Shop",
+  "auth_dont_have_account":  "Don't Have An Account?",
+  "auth_forgot_password": "Forgot Password?",
+  "auth_signin":  "Sign Up",
+  "auth_already_have_account": "Already Have An Account?",
+
+  "_Header Page" : "=========================== Header ===========================",
+  "auth_login": "Log In",
+  "auth_login_message":  "Log In to your account",
+  "header_cart":  "Cart",
+  "header_account": "Profile",
+
+  "_Footer Page" : "=========================== Footer ===========================",
+  "need_help": "Need Help?",
+  "messenger":  "Messenger",
+  "social": "Social",
+  "legal":  "Legal",
+  "privacy_policy": "Privacy Policy",
+  "terms_of_service": "Terms of Service",
+
+  "_Profile Slide Page" : "=========================== Profile Slide Page ===========================",
+  "header_profile_slide": "My Profile",
+  "profile_slide_account": "My Account" ,
+  "profile_slide_my_orders": "My Orders",
+  "profile_slide_all_orders": "All Orders",
+  "profile_slide_all_products": "All Products",
+
+  "_Home Page" : "=========================== Home Page ===========================",
+  "home_page_first_hero_title": "Homemade Tomato Sauce",
+  "home_page_first_hero_second_title": "Produced with love by passionate people!",
+  "home_page_first_hero_text": "Welcome to our family! Here, we craft the most delicious tomato sauce using traditional recipes passed down from generation to generation. Every jar is filled with love and care.\n\nThis dedication to quality and tradition is what sets us apart. At our facility, we believe that every jar of tomato sauce should be an experience. That’s why we take great care in every step of the production process—from harvesting the tomatoes to the final bottling.\n\nAs you taste our sauce, we hope you feel the love and devotion infused in every flavor. We invite you to become part of our family and share the flavors of our tradition with your loved ones.",
+  "home_page_first_hero_last_title": "We are proud of our work and look forward to sharing our tomato sauce with you!",
+  "home_page_second_hero_title": "Welcome to Mitsakis Farm",
+  "home_page_second_hero_text": "Our process begins with the careful selection of tomatoes. Our tomatoes are chosen based on strict criteria, ensuring that only the ripest and sweetest tomatoes are used in making our sauce. Next comes the pulping of the tomatoes, where they are transformed into a rich and flavorful puree, which forms the base of our sauce.\n\nAfter pulping, the puree is stored in cold storage to preserve its freshness and taste. We then apply a water-draining process to achieve the ideal thickness for our sauce. This meticulous preparation is the secret to ensuring that our sauce is rich and full of flavor, with the perfect texture.\n\nThe process concludes with slow simmering of the puree. This not only enhances the flavor but also ensures that the natural nutrients of the tomatoes remain intact. Finally, our sauce is carefully filled and sealed, following a one-to-one process for the best quality assurance.",
+  "call_to_action": "Get Your Tomato Sauce Today!",
+  "home_news": "Latest News",
+
+  "_Shop": "=========================== Shop Page ===========================",
+  "products": "Products",
+  "add": "Add",
+  "add_to_cart_button": "Add To Cart",
+
+  "_Cart": "=========================== Cart Page ===========================",
+  "cart_user_info": "User Info",
+  "cart_address": "Address",
+  "cart_add_new_address": "Add New Address",
+  "cart_reset_cart": "Reset Cart",
+  "cart_apply_coupon": "Apply Coupon",
+  "cart_apply": "Apply",
+  "cart_checkout": "Checkout",
+  "cart_checkout_subtotal": "Your cart subtotal:",
+  "cart_checkout_coupon_discount": "Discount through applied coupons:",
+  "cart_checkout_shipping_fee": "Shipping fees:",
+
+  "_Payment": "=========================== Payment Page ===========================",
+  "payment_receipt": "Receipt",
+  "payment_receipt_number": "Receipt Number",
+  "payment_complete": "Complete Payment",
+
+
+
+  "_Box NOW": "=========================== Box Now ===========================",
+  "box_now_need_help": "Do you need help finding your closest Box Now Locker ID ?",
+
+
+  "_Texts": "=========================== Texts ===========================",
+  "support_phone_1": "6941508136",
+  "support_phone_2": "6945793397",
+  "support_email": "georgemitsakis@yahoo.com"
+}

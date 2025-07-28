@@ -1,20 +1,20 @@
 .add_button {
+    width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: inherit;
     cursor: pointer;
     font-weight: 500;
     font-size: 16px;
     padding: 0.7em 1.4em 0.7em 1.1em;
-    color: var(--primary-bg);
+    color: var(--tertiary);
     background: linear-gradient(
             0deg,
-            var(--green-600) 0%,
-            var(--green-400) 100%
+            var(--primary_low) 0%,
+            var(--primary) 100%
     );
     border: none;
-    box-shadow: 0 0.7em 1.5em -0.5em var(--green-700);
+    box-shadow: 0 0.7em 1.5em -0.5em var(--primary);
     letter-spacing: 0.05em;
     border-radius: 20em;
 
@@ -22,13 +22,8 @@
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.add_button svg {
-    margin-right: 6px;
-    transition: transform 0.15s ease;
-}
-
 /* Click (active) animation: quick scale down and shadow shrink */
 .add_button:active {
     transform: scale(0.9);
-    box-shadow: 0 0.3em 0.7em -0.5em var(--green-800);
+    box-shadow: 0 0.3em 0.7em -0.5em var(--primary_low);
 }

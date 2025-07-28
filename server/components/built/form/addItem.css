@@ -5,7 +5,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    background-color: var(--tertiary_low); /* semi-transparent black */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,9 +24,9 @@ body.popup_open {
     width: 90%;
     height: 85%;
     padding: 2rem;
-    background-color: white;
+    background-color: var(--secondary);
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    box-shadow: 0 0 20px var(--tertiary_low);
 }
 
 /* Close button */
@@ -46,11 +46,11 @@ body.popup_open {
 }
 
 .checkbox_container {
-    --input-focus: #2d8cf0;
-    --input-out-of-focus: #ccc;
-    --bg-color: #fff;
-    --bg-color-alt: #666;
-    --main-color: #323232;
+    --input-focus: var(--primary);
+    --input-out-of-focus: var(--secondary_low);
+    --bg-color: var(--secondary);
+    --bg-color-alt: var(--tertiary_low);
+    --main-color: var(--tertiary);
     position: relative;
     cursor: pointer;
 }
@@ -66,15 +66,15 @@ body.popup_open {
     position: relative;
     top: 0;
     left: 0;
-    border: 2px solid var(--main-color);
+    border: 2px solid var(--tertiary);
     border-radius: 5px;
-    box-shadow: 4px 4px var(--main-color);
-    background-color: var(--input-out-of-focus);
+    box-shadow: 4px 4px var(--tertiary);
+    background-color: var(--secondary);
     transition: all 0.3s;
 }
 
 .checkbox_container input:checked ~ .checkmark {
-    background-color: var(--input-focus);
+    background-color: var(--primary);
 }
 
 .checkmark:after {
@@ -85,8 +85,8 @@ body.popup_open {
     top: 2px;
     left: 8px;
     display: none;
-    border: solid var(--bg-color);
-    border-width: 0 2.5px 2.5px 0;
+    border: solid var(--secondary);
+    border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
 

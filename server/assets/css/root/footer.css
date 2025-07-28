@@ -1,10 +1,9 @@
 
 /* General footer styles */
 footer {
-    background-color: limegreen;
+    background-color: var(--primary);
     padding: 20px;
     text-align: center;
-    color: white;
 }
 
 .flex {

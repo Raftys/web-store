@@ -1,10 +1,9 @@
-/* From Uiverse.io by javierBarroso */
 .x_button {
     position: relative;
     width: 3em;
     height: 3em;
     border: none;
-    background: rgba(180, 83, 107, 0.11);
+    background: var(--secondary_low);
     border-radius: 5px;
     transition: background 0.5s;
     transform: scale(0.8);
@@ -16,8 +15,8 @@
     top: 50%;
     left: 50%;
     width: 2em;
-    height: 1.5px;
-    background-color: rgb(255, 255, 255);
+    height: 2px;
+    background-color: var(--tertiary);
     transform: translateX(-50%) rotate(45deg);
 }
 
@@ -27,8 +26,8 @@
     top: 50%;
     left: 50%;
     width: 2em;
-    height: 1.5px;
-    background-color: #fff;
+    height: 2px;
+    background-color: var(--tertiary);
     transform: translateX(-50%) rotate(-45deg);
 }
 
@@ -44,8 +43,8 @@
     width: 3em;
     height: 1.7em;
     font-size: 12px;
-    background-color: rgb(19, 22, 24);
-    color: rgb(187, 229, 236);
+    background-color: var(--primary);
+    color: var(--primary);
     border: none;
     border-radius: 3px;
     pointer-events: none;
@@ -53,11 +52,11 @@
 }
 
 .x_button:hover {
-    background-color: rgb(211, 21, 21);
+    background-color: var(--secondary);
 }
 
 .x_button:active {
-    background-color: rgb(130, 0, 0);
+    background-color: var(--secondary);
 }
 
 .x_button:hover > .x_close {

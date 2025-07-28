@@ -1,5 +1,5 @@
 .reset_button {
-    background: var(--red-500);
+    background: var(--quaternary);
     width: max-content;
     display: none;
 }
@@ -28,5 +28,5 @@
 
 .addresses {
     overflow-y: auto;
-    max-height: 150px;
+    max-height: 300px;
 }

@@ -2,6 +2,7 @@ body {
     overflow-x: hidden;
 }
 
+
 /* Thumbnail Gallery - Stack thumbnails vertically on the left side */
 .thumbnail_gallery {
     display: flex;
@@ -22,13 +23,13 @@ body {
     object-fit: cover;
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--tertiary_low);
     transition: transform 0.2s ease;
 }
 
 .thumbnail:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--tertiary_low);
 }
 
 .money_container {
@@ -48,7 +49,7 @@ body {
     width: 100%;
     height: 100%;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    background-color: var(--tertiary_low); /* Semi-transparent background */
 }
 
 .image_modal_content {
@@ -60,14 +61,14 @@ body {
     position: absolute;
     top: 20px;
     right: 35px;
-    color: white;
+    color: var(--secondary);
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .close:hover, .close:focus {
-    color: #bbb;
+    color: var(--secondary);
     text-decoration: none;
     cursor: pointer;
 }
@@ -77,11 +78,11 @@ body {
     position: absolute;
     top: 50%;
     font-size: 40px;
-    color: white;
+    color: var(--secondary);
     padding: 10px;
     cursor: pointer;
     user-select: none;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--tertiary);
     border-radius: 30%;
     transition: background-color 0.3s ease;
     transform: translateY(-50%);
@@ -96,62 +97,5 @@ body {
 }
 
 .prev_image:hover, .next_image:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Reviews Section */
-.reviews-section {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.reviews-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.review {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 10px;
-}
-
-.review p {
-    margin: 5px 0;
-}
-
-.review strong {
-    font-size: 18px;
-    color: #333;
-}
-
-.review .rating {
-    color: #ffcc00;
-    font-size: 20px;
-}
-
-/* Style for the product offer */
-#product-offer {
-    font-size: 20px; /* Increase font size */
-    color: red; /* Set text color to red */
-    font-weight: bold; /* Make it bold */
-    margin-top: 10px; /* Add some space above */
-
+    background-color: var(--tertiary);
 }

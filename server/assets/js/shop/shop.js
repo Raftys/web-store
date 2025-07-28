@@ -26,7 +26,7 @@ async function loadProducts(super_user = null) {
     }
 
     // Load the product card HTML template
-    const productHTML = await loadHtmlComponent('../../components/built/product/product.html');
+    const productHTML = await loadHtmlComponent('../../components/built/card/product.html');
 
     // Loop through each product and create a product card
     products.forEach(item => {
@@ -58,8 +58,6 @@ async function loadProducts(super_user = null) {
             productCard.addEventListener('click', () => {
                 window.location.href = `main.php?page=product&product_id=${item.id}`;
             });
-
-            productCard.querySelector('.add_button').style.display = 'flex';
 
             // Prevent event bubbling on money container click
             productCard.querySelector('#money_container').addEventListener('click', (event) => {

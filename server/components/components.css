@@ -7,7 +7,7 @@
 /* ============================= */
 
 /* Container */
-@import url('simple/container_flex.css');
+@import url('simple/containers.css');
 
 /* Card */
 @import url('simple/card.css');
@@ -30,7 +30,7 @@
 /* Built Components */
 /* ============================= */
 /* Product */
-@import url('built/product/product.css');
+@import url('built/card/product.css');
 
 /* Social */
 @import url('built/social/social.css');
@@ -52,9 +52,10 @@
 /* Images */
 @import url('built/images/upload.css');
 
+/* New*/
+@import url('built/new/new.css');
 
-/* Components *//*
-@import url('built/toast/_toasts.css');
-@import url('built/dropdown/dropdown.css');
-@import url('built/form/form.css');*/
+/* Review */
+@import url('built/review/review.css');
+
 /* {outline: 1px solid rgba(255, 0, 0, 0.5); }

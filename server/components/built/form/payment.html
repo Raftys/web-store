@@ -1,8 +1,7 @@
 <div class="form_overlay" id="payment_window">
-   <div class="flex_container simple_card column" style="width: auto;" id="payment_window_inside">
-       <div class="flex_container">
-           <!-- From Uiverse.io by zanina-yassine -->
-           <div class="tab-container">
+   <div class="small_container simple_card" style="width: 50%" id="payment_window_inside">
+       <div class="flex_container centering">
+           <div class="tab_container">
                <input type="radio" name="tab" id="tab1" class="tab tab--1" />
                <label class="tab_label" for="tab1">IRIS</label>
 
@@ -15,21 +14,22 @@
                <div class="indicator"></div>
            </div>
 
-           <button class="x_button">
+           <button class="x_button" >
                <span class="x_X"></span>
                <span class="x_Y"></span>
-               <div class="x_close">Close</div>
+               <div class="x_close"></div>
            </button>
+
        </div>
            <div>
-               <h2 class="title" id="payment_title">Title</h2>
-               <p class="text" id="payment_message">text</p>
-               <p class="text" id="payment_total">text</p>
+               <h2 class="title" id="payment_title"></h2>
+               <p class="text" id="payment_message"></p>
+               <p class="text" id="payment_total"></p>
                <div class="flex_input">
-                   <label class="input_label" for="receipt">Receipt Number</label>
-                   <input class="input_field" type="text" id="receipt" placeholder="Receipt Number" required>
-                   <button class="simple_button" id="payment_complete">Complete</button>
+                   <label class="input_label text" for="receipt" data-i18n="payment_receipt"></label>
+                   <input class="input_field" type="text" id="receipt" data-i18n-placeholder="payment_receipt_number" required>
                </div>
+               <button class="simple_button" id="payment_complete"  data-i18n="payment_complete"></button>
            </div>
        </div>
 

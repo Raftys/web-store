@@ -4,7 +4,7 @@
     font-size: xxx-large;
     font-weight: bold;
     text-align: center;
-    color: var(--big_title);
+    color: var(--quaternary);
     margin: 12px;
 }
 
@@ -13,7 +13,7 @@
     font-size: xx-large;
     font-weight: bold;
     text-align: center;
-    color: var(--big_title);
+    color: var(--quaternary_low);
     margin: 12px;
 }
 
@@ -21,7 +21,8 @@
 .big_text {
     font-size: large;
     text-align: center;
-    color: var(--big_text);
+    font-weight: bold;
+    color: var(--tertiary);
     margin: 8px;
 }
 
@@ -29,8 +30,12 @@
 .text {
     font-size: medium;
     text-align: justify;
-    color: var(--big_text);
+    color: var(--tertiary);
     margin: 8px;
+}
+
+.left {
+    text-align: left;
 }
 
 .card_title {
@@ -40,24 +45,24 @@
     display: flex;
     align-items: center;
     padding-left: 20px;
-    border-bottom: 1px solid #efeff3;
+    border-bottom: 1px solid var(--tertiary_low);
     font-weight: 700;
     font-size: 11px;
-    color: #63656b;
+    color: var(--tertiary);
 }
 
 .changing_color_text {
-    color: green;
+    color: var(--primary);
     font-size: x-large;
     animation: color_change 5s infinite ease-in-out;
 }
 
 @keyframes color_change {
     0%, 100% {
-        color: green;
+    color: var(--primary_low);
     }
     50% {
-        color: red;
+        color: var(--quaternary);
     }
 }
 

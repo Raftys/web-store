@@ -5,99 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/cart/cart.css">
     <title>Cart</title>
-    <script src="../../assets/js/product_functions.js" defer></script>
+    <script src="../../assets/js/utils/product_functions.js" defer></script>
     <script src="../../assets/js/cart/cart.js" defer></script>
     <script src="../../assets/js/cart/user_info.js" defer></script>
     <script src="../../assets/js/cart/payment.js" defer></script>
     <script src="../../components/built/form/form.js" defer></script>
 </head>
 <body>
-<div class="flex_container shadow gap">
+<div class="flex_container" style="gap: 16px">
 
     <!-- Left Column-->
-    <div class="left_column">
+    <div class="column">
         <!-- User Info Card -->
-        <div class="simple_card top_left">
-            <label class="card_title">User Info</label> <!-- title -->
+        <div class="simple_card top_left" style="width: auto">
+            <label class="card_title" data-i18n="cart_user_info"></label> <!-- title -->
             <div class="flex_input">
-                <label for="full_name">Πλήρες Όνομα*</label>
-                <input class="input_field" placeholder="Full Name"  type="text" id="full_name" onkeyup="toggleButtons()" required>
+                <label for="full_name" data-i18n="full_name"></label>
+                <input class="input_field" data-i18n-placeholder="full_name"  type="text" id="full_name" onkeyup="toggleButtons()" required>
             </div>
             <div class="flex_input">
-                <label for="email">Email</label>
-                <input class="input_field" type="email" placeholder="Email" id="email" onkeyup="toggleButtons()" required>
+                <label for="email" data-i18n="email"></label>
+                <input class="input_field" type="email" data-i18n-placeholder="email" id="email" onkeyup="toggleButtons()" required>
             </div>
             <div class="flex_input">
-                <label for="phone">Τηλέφωνο*</label>
-                <input class="input_field" type="tel" placeholder="Phone Number" id="phone" onkeyup="toggleButtons()" required>
+                <label for="phone" data-i18n="phone"></label>
+                <input class="input_field" type="tel" data-i18n-placeholder="phone" id="phone" onkeyup="toggleButtons()" required>
             </div>
         </div>
         <!-- Addresses Info Card -->
-        <div class="simple_card bottom_left">
-            <label class="card_title">Address</label> <!-- title -->
+        <div class="simple_card bottom_left" style="width: auto">
+            <label class="card_title" data-i18n="cart_address"></label> <!-- title -->
             <?php if (validateAccessToken()): ?>
             <div class='addresses' id="addresses"></div>
-            <button class="simple_button" id="add_new_address" onclick="openAddressForm()"> Add New Address</button>
+            <button class="simple_button" id="add_new_address" onclick="openAddressForm()" data-i18n="cart_add_new_address"></button>
             <?php else: ?>
             <div class="flex_input">
-                <label for="address">*Address</label>
-                <input class="input_field" type='text' placeholder="Address" id="address" onkeyup="toggleButtons()" required>
+                <label for="address" data-i18n="address"></label>
+                <input class="input_field" type='text' data-i18n-placeholder="address" id="address" onkeyup="toggleButtons()" required>
             </div>
             <div class="flex_input">
-                <label for="zip_code">*Zip Code</label>
-                <input class="input_field" type='text' placeholder="Zip Code" id="zip_code" onkeyup="toggleButtons()" required>
+                <label for="zip_code" data-i18n="zip_code"></label>
+                <input class="input_field" type='text' data-i18n-placeholder="zip_code" id="zip_code" onkeyup="toggleButtons()" required>
             </div>
             <div class="flex_input">
-                <label for="city">*City</label>
-                <input class="input_field" type='text' placeholder="City" id="city" onkeyup="toggleButtons()" required>
+                <label for="city" data-i18n="city"></label>
+                <input class="input_field" type='text' data-i18n-placeholder="city" id="city" onkeyup="toggleButtons()" required>
             </div>
             <div class="flex_input">
-                <label for="country">*Country</label>
-                <input class="input_field" type='text' placeholder="Country" id="country" onkeyup="toggleButtons()" required>
+                <label for="country" data-i18n="country"></label>
+                <input class="input_field" type='text' data-i18n-placeholder="country" id="country" onkeyup="toggleButtons()" required>
             </div>
             <div class="flex_input">
-                <label for="address">Box Now</label>
-                <input class="input_field" type='text' placeholder="Box Now" id="box_now">
+                <label for="address" data-i18n="box_now"></label>
+                <input class="input_field" type='text' data-i18n-placeholder="box_now" id="box_now">
             </div>
-            <a style='text-align: center' href="../../../pages/settings/help.html" target="_blank">Θέλετε Βοήθεια Για να βρείτε το Box Now Locker ID ?</a>
+            <a style='text-align: center' href="../../../pages/settings/help.html" target="_blank" data-i18n="box_now_need_help"></a>
             <?php endif; ?>
         </div>
     </div>
 
-    <div class="right_column">
+    <div class="column">
         <!-- Products table -->
-        <div class="simple_card top_right">
+        <div class="simple_card top_right" style="width: auto">
             <label class="card_title">Cart</label> <!-- title -->
-            <button class="simple_button reset_button" id="clear_cart">Reset Cart</button>
+            <button class="simple_button reset_button" id="clear_cart" data-i18n="cart_reset_cart"></button>
             <div class="cart_products" id="cart_products">
             </div>
         </div>
 
         <!-- Apply Coupon -->
-        <div class="simple_card">
-            <label class="card_title">Apply Coupon</label> <!-- title -->
+        <div class="simple_card" style="width: auto">
+            <label class="card_title" data-i18n="cart_apply_coupon"></label> <!-- title -->
             <form class="coupon_form" id="coupon_form">
                 <label>
-                    <input type="text" placeholder="Apply your coupons here" class="input_field" id='coupon_text' required>
+                    <input type="text" data-i18n-placeholder="cart_apply_coupon" class="input_field" id='coupon_text' required>
                 </label>
-                <button class="simple_button" id="coupon_apply_button">Apply</button>
+                <button class="simple_button" id="coupon_apply_button" data-i18n="cart_apply"></button>
             </form>
         </div>
 
         <!-- Payment -->
-        <div class="simple_card bottom_right" >
-            <label class="card_title">Checkout</label> <!-- title -->
+        <div class="simple_card bottom_right" style="width: auto">
+            <label class="card_title" data-i18n="cart_checkout"></label> <!-- title -->
                 <div class="checkout_details">
-                    <span>Your cart subtotal:</span>
-                    <span id="cart_sub_total">47.99$</span>
-                    <span>Discount through applied coupons:</span>
-                    <span id="cart_coupon">3.99$</span>
-                    <span>Shipping fees:</span>
-                    <span id="shipping_fee">4.99$</span>
+                    <span data-i18n="cart_checkout_subtotal"></span>
+                    <span id="cart_sub_total"></span>
+                    <span data-i18n="cart_checkout_coupon_discount"></span>
+                    <span id="cart_coupon"></span>
+                    <span data-i18n="cart_checkout_shipping_fee"></span>
+                    <span id="shipping_fee"></span>
                 </div>
                 <div class="checkout_footer bottom_right">
-                    <button class="simple_button" id="total_price_button" style="margin: auto auto auto 0">Checkout</button>
-                    <label class="product_price" id="cart_total_price">$57.99</label>
+                    <button class="simple_button" id="total_price_button" style="margin: auto auto auto 0" data-i18n="cart_checkout"></button>
+                    <label class="product_price" id="cart_total_price"></label>
                 </div>
         </div>
     </div>

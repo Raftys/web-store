@@ -7,12 +7,12 @@
     width: 80px;
     height: 40px;
     border: none;
-    background-color: var(--background_green);
+    background-color: var(--primary);
     color: var(--text);
     font-weight: 500;
     cursor: pointer;
     border-radius: 10px;
-    box-shadow: 5px 5px 0 var(--shadow_green);
+    box-shadow: 5px 5px 0 var(--primary_low);
     transition-duration: .3s;
     scale:80%;
 }
@@ -41,5 +41,5 @@
 .edit_button:active {
     transform: translate(3px , 3px);
     transition-duration: .3s;
-    box-shadow: 2px 2px 0 var(--shadow_green);
+    box-shadow: 2px 2px 0 var(--primary_low);
 }

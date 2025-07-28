@@ -22,28 +22,11 @@
     --green-300: #86efac;
     --green-400: #4ade80;
     --green-500: #22c55e;
-    --green: #11df22;
+    --green: #32cd32;
     --green-600: #16a34a;
     --green-700: #15803d;
     --green-800: #166534;
     --green-900: #14532d;
-
-    /* Red */
-    --red-300: #fca5a5;
-    --red-400: #f87171;
-    --red-500: #ef4444;
-    --red-600: #dc2626;
-    --red-700: #b91c1c;
-    --red-800: #991b1b;
-
-    /* Blue */
-    --blue-300: #93c5fd;
-    --blue-400: #60a5fa;
-    --blue-500: #3b82f6;
-    --blue-600: #2563eb;
-    --blue-700: #1d4ed8;
-    --blue-800: #1e40af;
-
 
     /* Social */
     --facebook: #0165e1;
@@ -52,5 +35,11 @@
     --instagram3: #dc2743;
     --instagram4: #cc2366;
     --instagram5: #bc1888;
+
+    --black_low: #00000066;
+    --white_low: #ffffff1A;
+    --red_low:   #FF0000CC;
+    --blue: #3b82f6;
+    --red: #FF0000FF;
 
 }
