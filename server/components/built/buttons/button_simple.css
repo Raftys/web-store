@@ -1,0 +1,95 @@
+/* Stylish rounded button with hover shine effect */
+/* Source: Uiverse.io by adeladel522 */
+.simple_button {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 10px 20px var(--tertiary_low); /* Button shadow */
+    padding-block: 0.5rem; /* Vertical padding */
+    padding-inline: 1.25rem; /* Horizontal padding */
+    background-color: var(--primary); /* Main button color */
+    border-radius: 9999px; /* Fully rounded edges */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text); /* Button text color */
+    gap: 10px; /* Space between text and icon */
+    font-weight: bold;
+    border: 3px solid var(--tertiary); /* Button border */
+    outline: none;
+    overflow: hidden; /* Hide shine overflow */
+    font-size: 15px;
+    margin: 16px;
+}
+
+/* Fit button width to content */
+.simple_button.fit {
+    max-width: fit-content;
+}
+
+/* Hover effect: slight scale-up and border color change */
+.simple_button:hover {
+    transform: scale(1.05);
+    border-color: var(--tertiary_low);
+}
+
+/* Hover effect: slide icon slightly to the right */
+.simple_button:hover .toast_icon {
+    transform: translate(4px);
+}
+
+/* Hover effect: triggers shine animation */
+.simple_button:hover::before {
+    animation: shine 1.5s ease-out infinite;
+}
+
+/* Shine effect overlay */
+.simple_button::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0) 30%, /* Transparent edges */
+            var(--secondary), /* Shine color */
+            rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
+}
+
+/* Shine animation: slides from left to right */
+@keyframes shine {
+    0% {
+        left: -100px;
+    }
+    60% {
+        left: 100%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+/* Disabled button styling: faded color, no hover/shine effect */
+.simple_button:disabled {
+    background-color: var(--tertiary_low); /* Greyed-out background */
+    color: var(--tertiary); /* Muted text color */
+    border-color: var(--tertiary_low); /* Grey border */
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    opacity: 0.6;
+}
+
+/* Prevent scaling on hover for disabled state */
+.simple_button:disabled:hover {
+    transform: none;
+}
+
+/* Remove shine effect on disabled buttons */
+.simple_button:disabled::before {
+    display: none;
+}

@@ -1,4 +1,4 @@
-/* From Uiverse.io by vinodjangid07 */
+/* Editable button with sliding icon effect */
 .edit_button {
     position: relative;
     display: flex;
@@ -14,9 +14,10 @@
     border-radius: 10px;
     box-shadow: 5px 5px 0 var(--primary_low);
     transition-duration: .3s;
-    scale:80%;
+    scale: 80%;
 }
 
+/* Icon inside the edit button */
 .edit_svg {
     width: 13px;
     position: absolute;
@@ -26,10 +27,12 @@
     transition-duration: .3s;
 }
 
+/* Hover effect: hides text */
 .edit_button:hover {
     color: transparent;
 }
 
+/* Hover effect: slides icon to center */
 .edit_button:hover svg {
     right: 43%;
     margin: 0;
@@ -38,8 +41,9 @@
     transition-duration: .3s;
 }
 
+/* Active state: pressed-in effect */
 .edit_button:active {
-    transform: translate(3px , 3px);
+    transform: translate(3px, 3px);
     transition-duration: .3s;
     box-shadow: 2px 2px 0 var(--primary_low);
 }

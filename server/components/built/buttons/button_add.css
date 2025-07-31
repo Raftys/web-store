@@ -1,3 +1,4 @@
+/* Rounded "Add" button with gradient background and smooth transition */
 .add_button {
     width: fit-content;
     display: flex;
@@ -17,12 +18,10 @@
     box-shadow: 0 0.7em 1.5em -0.5em var(--primary);
     letter-spacing: 0.05em;
     border-radius: 20em;
-
-    /* Enable smooth transform and shadow transition */
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Click (active) animation: quick scale down and shadow shrink */
+/* Active state: scales down slightly and reduces shadow */
 .add_button:active {
     transform: scale(0.9);
     box-shadow: 0 0.3em 0.7em -0.5em var(--primary_low);

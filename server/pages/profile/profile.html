@@ -1,38 +1,54 @@
+<!-- Document type -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Meta and scripts -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../assets/js/profile/account.js" defer></script> <!-- Use defer to ensure JS loads after HTML -->
+    <script src="../../assets/js/profile/account.js" defer></script>
     <title>Account</title>
 </head>
+
 <body>
+<!-- Main Container -->
 <div class="flex_container column">
     <h1 class="big_title">Πληροφορίες Λογαριασμού</h1>
+
+    <!-- Account Section -->
     <div class="flex_container row">
+        <!-- Left: Profile Image & Actions -->
         <div class="simple_card left_column">
             <img src="../../assets/images/user.png" alt="Account Image" class="big_image">
             <button class="simple_button">Settings</button>
-            <button class="simple_button" onclick="window.location.href='../start.php'" style="margin-top: 40px; background: var(--background_red)">Log Out</button>
+            <button class="simple_button" onclick="window.location.href='../start.php'"
+                    style="margin-top: 40px; background: var(--background_red)">Log Out</button>
         </div>
+
+        <!-- Right: User Info -->
         <div class="simple_card right_column">
             <div class="flex_input">
                 <label for="full_name">Full Name*</label>
-                <input class="input_field" type='text' placeholder="Full Name" id="full_name" onkeyup="toggleButton()" required>
+                <input class="input_field" type="text" placeholder="Full Name" id="full_name"
+                       onkeyup="toggleButton()" required>
             </div>
             <div class="flex_input">
                 <label for="email">Email*</label>
-                <input class="input_field" type='email' placeholder="Email" id="email" onkeyup="toggleButton()" required>
+                <input class="input_field" type="email" placeholder="Email" id="email"
+                       onkeyup="toggleButton()" required>
             </div>
             <div class="flex_input">
                 <label for="phone">Phone Number*</label>
-                <input class="input_field" type='tel' placeholder="Phone Number" id="phone" onkeyup="toggleButton()" required>
+                <input class="input_field" type="tel" placeholder="Phone Number" id="phone"
+                       onkeyup="toggleButton()" required>
             </div>
             <button class="simple_button" id="save" onclick="changeUserInfo()">Save</button>
         </div>
+
+        <!-- Right: Addresses -->
         <div class="simple_card right_column">
-            <div class='addresses' id="addresses"></div>
-            <button class="simple_button" id="add_new_address" onclick="openAddressForm()"> Add New Address</button>
+            <div class="addresses" id="addresses"></div>
+            <button class="simple_button" id="add_new_address" onclick="openAddressForm()">Add New Address</button>
         </div>
     </div>
 </div>
