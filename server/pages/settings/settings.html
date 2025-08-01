@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../assets/js/settings/settings.js" defer></script>
+    <title data-i18n="profile_slide_settings"></title>
+</head>
+<body>
+<div class="flex_container direction_column">
+    <h1 class="big_title" data-i18n="profile_slide_settings"></h1>
+    <p class="big_text" data-i18n="settings_message"></p>
+
+    <!-- Preferences Section -->
+    <div class="simple_card shadow_card">
+        <h2 class="title" data-i18n="settings_preferences"></h2>
+        <div class="flex_container direction_column">
+            <!-- Theme Selector -->
+            <div class="simple_card direction_column">
+                <label for="theme" class="text" data-i18n="settings_themes"></label>
+                <select id="theme" class="simple_card">
+                    <option value="light" data-i18n="settings_light"></option>
+                    <option value="dark" data-i18n="settings_dark"></option>
+                </select>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="simple_card direction_column">
+                <label for="language" class="text" data-i18n="settings_language"></label>
+                <select id="language" class="simple_card">
+                    <option value="en" data-i18n="settings_english"></option>
+                    <option value="gr" data-i18n="settings_greek" ></option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Section -->
+    <div class="simple_card shadow_card">
+        <h2 class="title" data-i18n="profile_slide_account"></h2>
+        <div class="flex_container direction_column" style="gap: 1rem;">
+            <button class="simple_button" data-i18n="settings_profile" onclick="window.location.href='../main.php?page=account'"></button>
+            <button class="simple_button" data-i18n="settings_change_password" onclick="formResetPassword()"></button>
+            <button class="simple_button" style="background: var(--quaternary)" data-i18n="logout" onclick="window.location.href='../start.php'"></button>
+        </div>
+    </div>
+
+    <!-- System Information -->
+    <div class="simple_card shadow_card">
+        <h2 class="title" data-i18n="legal"></h2>
+        <div class="flex_container centering direction_column" style="gap: 1rem;">
+            <div class="simple_card direction_column">
+                <a class="text" href='../../main.php?page=privacy' data-i18n="privacy_policy"></a> <!-- Privacy Policy -->
+            </div>
+            <div class="simple_card direction_column">
+                <a class="text" href='../../main.php?page=term' data-i18n="terms_of_service"></a> <!-- Terms of Service -->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

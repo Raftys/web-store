@@ -14,6 +14,8 @@ if (authProcess()) {
         fetchUserOneAddress();
     } else if ($_POST['action'] == "update_address") {
         updateAddress();
+    } else if ($_POST['action'] == "reset_password") {
+        resetPassword();
     }
 }
 
@@ -70,4 +72,23 @@ function updateAddress() {
         echo json_encode($response);
         exit();
     }
+}
+
+function resetPassword() {
+    $old_password = $_POST['old_password'];
+    $new_password = $_POST['new_password'];
+
+    $user = get("users","id","=",$_SESSION['user_info']['user_id'],'password',false);
+
+    if (!password_verify($old_password, $user['password'])) {
+        echo json_encode(['response' => 'Wrong Old Password']);
+        exit();
+    }
+
+    $response = update('users','id','=',$_SESSION['user_info']['user_id'],'password', password_hash($new_password, PASSWORD_DEFAULT),false);
+
+    if ($response == 1) {
+        echo json_encode(['response' => 'Done']);
+    } else echo json_encode(['response' => 'Failed to update Password.']);
+    exit();
 }

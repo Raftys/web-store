@@ -1,3 +1,9 @@
+// Run this on every page load
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    applyTheme(savedTheme);
+});
+
 // Show a notification toast with a message and type (info or error)
 async function showNotification(message, type="info") {
     try {
@@ -90,3 +96,26 @@ function getQueryParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
 }
+
+// Apply saved theme or system default on load
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme); // Apply light or dark
+}
+
+// Apply saved language on load
+function applyLanguage(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    setLanguage(lang);
+}
+
+function replaceText(itemHTMl = null, id, message) {
+    if (itemHTMl != null) {
+        itemHTMl.querySelector(id).removeAttribute('data-i18n');
+        itemHTMl.querySelector(id).textContent = message;
+    } else {
+        document.querySelector(id).removeAttribute('data-i18n');
+        document.querySelector(id).textContent = message;
+    }
+}
+
+

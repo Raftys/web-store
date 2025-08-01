@@ -38,6 +38,8 @@ if ($page === 'shop') {
     include('pages/orders/order_info.html');
 } elseif ($page === 'product') {
     include('pages/shop/preview_product.html');
+} elseif ($page === 'settings') {
+    include('pages/settings/settings.html');
 } elseif ($page === 'help') {
     include('pages/settings/help.html');
 } elseif ($page === 'privacy') {

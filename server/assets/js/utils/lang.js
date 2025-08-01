@@ -2,10 +2,8 @@ function setLanguage(lang) {
     fetch(`../../../components/lang/lang-${lang}.json`)
         .then(response => response.json())
         .then(data => {
-            currentLang = lang;
             localStorage.setItem("lang", lang);
             document.documentElement.lang = lang; // update <html lang="">
-            temp = data;
 
             observer.disconnect(); // 🔴 Stop observing temporarily
             updateTexts(data);
