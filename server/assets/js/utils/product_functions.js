@@ -36,7 +36,7 @@ function updatePrice(quantity) {
     // Get quantity
     const priceDisplay = document.getElementById('product_price');
     if (priceDisplay) {
-        const totalPrice = (product_info.get("price") * quantity).toFixed(2);
+        const totalPrice = (product_id_info.price * quantity).toFixed(2);
         priceDisplay.innerText = `Τιμή: ${totalPrice}€`;
     }
 }

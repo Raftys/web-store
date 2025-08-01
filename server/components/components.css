@@ -11,7 +11,6 @@
 
 /* Card */
 @import url('simple/card.css');
-@import url('simple/checkout.css');
 
 /* Items */
 @import url('simple/item_text.css');
@@ -19,27 +18,27 @@
 @import url('simple/item_input.css');
 
 /* Buttons */
-@import url('simple/button_add.css');
-@import url('simple/button_edit.css');
-@import url('simple/button_simple.css');
-@import url('simple/button_x.css');
+@import url('built/buttons/button_add.css');
+@import url('built/buttons/button_edit.css');
+@import url('built/buttons/button_simple.css');
+@import url('built/buttons/button_x.css');
 
 
 
 /* ============================= */
 /* Built Components */
 /* ============================= */
-/* Product */
-@import url('built/card/product.css');
-
 /* Social */
 @import url('built/social/social.css');
 
 /* Toast */
 @import url('built/toast/toast.css');
 
-/* Addresses */
-@import url('built/address/address.css');
+/* Cards */
+@import url('built/card/address.css');
+@import url('built/card/review/review.css');
+@import url('built/card/new/new.css');
+@import url('built/card/product.css');
 
 /* Form */
 @import url('built/form/form.css');
@@ -51,11 +50,5 @@
 
 /* Images */
 @import url('built/images/upload.css');
-
-/* New*/
-@import url('built/new/new.css');
-
-/* Review */
-@import url('built/review/review.css');
 
 /* {outline: 1px solid rgba(255, 0, 0, 0.5); }

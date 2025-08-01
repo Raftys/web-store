@@ -5,22 +5,23 @@ let email;       // User's email
 let phone;       // User's phone number
 
 // Initialize the page after DOM content is fully loaded
-window.onload = async function () {
+document.addEventListener('DOMContentLoaded', async function () {
     const userData = await getUserInfo();
-    await onFetch(userData);
-};
+    await fetchUser(userData);
+});
 
 // Process and display user data fetched from the server.
-async function onFetch(data) {
+async function fetchUser(data) {
     // Extract user information
     full_name = data.user.full_name;
     email = data.user.email;
     phone = data.user.phone;
 
     // Update corresponding elements with user info
-    setElementValueOrContent('full_name', full_name);
-    setElementValueOrContent('email', email);
-    setElementValueOrContent('phone', phone);
+    document.getElementById('full_name').value = full_name;
+    document.getElementById('email').value = email;
+    document.getElementById('phone').value = phone;
+
 
     // Normalize addresses to always be an array
     addresses = Array.isArray(data.address) ? data.address : [data.address];
@@ -50,7 +51,7 @@ function changeUserInfo() {
         .then(async () => {
             // After successful update, refresh user info on the page
             await showNotification('Successfully Changed User Info','success');
-            await onFetch(await getUserInfo());
+            await fetchUser(await getUserInfo());
         })
         .catch(error => {
             console.error('Error updating user information:', error);

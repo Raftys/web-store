@@ -15,7 +15,6 @@
     <!-- JavaScript files; header.js loads immediately, functions.js deferred -->
     <script src="../../assets/js/root/header.js"></script> <!-- Load JS after HTML parsing -->
     <script src="../../assets/js/utils/functions.js" defer></script>
-    <script src="../../assets/js/utils/html_functions.js" defer></script>
     <script src="../../assets/js/utils/lang.js" defer></script>
     <script src="../../assets/js/utils/user_functions.js" defer></script>
     <script src="../../components/built/form/form.js" defer></script>
@@ -34,17 +33,17 @@
 
             <!-- Home Button -->
             <button class="header_button" data-i18n-tooltip="header_home" onclick="window.location.href='../../main.php'">
-                <img src="../../assets/icons/home.svg" alt="Header Home" class="toast_icon"/>
+                <img src="../../assets/icons/header/home.svg" alt="Header Home" class="toast_icon"/>
             </button>
 
             <!-- Shop Button -->
             <button class="header_button" data-i18n-tooltip="header_shop" onclick="window.location.href='../../main.php?page=shop'">
-                <img src="../../assets/icons/store.svg" alt="Header Shop" class="toast_icon"/>
+                <img src="../../assets/icons/header/store.svg" alt="Header Shop" class="toast_icon"/>
             </button>
 
             <!-- Cart Button with dynamic item count -->
             <button class="header_button" data-i18n-tooltip="header_cart" onclick="window.location.href='../../main.php?page=cart'">
-                <img src="../../assets/icons/cart.svg" alt="Header Cart" class="toast_icon"/>
+                <img src="../../assets/icons/header/cart.svg" alt="Header Cart" class="toast_icon"/>
                 <span class="header_button_counter" id="cart_label">
                   (<?php echo isset($_SESSION['totalItems']) ? $_SESSION['totalItems'] : 0; ?>)
                 </span>
@@ -52,7 +51,7 @@
 
             <!-- User Profile Button -->
             <button class="header_button" data-i18n-tooltip="header_account" id="header_profile">
-                <img src="../../assets/icons/profile.svg" alt="Header Profile" class="toast_icon"/>
+                <img src="../../assets/icons/header/profile.svg" alt="Header Profile" class="toast_icon"/>
             </button>
 
             <!-- Overlay for profile panel background dimming -->
@@ -64,7 +63,7 @@
                     <div class="profile_close_button">
                         <?php include($_SERVER['DOCUMENT_ROOT'].'/components/built/buttons/x.html'); ?> <!-- Close button icon -->
                     </div>
-                    <img src="../../assets/icons/profile.svg" alt="Header Profile" class="regular_image"/> <!-- Profile icon -->
+                    <img src="../../assets/icons/header/profile.svg" alt="Header Profile" class="regular_image"/> <!-- Profile icon -->
                     <h2 id="profile_name" data-i18n="header_profile_slide"></h2> <!-- Profile heading -->
                 </div>
 
@@ -77,6 +76,7 @@
                     <button class="simple_button profile_button" onclick="window.location.href='../main.php?page=orders&user=super'" data-i18n="profile_slide_all_orders"></button>
                     <button class="simple_button profile_button" onclick="window.location.href='../main.php?page=shop&user=super'" data-i18n="profile_slide_all_products"></button>
                     <?php endif; ?>
+                    <button class="simple_button profile_button" onclick="window.location.href='../start.php'" data-i18n="profile_slide_settings"></button>
                     <button class="simple_button profile_button" onclick="window.location.href='../start.php'" style="margin-top: 40px; background: var(--quaternary)" data-i18n="logout"></button>
                     <?php else: ?>
                     <button class="simple_button profile_button" onclick="window.location.href='../main.php?page=login'" data-i18n="login"></button>

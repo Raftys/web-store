@@ -1,99 +1,120 @@
+<!-- Document type -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders Management</title>
-    <link rel="stylesheet" href="../../assets/css/orders/order_info.css"> <!-- Your CSS file -->
-    <script src="../../assets/js/orders/order_info.js"></script> <!-- Your JavaScript file -->
+
+    <!-- Title -->
+    <title data-i18n="order_info__page_title"></title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/orders/orders.css">
+    <link rel="stylesheet" href="../../assets/css/cart/cart.css">
+
+    <!-- JavaScript -->
+    <script src="../../assets/js/orders/order_info.js"></script>
 </head>
+
 <body>
+<!-- Order Header -->
 <div class="flex_container">
-    <h1 class="big_title" id="order_title" >Order Id: </h1>
+    <h1 class="big_title" id="order_title"></h1>
     <img src="" alt="status" class="tiny_image" id="status_image">
-    <p class="small_text" id="status_text">Hello</p>
+    <p class="small_text" id="status_text"></p>
+
+    <!-- Status Dropdown (Admin only) -->
     <?php if (isset($_SESSION['super_user']) && $_SESSION['super_user'] === '1'): ?>
     <div class="dropdown_container" onmouseleave="toggleDropdown(false)">
-        <button class="dropdown_title" onmouseenter="toggleDropdown(true)" >Change Status &nbsp; ▼</button>
+        <button class="dropdown_title" onmouseenter="toggleDropdown(true)" data-i18n="order_change_status"></button>
         <div class="dropdown_items">
-            <p onclick="updateStatus('pending')" >Pending</p>
-            <p onclick="updateStatus('processing')">Processing</p>
-            <p onclick="updateStatus('shipped')">Shipped</p>
-            <p onclick="updateStatus('delivered')">Delivered</p>
-            <p onclick="updateStatus('canceled')">Canceled</p>
+            <p onclick="updateStatus('pending')" data-i18n="order_pending"></p>
+            <p onclick="updateStatus('processing')" data-i18n="order_processing"></p>
+            <p onclick="updateStatus('shipped')" data-i18n="order_shipped"></p>
+            <p onclick="updateStatus('delivered')" data-i18n="order_delivered"></p>
+            <p onclick="updateStatus('canceled')" data-i18n="order_canceled"></p>
         </div>
     </div>
     <?php endif; ?>
 </div>
+
+<!-- Main Content -->
 <div class="flex_container column">
     <div class="flex_container">
+        <!-- Product Info -->
         <div class="simple_card left_column">
-            <h1 class="title">Product Info</h1>
+            <h1 class="title" data-i18n="order_product_info"></h1>
             <div class="cart_products" id="order_products"></div>
         </div>
+
+        <!-- Payment Info -->
         <div class="simple_card left_column">
-            <h1 class="title">Payment Info</h1>
+            <h1 class="title" data-i18n="order_payment_info"></h1>
             <div class="checkout_details">
-                <span>Payment Method:</span>
+                <span data-i18n="order_payment_method"></span>
                 <span id="payment_method"></span>
-                <span>Receipt:</span>
+                <span data-i18n="order_receipt_title"></span>
                 <span id="receipt"></span>
-                <span>Date:</span>
+                <span data-i18n="date"></span>
                 <span id="date"></span>
-                <span>Your cart subtotal:</span>
+                <span data-i18n="cart_checkout_subtotal"></span>
                 <span id="sub_total"></span>
-                <span>Discount through applied coupons:</span>
+                <span data-i18n="cart_checkout_coupon_discount"></span>
                 <span id="coupon"></span>
-                <span>Shipping fees:</span>
+                <span data-i18n="cart_checkout_shipping_fee"></span>
                 <span id="shipping"></span>
             </div>
-            <label class="product_price" id="total_price">Total Price:</label>
+            <label class="product_price order_total_price" id="total_price"></label>
         </div>
     </div>
+
+    <!-- Address Info -->
     <div class="simple_card" style="width: auto">
-        <h1 class="title">Address Info</h1>
+        <h1 class="title" data-i18n="address_info"></h1>
         <div class="flex_container">
             <div class="flex_container column left_column">
                 <div class="flex_input">
-                    <label for="full_name">Full Name</label>
-                    <input class="input_field" type='text' placeholder="Full Name" id="full_name" disabled>
+                    <label for="full_name" data-i18n="full_name"></label>
+                    <input class="input_field" type='text' id="full_name" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="email">Email</label>
-                    <input class="input_field" type='text' placeholder="Email" id="email" disabled>
+                    <label for="email" data-i18n="email"></label>
+                    <input class="input_field" type='text'  id="email" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="phone">Phone Number</label>
-                    <input class="input_field" type='text' placeholder="Phone Number" id="phone" disabled>
+                    <label for="phone" data-i18n="phone"></label>
+                    <input class="input_field" type='text' id="phone" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="address">Address</label>
-                    <input class="input_field" type='text' placeholder="Address" id="address" disabled>
+                    <label for="address" data-i18n="address"></label>
+                    <input class="input_field" type='text' id="address" disabled>
                 </div>
             </div>
+
+            <!-- Right Column -->
             <div class="flex_container column right_column">
                 <div class="flex_input">
-                    <label for="zip_code">Zip Code</label>
-                    <input class="input_field" type='text' placeholder="Zip Code" id="zip_code" disabled>
+                    <label for="zip_code" data-i18n="zip_code"></label>
+                    <input class="input_field" type='text' id="zip_code" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="city">City</label>
-                    <input class="input_field" type='text' placeholder="City" id="city" disabled>
+                    <label for="city" data-i18n="city"></label>
+                    <input class="input_field" type='text'  id="city" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="country">Country</label>
-                    <input class="input_field" type='text' placeholder="Country" id="country" disabled>
+                    <label for="country" data-i18n="country"></label>
+                    <input class="input_field" type='text' id="country" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="box_now">Box Now</label>
-                    <input class="input_field" type='text' placeholder="Box Now" id="box_now" onkeyup="toggleUpdateButton()">
+                    <label for="box_now" data-i18n="box_now"></label>
+                    <input class="input_field" type='text' id="box_now" onkeyup="toggleUpdateButton()">
                 </div>
             </div>
         </div>
-        <button class="simple_button" id="apply_button" onclick="updateBoxNow()" disabled>Update Box Now ID</button>
+        <button class="simple_button" id="apply_button" onclick="updateBoxNow()" data-i18n="order_update_box_now" disabled></button>
     </div>
 </div>
-
-
 </body>
 </html>

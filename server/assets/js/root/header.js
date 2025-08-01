@@ -21,11 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-/**
- * Toggles the visibility of the profile panel and updates UI state.
- *
- * @param {string} value - Accepts 'open' or 'close' to control the panel state.
- */
+// Toggles the visibility of the profile panel and updates UI state.
 function toggleProfilePanel(value) {
     const panel = document.getElementById('header_account_panel');  // Profile slide panel
     let [add, remove] = value === 'open' ? ['open', 'close'] : ['close', 'open'];

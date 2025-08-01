@@ -27,7 +27,7 @@ function getUserInfo(data = null) {
 // Loads and renders address cards into the DOM
 async function loadAddresses(addresses, type = 'cart') {
     // Load address card template asynchronously
-    const template = await loadHtmlComponent('../../components/built/address/address.html');
+    const template = await loadHtmlComponent('../../components/built/card/address.html');
 
     // Clear existing address cards container
     const container = document.getElementById('addresses');

@@ -2,6 +2,7 @@
 
 if (session_status() == PHP_SESSION_NONE)
     session_start();
+
 if ($_POST['action'] === 'reset') {
     resetCart();
 } else if ($_POST['action'] === 'fetch') {
@@ -9,35 +10,35 @@ if ($_POST['action'] === 'reset') {
 } else if ($_POST['action'] === 'apply_coupon') {
     applyCoupon();
 } else if ($_POST['action'] === 'add') {
-   addCart();
+    addCart();
 }
 
 echo "No Action Selected";
 exit();
 
+// Reset the shopping cart
 function resetCart() {
-    // Reset cart session variables
     $_SESSION['cart'] = [];
     $_SESSION['totalItems'] = 0;
-
-    // Redirect to main.php after resetting the cart
     exit();
 }
 
+// Fetch current cart contents
 function fetchCart() {
-    if(isset($_SESSION['cart']))
+    if (isset($_SESSION['cart']))
         echo json_encode($_SESSION['cart']);
     else
         echo json_encode("Error");
     exit();
 }
 
+// Apply coupon code if valid
 function applyCoupon() {
     if (isset($_POST['coupon'])) {
         $coupon = "'" . $_POST['coupon'] . "'";
 
-        // Check if coupon exists
-        $info = select_value_from_id('code', $coupon,'coupons');
+        // Verify coupon exists in database
+        $info = select_value_from_id('code', $coupon, 'coupons');
         if ($info) {
             echo json_encode(['info' => $info]);
             exit();
@@ -45,11 +46,10 @@ function applyCoupon() {
     }
     echo json_encode(['info' => 'no coupon']);
     exit();
-
 }
 
+// Add item or update quantity in cart
 function addCart() {
-    // Ensure cart is an array
     if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
@@ -57,24 +57,22 @@ function addCart() {
     $id = $_POST['id'];
     $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
 
-    // Check if the item is already in the cart
     $found = false;
     foreach ($_SESSION['cart'] as $index => &$cartItem) {
         if ($cartItem['id'] == $id) {
             $cartItem['quantity'] += $quantity;
 
             if ($cartItem['quantity'] <= 0) {
-                unset($_SESSION['cart'][$index]); // ✅ Correctly remove item from cart
-                $_SESSION['cart'] = array_values($_SESSION['cart']); // reindex
+                unset($_SESSION['cart'][$index]);
+                $_SESSION['cart'] = array_values($_SESSION['cart']); // Reindex array
             }
 
             $found = true;
             break;
         }
     }
-    unset($cartItem); // 🔒 Good practice to avoid reference issues
+    unset($cartItem);
 
-    // If not found, add new item
     if (!$found) {
         $_SESSION['cart'][] = [
             'id' => $id,
@@ -85,13 +83,12 @@ function addCart() {
             'quantity' => $quantity
         ];
     }
-    // Ensure totalItems is numeric
+
     if (!isset($_SESSION['totalItems']) || !is_numeric($_SESSION['totalItems'])) {
         $_SESSION['totalItems'] = 0;
     }
     $_SESSION['totalItems'] += $quantity;
 
-    // Return success response
     echo json_encode(['totalItems' => $_SESSION['totalItems']]);
     exit();
 }

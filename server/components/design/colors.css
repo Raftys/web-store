@@ -2,31 +2,20 @@
     /* Base Colors */
     --white: #ffffff;
     --black: #000000;
-    --dark: #202124;
-
-    /* Grays */
-    --gray-50: #fafafa;
-    --gray-100: #f5f5f5;
-    --gray-200: #e0e0e0;
-    --gray-300: #d1d5db;
-    --gray-400: #9ca3af;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
+    --black_low: #00000066;
+    --white_low: #ffffff1A;
 
     /* Greens */
-    --green-50: #f0fdf4;
-    --green-100: #dcfce7;
-    --green-200: #bbf7d0;
-    --green-300: #86efac;
-    --green-400: #4ade80;
-    --green-500: #22c55e;
+    --green_low: #22c55e;
     --green: #32cd32;
-    --green-600: #16a34a;
-    --green-700: #15803d;
-    --green-800: #166534;
-    --green-900: #14532d;
+
+    /* Red */
+    --red: #FF0000FF;
+    --red_low: #FF0000CC;
+
+    /* Blue */
+    --blue: #3b82f6;
+    --blue_low: #3b82f6CC;
 
     /* Social */
     --facebook: #0165e1;
@@ -35,11 +24,4 @@
     --instagram3: #dc2743;
     --instagram4: #cc2366;
     --instagram5: #bc1888;
-
-    --black_low: #00000066;
-    --white_low: #ffffff1A;
-    --red_low:   #FF0000CC;
-    --blue: #3b82f6;
-    --red: #FF0000FF;
-
 }

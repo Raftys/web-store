@@ -23,6 +23,7 @@ function connect() {
 }
 
 // Executes a given SQL query using the global $client_db connection.
+// Supports prepared statements if $types and $params are provided.
 function doQuery($query, $types = null, ...$params) {
     global $client_db;
 
@@ -54,9 +55,8 @@ function doQuery($query, $types = null, ...$params) {
     return $stmt->get_result();
 }
 
-
 // Builds and executes a SELECT query with dynamic filters and projections.
-// Accepts table name, filter conditions, projection columns, and limit; returns the result as an array.
+// Returns either a single row (if $many is false) or multiple rows as an array.
 function get($table, $filter_keys, $filter_condition, $filter_values, $projection_keys, $many) {
 
     // Make sure everything is array for the sql query
@@ -90,6 +90,8 @@ function get($table, $filter_keys, $filter_condition, $filter_values, $projectio
     return buildResult(doQuery($sql));
 }
 
+// Builds and executes an UPDATE query with dynamic filters and update values.
+// Returns the result of the query execution.
 function update($table, $filter_keys, $filter_condition, $filter_values, $update_keys, $update_values, $many) {
     // Make sure everything is array for the sql query
     if (!is_array($filter_keys)) {
@@ -126,6 +128,8 @@ function update($table, $filter_keys, $filter_condition, $filter_values, $update
     return doQuery($sql);
 }
 
+// Builds and executes an INSERT query with provided keys and values.
+// Returns the inserted record's ID.
 function insert($table, $insert_keys, $insert_values) {
     // Join column names
     $columns = implode(', ', $insert_keys);
@@ -146,6 +150,8 @@ function insert($table, $insert_keys, $insert_values) {
     return doQuery($sql);
 }
 
+// Builds and executes a DELETE query by a specified ID column and value.
+// Returns the result of the deletion query.
 function delete($table, $id, $value) {
     // Quote value properly
     $quoted_value = ($value === null) ? "NULL" : "'" . addslashes($value) . "'";
@@ -156,9 +162,8 @@ function delete($table, $id, $value) {
     return doQuery($sql);
 }
 
-
 // Converts a MySQLi result set into an array of associative arrays.
-// Each array element represents a row from the result set.
+// Returns either a single associative array if one row, multiple rows array, or empty array.
 function buildResult($result) {
     $rows = [];
 
@@ -179,50 +184,20 @@ function buildResult($result) {
     return $rows; // returns either [] (no rows) or array of rows
 }
 
-
-
-
-
-
-
-
-
-
-
-
-// Retrieves all records from the specified database table.
+// Retrieves all records from the specified table.
 function select_all($table) {
     $sql = "SELECT * FROM $table";
     return buildResult(doQuery($sql));
 }
 
+// Retrieves a single record by ID from the specified table.
 function select_all_from_id($id, $table) {
     $sql = "SELECT * FROM $table WHERE id = '$id'";
     return buildResult(doQuery($sql));
 }
 
+// Retrieves records filtered by a column and value from the specified table.
 function select_value_from_id($id, $id_value, $table) {
     $sql = "SELECT * FROM $table WHERE $id = $id_value";
     return buildResult(doQuery($sql));
 }
-
-function update_all_by_id($id,$id_value, $table) {
-    $sql = "UPDATE $table SET  WHERE $id =  $id_value";
-    return buildResult(doQuery($sql));
-}
-
-function load_products() {
-    $sql = "SELECT * FROM products";
-    return doQuery($sql);
-}
-
-
-function create_customer($full_name, $email, $phone, $address, $city, $zip_code, $country, $box_now) {
-    $conn = connect();
-    $sql = "INSERT INTO customers (full_name, email, phone, address, city, zip_code, country, box_now) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ssssssss', $full_name, $email, $phone, $address, $city, $zip_code, $country, $box_now);
-    $stmt->execute();
-    return $conn->insert_id;
-}
-

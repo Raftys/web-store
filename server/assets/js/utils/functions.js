@@ -63,18 +63,30 @@ async function showNotification(message, type="info") {
     }
 }
 
-// Set the value or content of an element by ID
-function setElementValueOrContent(id, value) {
-    const element = document.getElementById(id);
-    if (element) {
-        if (element.tagName === 'INPUT') {
-            // If element is an input, set its value
-            element.value = value;
-        } else {
-            // Otherwise, set innerHTML content
-            element.innerHTML = value;
+// Load an HTML component from a given path and return its first element
+async function loadHtmlComponent(path) {
+    try {
+        const response = await fetch(path);
+
+        if (!response.ok) {
+            console.error(`Failed to load HTML from: ${path}`);
+            return null;
         }
-    } else {
-        console.warn(`Element with ID '${id}' not found.`);
+
+        const html = await response.text();
+
+        const container = document.createElement('div');
+        container.innerHTML = html.trim();
+
+        return container.firstElementChild;
+    } catch (error) {
+        console.error(`Error loading component from ${path}:`, error);
+        return null;
     }
+}
+
+// Get a query parameter value by name from the current URL
+function getQueryParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
 }

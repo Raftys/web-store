@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item List</title>
-    <script src="../../assets/js/shop/shop.js" defer></script> <!-- Link to the JavaScript file -->
-    <script src="../../assets/js/shop/super_user.js" defer></script> <!-- Link to the JavaScript file -->
+
+    <!-- Page title -->
+    <title data-i18n="products"></title>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/shop/shop.js" defer></script>
+    <script src="../../assets/js/shop/super_user.js" defer></script>
     <script src="../../assets/js/utils/product_functions.js" defer></script>
 </head>
 <body>
+<!-- Main container -->
 <div class="flex_container direction_column">
+
+    <!-- Button to add new product (hidden by default) -->
     <button class="simple_button" style="display: none" id="add_product" onclick="openProductForm()">Add New Product</button>
+
+    <!-- Page heading -->
     <h1 class="title" data-i18n="products"></h1>
-        <input type="hidden" name="product_id" id="product_id_input">
-    <div class="flex_container direction_column" id="item_list">
-    </div>
+
+    <!-- Container for product items -->
+    <div class="flex_container direction_column" id="item_list"></div>
 </div>
 </body>
 </html>

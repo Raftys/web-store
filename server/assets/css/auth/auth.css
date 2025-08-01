@@ -1,3 +1,4 @@
+/* Styles the authentication form container with flex layout and centered text */
 .form_auth {
     display: flex;
     flex-direction: column;

@@ -1,11 +1,11 @@
-
-/* General footer styles */
+/* Style for footer */
 footer {
     background-color: var(--primary);
     padding: 20px;
     text-align: center;
 }
 
+/* Style for flex element */
 .flex {
     flex: 1;
 }

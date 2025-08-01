@@ -1,4 +1,4 @@
-/* Big main title style */
+/* Big main title style - extra large, bold, and centered */
 .big_title {
     width: auto;
     font-size: xxx-large;
@@ -8,7 +8,7 @@
     margin: 12px;
 }
 
-/* Section title style */
+/* Section title style - slightly smaller than big title */
 .title {
     font-size: xx-large;
     font-weight: bold;
@@ -17,7 +17,7 @@
     margin: 12px;
 }
 
-/* Large paragraph text */
+/* Large paragraph text - bold and centered */
 .big_text {
     font-size: large;
     text-align: center;
@@ -26,7 +26,7 @@
     margin: 8px;
 }
 
-/* Regular paragraph text */
+/* Regular paragraph text - justified alignment */
 .text {
     font-size: medium;
     text-align: justify;
@@ -34,10 +34,12 @@
     margin: 8px;
 }
 
+/* Left-aligned text utility */
 .left {
     text-align: left;
 }
 
+/* Card title with fixed height, bottom border, and left padding */
 .card_title {
     width: auto;
     height: 40px;
@@ -51,21 +53,19 @@
     color: var(--tertiary);
 }
 
+/* Animated text with color-changing effect */
 .changing_color_text {
     color: var(--primary);
     font-size: x-large;
     animation: color_change 5s infinite ease-in-out;
 }
 
+/* Keyframes for color-changing text animation */
 @keyframes color_change {
     0%, 100% {
-    color: var(--primary_low);
+        color: var(--primary_low);
     }
     50% {
         color: var(--quaternary);
     }
 }
-
-
-
-

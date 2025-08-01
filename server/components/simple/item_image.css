@@ -1,11 +1,12 @@
-/* x-Large image style */
+/* Extra-large image style - scaled down slightly with rounded corners */
 .huge_image {
     width: 100%;
     height: auto;
     transform: scale(0.8);
     border-radius: 10px;
 }
-/* Large image style */
+
+/* Large image style - takes up 70% width with rounded corners */
 .big_image {
     width: 70%;
     height: auto;
@@ -13,7 +14,7 @@
     margin: 8px;
 }
 
-/* Regular image style */
+/* Regular image style - moderate size (30% width) with spacing */
 .regular_image {
     width: 30%;
     height: auto;
@@ -21,7 +22,7 @@
     margin: 8px;
 }
 
-/* Small image style */
+/* Small image style - compact (15% width) with rounded corners */
 .small_image {
     width: 15%;
     height: auto;
@@ -29,17 +30,18 @@
     margin: 8px;
 }
 
-/* Tiny image style */
+/* Tiny image style - fixed height (50px), ideal for icons or avatars */
 .tiny_image {
     height: 50px;
     border-radius: 10px;
     margin: 8px;
 }
 
+/* Full container-filling image - maintains aspect ratio with centering */
 .fill_image {
     width: 100%;
-   height: 100%;
-    object-fit: contain;  /* cover the container, cropping if needed */
-    object-position: center; /* center the image */
-    display: block;     /* removes inline gap below image */
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
 }

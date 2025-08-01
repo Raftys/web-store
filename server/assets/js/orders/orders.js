@@ -1,6 +1,12 @@
 let orders = []; // Global array to store fetched orders
 let super_user = 'null'; // Flag for user access level
 
+// Initialize and fetch orders on page load
+document.addEventListener('DOMContentLoaded', async function () {
+    super_user = getQueryParameter('user');
+    await fetchOrders();
+});
+
 // Fetch orders from the server
 async function fetchOrders() {
     try {
@@ -28,7 +34,7 @@ async function fetchOrders() {
 
 // Render all orders to the DOM
 async function displayOrders(display_orders = null) {
-    const ordersList = document.getElementById('orders-list');
+    const ordersList = document.getElementById('orders_list');
     ordersList.innerHTML = '';
 
     display_orders = display_orders || orders;
@@ -60,13 +66,7 @@ async function displayOrders(display_orders = null) {
 
 // Filter and display orders by search input
 async function searchOrders() {
-    const searchValue = document.getElementById('search-bar').value.toLowerCase();
+    const searchValue = document.getElementById('search_bar').value.toLowerCase();
     const filteredOrders = orders.filter(order => order.id.includes(searchValue));
     await displayOrders(filteredOrders);
 }
-
-// Initialize and fetch orders on page load
-window.onload = async function () {
-    super_user = getQueryParameter('user');
-    await fetchOrders();
-};

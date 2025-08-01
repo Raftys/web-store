@@ -1,3 +1,4 @@
+/* Simple card container with full width, rounded corners, and soft shadow */
 .simple_card {
     width: 100%;
     background: var(--secondary);
@@ -10,29 +11,34 @@
     box-sizing: border-box;
 }
 
+/* Shadow card variant with smaller shadow and internal gap */
 .shadow_card {
     padding: 8px;
     margin: 8px;
     border-radius: 8px;
     box-shadow: 5px 5px 5px var(--tertiary_low);
-    display: flex; /* Change from inline-block to flex */
+    display: flex;
     background-color: var(--secondary);
     gap: 5px;
     flex-direction: column;
 }
 
+/* Card with rounded top-left corner emphasized */
 .top_left {
     border-radius: 19px 7px 7px 7px;
 }
 
+/* Card with rounded top-right corner emphasized */
 .top_right {
     border-radius: 7px 19px 7px 7px;
 }
 
+/* Card with rounded bottom-left corner emphasized */
 .bottom_left {
     border-radius: 7px 7px 7px 19px;
 }
 
+/* Card with rounded bottom-right corner emphasized */
 .bottom_right {
     border-radius: 7px 7px 19px 7px;
 }

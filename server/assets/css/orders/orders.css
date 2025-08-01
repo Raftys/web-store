@@ -1,105 +1,75 @@
-/* styles.css */
-
-/* Basic reset */
-
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Center container for the orders list */
-.container {
-    display: flex;
-    flex-direction: column; /* Arrange elements in a column */
-    align-items: center; /* Center elements horizontally */
-    max-width: 800px; /* Maximum width for larger screens */
-    margin: 0 auto; /* Center the container */
-    padding: 20px; /* Padding around the container */
-    background: white; /* Background color for the container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Center container for the orders list */
-#orders-container {
-    display: flex;
-    flex-direction: column; /* Arrange elements in a column */
-    align-items: center; /* Center elements horizontally */
-    max-width: 800px; /* Maximum width for larger screens */
-    margin: 20px auto; /* Center the container */
-    padding: 20px; /* Padding around the container */
-    background: white; /* Background color for the container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Adjust the padding of orders-list for side margins */
-#orders-list {
+/* Style for orders container */
+.orders_container {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 40px); /* Reduce width by total margin (20px on each side) */
-    margin: 0 20px; /* Add margin to left and right */
+    align-items: center;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--secondary);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--tertiary_low);
 }
 
-
-
-.order-card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px; /* Add more padding */
-    margin: 10px 0; /* Vertical margin for spacing */
-    width: 100%; /* Full width of the parent */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s; /* Add a transition effect */
+/* Style for orders list */
+.orders_list {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 40px);
+    margin: 0 20px;
 }
 
-/* Hover effect for the order card */
-.order-card:hover {
-    transform: translateY(-3px); /* Slight lift on hover */
+/* Style for search container */
+.search_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 16px;
 }
 
-.order-card h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+/* Style for search input */
+.search_input {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: var(--primary);
+    border: none;
+    color: var(--tertiary);
+    padding: 0.7rem 1rem;
+    border-radius: 30px;
+    width: 12em;
+    transition: all ease-in-out .5s;
+    margin-right: -2rem;
 }
 
-.order-card p {
-    margin: 5px 0;
+/* Hover/focus effect for search input */
+.search_input:hover, .search_input:focus {
+    box-shadow: 0 0 1em var(--primary_low);
 }
 
-.order-card strong {
-    color: #333;
+/* Focus effect for search input */
+.search_input:focus {
+    outline: none;
+    background-color: var(--primary_low);
 }
 
-/* Search bar styles */
-input#search-bar {
-    width: 100%; /* Full width */
-    padding: 10px; /* Padding for comfort */
-    margin-bottom: 20px; /* Space below */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-}
-.update-box-now {
-    background-color: #28a745; /* Green color */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding for size */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 14px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for a raised effect */
+/* Placeholder style for search input */
+.search_input::-webkit-input-placeholder {
+    font-weight: 100;
+    color: var(--secondary);
 }
 
-.update-box-now:hover {
-    background-color: #218838; /* Darker green on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+/* Style for search icon */
+.search_icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: var(--secondary);
 }
 
-.update-box-now:active {
-    background-color: #1e7e34; /* Even darker green on click */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+/* Style for total price display */
+.order_total_price {
+    margin-left: auto;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
 }

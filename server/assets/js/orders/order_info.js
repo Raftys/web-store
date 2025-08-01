@@ -1,8 +1,12 @@
 // Store current BoxNow value
 let box_now;
+let order_info;
+let order_items;
+let user_address = [];
+
 
 // Initialize order view and user access on window load
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', function () {
     fetchOrder();
     const super_user = getQueryParameter('user');
     if (super_user !== 'super') {
@@ -10,11 +14,7 @@ window.onload = function () {
     } else {
         box_now = document.getElementById('box_now').value;
     }
-};
-
-let order_info;
-let order_items;
-let user_address = [];
+});
 
 // Fetch order and product data from the server
 function fetchOrder() {
@@ -66,7 +66,7 @@ async function setUserInfo() {
 
 // Render order item cards using product data
 async function setItemsInfo() {
-    const productTemplate = await loadHtmlComponent('../../components/built/product/product.html');
+    const productTemplate = await loadHtmlComponent('../../components/built/card/product.html');
     const itemList = document.getElementById('order_products');
     itemList.innerHTML = '';
 
@@ -81,8 +81,11 @@ async function setItemsInfo() {
         productCard.querySelector('#product_price').textContent = 'Total: ' + (item.price * item.quantity) + '€';
         productCard.querySelector('#product_price_per_item').textContent = 'Per Item: ' + item.price + '€';
 
-        productCard.querySelector('.decrease_button').style.display = 'none';
-        productCard.querySelector('.increase_button').style.display = 'none';
+        productCard.querySelector('.product_quantity').style.justifyContent = 'center';
+        productCard.querySelector('.decrease_button').remove();
+        productCard.querySelector('.increase_button').remove();
+        productCard.querySelector('.add_button').remove();
+
 
         itemList.append(productCard);
     }

@@ -1,27 +1,7 @@
 /* Light Theme */
 :root[data-theme="light"] {
-    /* Basic Colors */
-    --background: var(--white);
-    --surface: var(--gray-100);
-    --border: var(--gray-200);
-
-    /* Shadow */
-    --shadow_primary: var(--green-700);
-    --shadow: var(--gray-400);
-    --shadow_deeper: var(--gray-800);
-
-    /* Backgrounds */
-    --background_primary: var(--green);
-    --backgorund_green_darker: var(--green-700);
-    --big_text: var(--black);
-    --text: var(--white);
-
-
-
-
-
     --primary: var(--green);
-    --primary_low: var(--green-500);
+    --primary_low: var(--green_low);
     --secondary: var(--white);
     --secondary_low: var(--white_low);
     --tertiary: var(--black);
@@ -29,36 +9,16 @@
     --quaternary: var(--red);
     --quaternary_low: var(--red_low);
 
-
-
-
-
-
-
-
-    --primary-hover: var(--green-700);
-    --primary-bg: var(--green-100);
 }
 
 /* Dark Theme */
 :root[data-theme="dark"] {
-    --background: var(--dark);
-    --shadow: var(--gray-400);
-    --shadow_deeper: var(--gray-800);
-
-    --surface_basic: var(--gray-300);
-    --border_basic: var(--gray-200);
-
-    /* Shadow */
-    --shadow_green: var(--green-800);
-
-    /* Backgrounds */
-    --background_green: var(--green-700);
-    --big_text: var(--white);
-
     --primary: var(--green);
+    --primary_low: var(--green_low);
     --secondary: var(--black);
     --secondary_low: var(--black_low);
     --tertiary: var(--white);
     --tertiary_low: var(--white_low);
+    --quaternary: var(--red);
+    --quaternary_low: var(--red_low);
 }

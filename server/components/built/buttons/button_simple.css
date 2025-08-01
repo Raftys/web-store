@@ -1,23 +1,22 @@
 /* Stylish rounded button with hover shine effect */
-/* Source: Uiverse.io by adeladel522 */
 .simple_button {
     position: relative;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 10px 20px var(--tertiary_low); /* Button shadow */
-    padding-block: 0.5rem; /* Vertical padding */
-    padding-inline: 1.25rem; /* Horizontal padding */
-    background-color: var(--primary); /* Main button color */
-    border-radius: 9999px; /* Fully rounded edges */
+    box-shadow: 0 10px 20px var(--tertiary_low);
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background-color: var(--primary);
+    border-radius: 9999px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: var(--text); /* Button text color */
-    gap: 10px; /* Space between text and icon */
+    color: var(--secondary);
+    gap: 10px;
     font-weight: bold;
-    border: 3px solid var(--tertiary); /* Button border */
+    border: 3px solid var(--tertiary)z;
     outline: none;
-    overflow: hidden; /* Hide shine overflow */
+    overflow: hidden;
     font-size: 15px;
     margin: 16px;
 }
@@ -51,8 +50,8 @@
     height: 100%;
     background-image: linear-gradient(
             120deg,
-            rgba(255, 255, 255, 0) 30%, /* Transparent edges */
-            var(--secondary), /* Shine color */
+            rgba(255, 255, 255, 0) 30%,
+            var(--secondary),
             rgba(255, 255, 255, 0) 70%
     );
     top: 0;
@@ -75,9 +74,9 @@
 
 /* Disabled button styling: faded color, no hover/shine effect */
 .simple_button:disabled {
-    background-color: var(--tertiary_low); /* Greyed-out background */
-    color: var(--tertiary); /* Muted text color */
-    border-color: var(--tertiary_low); /* Grey border */
+    background-color: var(--tertiary_low);
+    color: var(--tertiary);
+    border-color: var(--tertiary_low);
     cursor: not-allowed;
     box-shadow: none;
     transform: none;

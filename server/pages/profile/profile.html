@@ -6,49 +6,61 @@
     <!-- Meta and scripts -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../assets/js/profile/account.js" defer></script>
-    <title>Account</title>
+    <script src="../../assets/js/profile/profile.js" defer></script>
+    <title data-i18n="profile_slide_account"></title>
 </head>
 
 <body>
 <!-- Main Container -->
 <div class="flex_container column">
-    <h1 class="big_title">Πληροφορίες Λογαριασμού</h1>
+    <h1 class="big_title" data-i18n="profile_slide_account"></h1>
 
     <!-- Account Section -->
-    <div class="flex_container row">
+    <div class="flex_container centering">
         <!-- Left: Profile Image & Actions -->
-        <div class="simple_card left_column">
-            <img src="../../assets/images/user.png" alt="Account Image" class="big_image">
-            <button class="simple_button">Settings</button>
+        <div class="simple_card column" style="align-items: center">
+            <svg
+                    class="regular_image"
+                    fill= "var(--primary)"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                        d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"
+                ></path>
+            </svg>
+            <button class="simple_button" data-i18n="profile_slide_settings"></button>
             <button class="simple_button" onclick="window.location.href='../start.php'"
-                    style="margin-top: 40px; background: var(--background_red)">Log Out</button>
+                    style="margin-top: 40px; background: var(--quaternary)" data-i18n="logout"></button>
         </div>
 
         <!-- Right: User Info -->
-        <div class="simple_card right_column">
+        <div class="simple_card column">
             <div class="flex_input">
-                <label for="full_name">Full Name*</label>
-                <input class="input_field" type="text" placeholder="Full Name" id="full_name"
+                <label for="full_name" data-i18n="full_name"></label>
+                <input class="input_field" type="text" id="full_name"
                        onkeyup="toggleButton()" required>
             </div>
             <div class="flex_input">
-                <label for="email">Email*</label>
-                <input class="input_field" type="email" placeholder="Email" id="email"
+                <label for="email" data-i18n="email"></label>
+                <input class="input_field" type="email" id="email"
                        onkeyup="toggleButton()" required>
             </div>
             <div class="flex_input">
-                <label for="phone">Phone Number*</label>
-                <input class="input_field" type="tel" placeholder="Phone Number" id="phone"
+                <label for="phone" data-i18n="phone"></label>
+                <input class="input_field" type="tel" id="phone"
                        onkeyup="toggleButton()" required>
             </div>
-            <button class="simple_button" id="save" onclick="changeUserInfo()">Save</button>
+            <button class="simple_button" id="save" onclick="changeUserInfo()" data-i18n="save"></button>
         </div>
 
         <!-- Right: Addresses -->
-        <div class="simple_card right_column">
+        <div class="simple_card column">
             <div class="addresses" id="addresses"></div>
-            <button class="simple_button" id="add_new_address" onclick="openAddressForm()">Add New Address</button>
+            <button class="simple_button" id="add_new_address" onclick="openAddressForm()" data-i18n="cart_add_new_address"></button>
         </div>
     </div>
 </div>

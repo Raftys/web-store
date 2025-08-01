@@ -1,9 +1,11 @@
+/* Styles the reset button with hidden display and quaternary background */
 .reset_button {
     background: var(--quaternary);
     width: max-content;
     display: none;
 }
 
+/* Styles the coupon form layout with flex row and spacing */
 .coupon_form {
     display: flex;
     flex-direction: row;
@@ -11,6 +13,7 @@
     padding: 10px;
 }
 
+/* Styles the coupon form label to align content centrally */
 .coupon_form label {
     height: auto;
     width: 100%;
@@ -18,15 +21,68 @@
     align-items: center;
 }
 
+/* Positions the coupon form button to the far right */
 .coupon_form button {
     margin-left: auto;
 }
 
+/* Sets full width for coupon form input fields */
 .coupon_form input {
     width: 100%;
 }
 
+/* Styles the addresses list with scroll and max height */
 .addresses {
     overflow-y: auto;
     max-height: 300px;
+}
+
+/* Styles checkout details layout as a grid with spacing */
+.checkout_details {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 10px;
+    gap: 5px;
+}
+
+/* Styles checkout details spans with medium font weight */
+.checkout_details span {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Styles odd spans in checkout details with bold font and tertiary color */
+.checkout_details span:nth-child(odd) {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--tertiary);
+    margin: auto auto auto 0;
+}
+
+/* Styles even spans in checkout details with smaller font and right alignment */
+.checkout_details span:nth-child(even) {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tertiary);
+    margin: auto 0 auto auto;
+}
+
+/* Styles the checkout footer with spacing and background */
+.checkout_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 10px 20px;
+    background: var(--tertiary_low);
+}
+
+/* Styles cart products layout as a scrollable vertical list */
+.cart_products {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    padding: 20px;
+    max-height: 280px;
+    overflow-y: auto;
+    overflow-x: clip;
 }

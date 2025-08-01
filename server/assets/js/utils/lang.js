@@ -1,5 +1,5 @@
 function setLanguage(lang) {
-    fetch(`../../../components/design/lang-${lang}.json`)
+    fetch(`../../../components/lang/lang-${lang}.json`)
         .then(response => response.json())
         .then(data => {
             currentLang = lang;

@@ -2,6 +2,10 @@
 include '../../include/sql_functions.php';
 include '../../include/auth/jwt.php';
 
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
+
+
 $result = null;
 if($_POST['action'] == 'fetch_products'){
     $result = fetch_products();
@@ -19,11 +23,12 @@ if($_POST['action'] == 'fetch_products'){
 echo json_encode($result);
 exit();
 
-
+// Fetch all products from the database
 function fetch_products() {
     return select_all('products');
 }
 
+// Fetch a single product by ID including its images
 function fetch_product(){
     // Check if the product_id is set and is an integer
     if (isset($_POST['product_id']) && is_numeric($_POST['product_id'])) {
@@ -38,6 +43,7 @@ function fetch_product(){
     return false;
 }
 
+// Fetch images associated with a product
 function fetch_product_images(){
     // Check if the product_id is set and is an integer
     if (isset($_POST['product_id']) && is_numeric($_POST['product_id'])) {
@@ -49,6 +55,7 @@ function fetch_product_images(){
     return false;
 }
 
+// Add a new product to the database and save its images
 function addProduct() {
     $title =  $_POST['title'];
     $small_description =  $_POST['small_description'];
@@ -56,7 +63,6 @@ function addProduct() {
     $price =  $_POST['price'];
     $quantity =  $_POST['quantity'];
     $offer =  $_POST['offer'] === '1' ? 1 : 0;
-
 
     $insert_keys = ['name','offer','small_description','description','price','quantity'];
     $insert_values =[$title, $offer, $small_description, $description, $price, $quantity];
@@ -79,11 +85,13 @@ function addProduct() {
     return true;
 }
 
+// Edit a product by deleting old data and adding new product data
 function editProduct() {
     deleteProduct();
-    return addProduct(1);
+    return addProduct();
 }
 
+// Save the main image file for a product
 function saveMainImage($path) {
     // Get file extension
     $fileExt = explode('/', $_FILES['main_image']['type'])[1];
@@ -98,6 +106,7 @@ function saveMainImage($path) {
     return '';
 }
 
+// Save additional product images from uploaded files
 function saveImages($path) {
     $savedFiles = [];
     foreach ($_FILES['images']['name'] as $index => $file_name) {
@@ -112,12 +121,14 @@ function saveImages($path) {
     return $savedFiles; // Return array of saved images (empty if none)
 }
 
+// Delete a product and its associated images folder
 function deleteProduct() {
     $product_info = get('products','id','=',$_POST['id'],'name',false);
     deleteFolder('../../assets/images/products/' . $product_info['name']);
     return delete('products', 'id',$_POST['id']);
 }
 
+// Recursively delete all files and folders in a directory
 function deleteFolder($folderPath) {
     if (!is_dir($folderPath)) return;
 
@@ -139,6 +150,3 @@ function deleteFolder($folderPath) {
     // Finally, remove the empty folder itself
     rmdir($folderPath);
 }
-
-
-

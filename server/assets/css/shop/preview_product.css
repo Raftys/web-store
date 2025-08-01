@@ -1,22 +1,23 @@
+/* Style for body */
 body {
     overflow-x: hidden;
 }
 
-
-/* Thumbnail Gallery - Stack thumbnails vertically on the left side */
+/* Style for thumbnail gallery */
 .thumbnail_gallery {
     display: flex;
-    flex-direction: column; /* Stack thumbnails vertically */
+    flex-direction: column;
     gap: 15px;
-    width: 80px; /* Ensure the gallery takes up a fixed width */
-    margin-right: 20px; /* Add space between thumbnails and the main image */
-    align-items: center; /* Center the thumbnails horizontally */
-    justify-content: center; /* Vertically center the thumbnails */
-    height: 100%; /* Allow gallery to adjust its height */
+    width: 80px;
+    margin-right: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     position: relative;
-    margin-top: 10px; /* Adjust this value to place the thumbnails lower */
+    margin-top: 10px;
 }
 
+/* Style for thumbnail */
 .thumbnail {
     width: 80px;
     height: 80px;
@@ -27,18 +28,19 @@ body {
     transition: transform 0.2s ease;
 }
 
+/* Hover effect for thumbnail */
 .thumbnail:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 8px var(--tertiary_low);
 }
 
+/* Style for money container */
 .money_container {
     align-items: flex-start;
     gap: 10px;
 }
 
-
-/* Modal for Enlarged Image */
+/* Style for image modal */
 .image_modal {
     display: none;
     position: fixed;
@@ -49,14 +51,16 @@ body {
     width: 100%;
     height: 100%;
     justify-content: center;
-    background-color: var(--tertiary_low); /* Semi-transparent background */
+    background-color: var(--tertiary_low);
 }
 
+/* Style for image modal content */
 .image_modal_content {
     transform: scale(0.8);
     display: block;
 }
 
+/* Style for close button */
 .close {
     position: absolute;
     top: 20px;
@@ -67,13 +71,14 @@ body {
     cursor: pointer;
 }
 
+/* Hover/focus effect for close button */
 .close:hover, .close:focus {
     color: var(--secondary);
     text-decoration: none;
     cursor: pointer;
 }
 
-/* Arrows for Image Navigation */
+/* Style for prev/next image arrows */
 .prev_image, .next_image {
     position: absolute;
     top: 50%;
@@ -88,14 +93,17 @@ body {
     transform: translateY(-50%);
 }
 
+/* Style for previous image arrow */
 .prev_image {
     left: 8px;
 }
 
+/* Style for next image arrow */
 .next_image {
     right: 8px;
 }
 
+/* Hover effect for prev/next image arrows */
 .prev_image:hover, .next_image:hover {
     background-color: var(--tertiary);
 }

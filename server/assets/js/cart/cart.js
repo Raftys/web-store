@@ -3,6 +3,13 @@ let sub_total = 0;
 let coupon = 0;
 let shipping = 1;
 
+// Initialize cart and coupon logic on page load
+document.addEventListener('DOMContentLoaded', function () {
+    fetchCartItems();
+    setPaymentMoney();
+    applyCoupon();
+});
+
 // Handle Clear Cart button click
 document.getElementById('clear_cart').addEventListener('click', resetCart);
 
@@ -184,10 +191,3 @@ function resetCart() {
         setPaymentMoney();
     });
 }
-
-// Initialize cart and coupon logic on page load
-window.onload = function () {
-    fetchCartItems();
-    setPaymentMoney();
-    applyCoupon();
-};

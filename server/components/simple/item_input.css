@@ -1,4 +1,4 @@
-/* Input container with vertical stacking and spacing */
+/* Input container with vertical stacking and spacing between elements */
 .flex_input {
     display: flex;
     flex-direction: column;
@@ -7,13 +7,13 @@
     width: 90%;
 }
 
-/* Styling for the input label */
+/* Styling for input labels - left-aligned text */
 .input_label {
     width: auto;
     text-align: left;
 }
 
-/* Base styling for the input field */
+/* Base styling for single-line input fields */
 .input_field {
     width: auto;
     height: 36px;
@@ -26,7 +26,7 @@
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
-/* Styling when the input is focused */
+/* Focus state styling for input fields and textareas */
 .input_field:focus,
 .description_field:focus {
     border: 1px solid transparent;
@@ -34,6 +34,7 @@
     background-color: transparent;
 }
 
+/* Checkbox container with horizontal alignment and click interaction */
 .checkbox_container {
     padding: 8px;
     gap: 8px;
@@ -44,6 +45,7 @@
     flex-direction: row;
 }
 
+/* Multi-line description input (textarea) styling */
 .description_field {
     padding: 0 0 0 12px;
     border-radius: 5px;
@@ -52,7 +54,7 @@
     filter: drop-shadow(0px 1px 0px var(--tertiary_low))
     drop-shadow(0px 1px 1px var(--tertiary_low));
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
-    resize: vertical; /* or 'none' to disable */
+    resize: vertical; /* allows resizing vertically only */
     min-height: 100px;
     min-width: 200px;
 }

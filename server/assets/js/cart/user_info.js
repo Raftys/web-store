@@ -1,6 +1,5 @@
 // Currently selected address SVG icon (defaults to first address)
 let address = "#image_0";
-
 // Stores user address data from the server
 let addresses = [];
 

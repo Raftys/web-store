@@ -1,11 +1,23 @@
 <?php
+// Include SQL helper and JWT handling functions
+include_once "../sql_functions.php";
+include_once "jwt.php";
+
 // Start the session if it hasn't been started yet
 if (session_status() == PHP_SESSION_NONE)
     session_start();
 
-// Include SQL helper and JWT handling functions
-include_once "../sql_functions.php";
-include_once "jwt.php";
+// Check for POST request and route to the correct action
+if ($_POST['action'] === 'login') {
+    login();
+}
+
+if ($_POST['action'] === 'signup') {
+    signup();
+}
+
+echo "No Action Selected";
+exit();
 
 // Function to handle user login
 function login() {
@@ -68,15 +80,4 @@ function signup() {
     echo json_encode(['status' => 'success']);
 
     exit();
-}
-
-// Check for POST request and route to the correct action
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-    if ($_POST['action'] === 'login') {
-        login();
-    }
-
-    if ($_POST['action'] === 'signup') {
-        signup();
-    }
 }

@@ -1,16 +1,16 @@
-/* Basic styling for the entire body */
+/* Style for body */
 body {
     margin: 0;
 }
 
-/* Header main container */
+/* Style for header */
 header {
     background-color: var(--primary);
-    box-shadow: 0 10px 15px var(--shadow_primary);
+    box-shadow: 0 10px 15px var(--primary_low);
     padding: 20px;
 }
 
-/* Base flex container styling */
+/* Style for header container */
 .header_container {
     display: flex;
     margin: 20px;
@@ -18,7 +18,7 @@ header {
     justify-content: space-between;
 }
 
-/* Container for header buttons */
+/* Style for header buttons container */
 .header_buttons_container {
     display: flex;
     flex-wrap: wrap;
@@ -28,7 +28,7 @@ header {
     justify-content: space-around;
 }
 
-/* Individual header button */
+/* Style for header button */
 .header_button {
     outline: 0 ;
     border: 0;
@@ -44,13 +44,13 @@ header {
     cursor: pointer;
 }
 
-/* Counter number next to button icon */
+/* Style for header button counter */
 .header_button_counter {
     display: inline-block;
     padding-left: 8px;
 }
 
-/* Tooltip text for header button */
+/* Style for tooltip text */
 .header_button::after {
     content: attr(data-i18n-tooltip);
     position: absolute;
@@ -70,7 +70,7 @@ header {
     user-select: none;
 }
 
-/* Tooltip arrow for header button */
+/* Style for tooltip arrow */
 .header_button::before {
     content: "";
     position: absolute;
@@ -98,7 +98,7 @@ header {
     pointer-events: auto;
 }
 
-/* Overlay background behind profile panel */
+/* Style for profile overlay */
 .profile_overlay {
     position: fixed;
     top: 0;
@@ -110,7 +110,7 @@ header {
     display: none;
 }
 
-/* Sliding profile panel on the side */
+/* Style for profile header panel */
 .profile_header_panel {
     position: fixed;
     top: 0;
@@ -127,18 +127,18 @@ header {
     overflow-y: auto;
 }
 
-/* Profile panel open state */
+/* Style for open profile panel */
 .profile_header_panel.open {
     width: 25%;
     right: 0;
 }
 
-/* Profile panel closed state */
+/* Style for closed profile panel */
 .profile_header_panel.close {
     right: -40%;
 }
 
-/* Header area of the profile panel */
+/* Style for profile panel header */
 .profile_panel_header {
     position: relative;
     background: var(--primary);
@@ -151,7 +151,7 @@ header {
     align-items: center;
 }
 
-/* Close button inside the profile panel */
+/* Style for profile close button */
 .profile_close_button {
     position: absolute;
     top: 12px;
@@ -161,6 +161,7 @@ header {
     height: auto;
 }
 
+/* Style for profile button */
 .profile_button {
     width: 100%;
 }

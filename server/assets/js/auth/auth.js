@@ -1,6 +1,7 @@
 // Enable input field validation/styling checks
-customInputCheck('.flex_container.column input');
-
+document.addEventListener('DOMContentLoaded', function () {
+    customInputCheck('.flex_container.column input');
+});
 
 // Handles login or signup form submission
 document.getElementById('form_auth').addEventListener('submit', async function (event) {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/cart/cart.css">
-    <title>Cart</title>
+    <title data-i18n="cart">Cart</title>
     <script src="../../assets/js/utils/product_functions.js" defer></script>
     <script src="../../assets/js/cart/cart.js" defer></script>
     <script src="../../assets/js/cart/user_info.js" defer></script>
@@ -21,7 +21,7 @@
             <label class="card_title" data-i18n="cart_user_info"></label> <!-- title -->
             <div class="flex_input">
                 <label for="full_name" data-i18n="full_name"></label>
-                <input class="input_field" data-i18n-placeholder="full_name"  type="text" id="full_name" onkeyup="toggleButtons()" required>
+                <input class="input_field" data-i18n-placeholder="full_name" type="text" id="full_name" onkeyup="toggleButtons()" required>
             </div>
             <div class="flex_input">
                 <label for="email" data-i18n="email"></label>
@@ -64,13 +64,13 @@
         </div>
     </div>
 
+    <!-- Right Column -->
     <div class="column">
         <!-- Products table -->
         <div class="simple_card top_right" style="width: auto">
-            <label class="card_title">Cart</label> <!-- title -->
+            <label class="card_title" data-i18n="cart"></label> <!-- title -->
             <button class="simple_button reset_button" id="clear_cart" data-i18n="cart_reset_cart"></button>
-            <div class="cart_products" id="cart_products">
-            </div>
+            <div class="cart_products" id="cart_products"></div>
         </div>
 
         <!-- Apply Coupon -->
@@ -87,18 +87,18 @@
         <!-- Payment -->
         <div class="simple_card bottom_right" style="width: auto">
             <label class="card_title" data-i18n="cart_checkout"></label> <!-- title -->
-                <div class="checkout_details">
-                    <span data-i18n="cart_checkout_subtotal"></span>
-                    <span id="cart_sub_total"></span>
-                    <span data-i18n="cart_checkout_coupon_discount"></span>
-                    <span id="cart_coupon"></span>
-                    <span data-i18n="cart_checkout_shipping_fee"></span>
-                    <span id="shipping_fee"></span>
-                </div>
-                <div class="checkout_footer bottom_right">
-                    <button class="simple_button" id="total_price_button" style="margin: auto auto auto 0" data-i18n="cart_checkout"></button>
-                    <label class="product_price" id="cart_total_price"></label>
-                </div>
+            <div class="checkout_details">
+                <span data-i18n="cart_checkout_subtotal"></span>
+                <span id="cart_sub_total"></span>
+                <span data-i18n="cart_checkout_coupon_discount"></span>
+                <span id="cart_coupon"></span>
+                <span data-i18n="cart_checkout_shipping_fee"></span>
+                <span id="shipping_fee"></span>
+            </div>
+            <div class="checkout_footer bottom_right">
+                <button class="simple_button" id="total_price_button" style="margin: auto auto auto 0" data-i18n="cart_checkout"></button>
+                <label class="product_price" id="cart_total_price"></label>
+            </div>
         </div>
     </div>
 </div>
