@@ -1,5 +1,3 @@
-
-
 function customInputCheck(id) {
     // Select all input elements inside flex_container with class column
     const inputs = document.querySelectorAll(id);
@@ -7,7 +5,6 @@ function customInputCheck(id) {
     // Attach invalid event listeners to required inputs to show custom error notifications
     inputs.forEach(input => {
         if (input.required) {
-
             input.addEventListener('invalid', async function (event) {
                 event.preventDefault(); // Prevent default browser validation message
 
@@ -27,5 +24,4 @@ function customInputCheck(id) {
             });
         }
     });
-
 }
