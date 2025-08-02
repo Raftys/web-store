@@ -37,8 +37,8 @@ function fetchCartItems() {
                     card.querySelector('#product_image').src = item.image;
                     card.querySelector('#product_name').textContent = item.name;
                     card.querySelector('#quantity').textContent = item.quantity;
-                    card.querySelector('#product_price').textContent = `Total: ${(item.price * item.quantity).toFixed(2)}€`;
-                    card.querySelector('#product_price_per_item').textContent = `Per Item: ${parseFloat(item.price).toFixed(2)}€`;
+                    card.querySelector('#product_price').textContent = t('total') + (item.price * item.quantity).toFixed(2) + '€';
+                    card.querySelector('#product_price_per_item').textContent = t('per_item') + parseFloat(item.price).toFixed(2) + '€';
                     card.querySelector('#add-text').remove();
                     card.querySelector('.product_quantity').style.justifyContent = 'center'
 
@@ -85,7 +85,7 @@ function fetchCartItems() {
                 setPaymentMoney();
             } else {
                 document.getElementById('clear_cart').style.display = 'none';
-                itemList.innerHTML = "<p class='big_text'>Empty Cart</p>";
+                itemList.innerHTML = "<p class='big_text' data-i18n='empty_cart'></p>";
             }
         })
         .catch(err => console.error('Error fetching cart items:', err));
@@ -109,7 +109,7 @@ function applyCoupon() {
             .then(res => res.json())
             .then(async data => {
                 if (data.info === 'no coupon') {
-                    await showNotification('No coupon Found', 'error');
+                    await showNotification(t('no_coupon'), 'error');
                     return;
                 }
 

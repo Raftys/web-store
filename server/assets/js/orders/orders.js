@@ -47,11 +47,11 @@ async function displayOrders(display_orders = null) {
             const productCard = productTemplate.cloneNode(true);
 
             productCard.setAttribute('id', pos);
-            productCard.querySelector('#order_id').textContent = 'Order Id: ' + orderInfo.id;
-            productCard.querySelector('#total_price').textContent = 'Total: ' + orderInfo.total_price + '€';
-            productCard.querySelector('#date').textContent = 'Date: ' + orderInfo.order_date;
+            productCard.querySelector('#order_id').textContent = t('order_id') + orderInfo.id;
+            productCard.querySelector('#total_price').textContent = t('total') + orderInfo.total_price + '€';
+            productCard.querySelector('#date').textContent = t('date') + orderInfo.order_date;
             productCard.querySelector('#status_image').src = '../../../assets/icons/status/' + orderInfo.status + '.svg';
-            productCard.querySelector('#status_text').textContent = orderInfo.status.charAt(0).toUpperCase() + orderInfo.status.slice(1);
+            productCard.querySelector('#status_text').textContent = t(orderInfo.status).charAt(0).toUpperCase() + t(orderInfo.status).slice(1);
 
             productCard.addEventListener('click', () => {
                 window.location.href = `main.php?page=order_info${super_user === 'super' ? `&user=super` : ''}&order_id=${orderInfo.id}`;

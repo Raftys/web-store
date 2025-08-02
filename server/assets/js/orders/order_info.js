@@ -6,7 +6,8 @@ let user_address = [];
 
 
 // Initialize order view and user access on window load
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    await window.languageReady;
     fetchOrder();
     const super_user = getQueryParameter('user');
     if (super_user !== 'super') {
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Fetch order and product data from the server
 function fetchOrder() {
     const order_id = getQueryParameter('order_id');
-    document.getElementById('order_title').textContent = 'Order Id: ' + order_id;
+    document.getElementById('order_title').textContent = t('order_id') + order_id;
 
     const formData = new FormData();
     formData.append('action', 'fetch');
@@ -78,8 +79,8 @@ async function setItemsInfo() {
         productCard.querySelector('#product_image').src = product_info.main_image;
         productCard.querySelector('#product_name').textContent = product_info.name;
         productCard.querySelector('#quantity').textContent = item.quantity;
-        productCard.querySelector('#product_price').textContent = 'Total: ' + (item.price * item.quantity) + '€';
-        productCard.querySelector('#product_price_per_item').textContent = 'Per Item: ' + item.price + '€';
+        productCard.querySelector('#product_price').textContent = t('total') + (item.price * item.quantity) + '€';
+        productCard.querySelector('#product_price_per_item').textContent = t('per_item') + item.price + '€';
 
         productCard.querySelector('.product_quantity').style.justifyContent = 'center';
         productCard.querySelector('.decrease_button').remove();
@@ -112,19 +113,19 @@ async function setPaymentInfo() {
         ? order_info.coupon
         : order_info.coupon + '€';
     document.getElementById('shipping').textContent = order_info.shipping + '€';
-    document.getElementById('total_price').textContent = 'Total: ' + order_info.total_price + '€';
+    document.getElementById('total_price').textContent = t('total') + order_info.total_price + '€';
     document.getElementById('payment_method').textContent = order_info.payment_method;
     document.getElementById('receipt').textContent = order_info.receipt;
     document.getElementById('date').textContent = order_info.order_date;
 
     document.getElementById('status_image').src = '../../../assets/icons/status/' + order_info.status + '.svg';
-    document.getElementById('status_text').textContent = '(' + order_info.status + ')';
+    document.getElementById('status_text').textContent = '(' + t(order_info.status) + ')';
 }
 
 // Update order status from dropdown
 function updateStatus(status = null) {
     document.getElementById('status_image').src = '../../../assets/icons/status/' + status + '.svg';
-    document.getElementById('status_text').textContent = '(' + status + ')';
+    document.getElementById('status_text').textContent = '(' + t(status) + ')';
     document.querySelector('.dropdown_items').style.display = 'none';
 
     const formData = new FormData();
@@ -136,7 +137,7 @@ function updateStatus(status = null) {
         method: 'POST',
         body: formData
     })
-        .then(() => showNotification('Status Changed', 'success'))
+        .then(() => showNotification(t('status_change'), 'success'))
         .catch(error => console.error("Error Updating Status:", error));
 }
 
@@ -170,7 +171,7 @@ function updateBoxNow() {
         method: 'POST',
         body: formData
     })
-        .then(() => showNotification('Box Now Id Changed!', 'success'))
+        .then(() => showNotification(t('box_now_change'), 'success'))
         .catch(error => console.error("Error Updating BoxNow:", error));
 
     document.getElementById('apply_button').disabled =

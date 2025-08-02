@@ -51,7 +51,7 @@ async function createUploads(type=null) {
     // Configure for main image upload (single file)
     if (type === null) {
         image_container.querySelector('.image_upload').removeAttribute('multiple')
-        image_container.querySelector('.text').textContent = "Click to upload main image";
+        image_container.querySelector('.text').textContent = t('click_upload_main_image');
     }
 
     // Handle image file selection
@@ -260,10 +260,10 @@ function addNewItem(item = null) {
         .then(response => response.json())
         .then(async data => {
             if (data) {
-                await showNotification('Product has been added', 'success');
+                await showNotification(t('product_added'), 'success');
                 await initPage('super');
             } else {
-                await showNotification('Product has not been added', 'error');
+                await showNotification(t('product_not_added'), 'error');
             }
             closeForm();
         })
@@ -282,10 +282,10 @@ function deleteItem(item) {
         .then(response => response.json())
         .then(async data => {
             if (data) {
-                await showNotification('Product has been deleted', 'success');
+                await showNotification(t('product_deleted'), 'success');
                 await initPage('super');
             } else {
-                await showNotification('Product has not been deleted', 'error');
+                await showNotification(t('product_not_deleted'), 'error');
             }
             closeForm();
         })

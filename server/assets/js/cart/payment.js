@@ -6,10 +6,10 @@ document.getElementById('total_price_button').addEventListener('click', async ()
 // Dynamically load and display payment options
 async function loadPaymentWindow() {
     const payment = await loadHtmlComponent('../../components/built/form/payment.html');
-    setPaymentMessage(payment, "IRIS", "<strong>Τηλέφωνο:</strong> 6945793397");
+    setPaymentMessage(payment, "IRIS", `<strong data-i18n='payment_phone'></strong> ${t('support_phone_1')}`);
 
     payment.querySelector('#payment_complete').disabled = true;
-    payment.querySelector('#payment_total').innerHTML = `<strong>Total Price:</strong> ${parseFloat(document.getElementById('cart_total_price').textContent).toFixed(2)}€`;
+    payment.querySelector('#payment_total').innerHTML = `<strong data-i18n="total"></strong> ${parseFloat(document.getElementById('cart_total_price').textContent).toFixed(2)}`;
 
     // Close payment window
     payment.querySelector('.x_button').addEventListener('click', e => {
@@ -20,17 +20,17 @@ async function loadPaymentWindow() {
     // Tab event listeners
     payment.querySelector('#tab1').addEventListener('click', e => {
         e.stopPropagation();
-        setPaymentMessage(payment, "IRIS", "<strong>Τηλέφωνο:</strong> 6945793397");
+        setPaymentMessage(payment, "IRIS", `<strong data-i18n='payment_phone'></strong> ${t('support_phone_1')}`);
     });
 
     payment.querySelector('#tab2').addEventListener('click', e => {
         e.stopPropagation();
-        setPaymentMessage(payment, "IBAN", "<strong>Τράπεζα Πειραιώς:</strong> GR 290172 2490 0052 4909 3136868");
+        setPaymentMessage(payment, "IBAN", `<strong data-i18n='bank_name'></strong> ${t('iban')}`);
     });
 
     payment.querySelector('#tab3').addEventListener('click', e => {
         e.stopPropagation();
-        setPaymentMessage(payment, "VISA", "<strong>Coming soon!</strong>");
+        setPaymentMessage(payment, "VISA", "<strong data-i18n='coming_soon'</strong>");
     });
 
     // Enable submit only if receipt input is not empty
@@ -109,7 +109,7 @@ async function completeOrder() {
             console.error('Order submission failed:', error);
         });
 
-    await showNotification("Η παραγγελία υποβλήθηκε!", "notification");
+    await showNotification(t('payment_complete'), "notification");
 }
 
 // Return selected payment method from tab

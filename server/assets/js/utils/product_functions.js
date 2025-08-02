@@ -8,7 +8,7 @@ function incrementQuantity(productCard = null, item = null) {
         let quantity = productCard.querySelector('#quantity').textContent;
         let new_quantity = parseInt(quantity) + 1;
         productCard.querySelector('#quantity').textContent = String(new_quantity);
-        productCard.querySelector('#product_price').textContent= 'Total: ' + (item.price*new_quantity).toFixed(2) + '€';
+        productCard.querySelector('#product_price').textContent= t('total') + (item.price*new_quantity).toFixed(2) + '€';
     }
 }
 
@@ -27,7 +27,7 @@ function decrementQuantity(productCard = null, item = null) {
             new_quantity = parseInt(quantity) - 1;
         }
         productCard.querySelector('#quantity').textContent = String(new_quantity);
-        productCard.querySelector('#product_price').textContent='Total: ' + (item.price*new_quantity).toFixed(2) + '€';
+        productCard.querySelector('#product_price').textContent= t('total') + (item.price*new_quantity).toFixed(2) + '€';
     }
 }
 
@@ -37,7 +37,7 @@ function updatePrice(quantity) {
     const priceDisplay = document.getElementById('product_price');
     if (priceDisplay) {
         const totalPrice = (product_id_info.price * quantity).toFixed(2);
-        priceDisplay.innerText = `Τιμή: ${totalPrice}€`;
+        priceDisplay.innerText = `${t('total')} ${totalPrice}€`;
     }
 }
 
@@ -71,10 +71,10 @@ function addItem(item) {
         .then(data => {
             document.getElementById('cart_label').innerText = `(${data.totalItems})`;
             if(formData.get('quantity') >0 ){
-                showNotification(`Το προϊόν ${formData.get("name")} έχει προστεθεί στο καλάθι σας.`, "success").catch(console.error);
+                showNotification(t('product_added_notification') + formData.get("name"), "success").catch(console.error);
                 return false;
             } else {
-                showNotification(`Το προϊόν ${formData.get("name")} έχει αφαιρεθεί στο καλάθι σας.`, "info").catch(console.error);
+                showNotification(t('product_removed_notification') + formData.get("name"), "info").catch(console.error);
                 return true;
             }
         })

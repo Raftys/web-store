@@ -93,7 +93,7 @@ async function openAddressForm(address = null) {
     }
 
     // Set form header text depending on mode
-    form.querySelector('#form_message').textContent = isEditMode ? "Edit your Address" : "Add New Address";
+    form.querySelector('#form_message').textContent = isEditMode ? t('edit_address') : t('add_new_address');
 
     // Add handler for the back button to close the form without saving
     form.querySelector('#form_back_button').addEventListener('click', (event) => {

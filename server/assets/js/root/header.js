@@ -1,5 +1,6 @@
 // Set up event listeners after DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    await window.languageReady;
     // Retrieve key UI elements
     const profileBtn = document.getElementById('header_profile');     // Profile button (to open panel)
     const closeBtn = document.getElementById('header_x_button');      // Close button inside panel

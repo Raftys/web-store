@@ -36,12 +36,12 @@ function actionLanguage(event) {
 async function formResetPassword() {
     const formHTML = await loadHtmlComponent('../../../components/built/form/form.html');
 
-    formHTML.querySelector('#form_title').textContent = "Reset Password";
+    formHTML.querySelector('#form_title').textContent = t('reset_password');
     formHTML.querySelector('#form_message').remove();
 
-    replaceText(formHTML,'#form_item_1_label',"Old Password*");
-    replaceText(formHTML,'#form_item_2_label',"New Password*");
-    replaceText(formHTML,'#form_item_3_label',"Repeat New Password*");
+    replaceText(formHTML,'#form_item_1_label',t('old_password'));
+    replaceText(formHTML,'#form_item_2_label',t('new_password'));
+    replaceText(formHTML,'#form_item_3_label',t('repeat_new_password'));
 
     formHTML.querySelector('#form_item_1_input').setAttribute('type','password');
     formHTML.querySelector('#form_item_2_input').setAttribute('type','password');
@@ -76,7 +76,7 @@ async function resetPassword(formHTML) {
     formData.append('repeat_new_password', formHTML.querySelector('#form_item_3_input').value.trim());
 
     if(formData.get('new_password') !== formData.get('repeat_new_password')) {
-        await showNotification("New Password should match Repeat Password", "error")
+        await showNotification(t('password_should_match'), "error")
         return;
     }
 
@@ -89,7 +89,7 @@ async function resetPassword(formHTML) {
         .then(response => response.json()) // Parse response as JSON
         .then(async data => {
             if (data.response === "Done") {
-                await showNotification("Password Changed Successfully!", 'success');
+                await showNotification(t('password_change_success'), 'success');
                 formHTML.remove();
             } else {
                 await showNotification(data.response, 'error');

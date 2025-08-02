@@ -73,8 +73,8 @@ async function loadProducts(super_user = null) {
         // If the user is a regular user (not superuser)
         if (super_user === null) {
             // Display product price and price per item
-            productCard.querySelector('#product_price').textContent = 'Total: ' + item.price + '€';
-            productCard.querySelector('#product_price_per_item').textContent = 'Per Item: ' + item.price + '€';
+            productCard.querySelector('#product_price').textContent = t('total') + item.price + '€';
+            productCard.querySelector('#product_price_per_item').textContent = t('per_item') + item.price + '€';
 
             // Setup decrement quantity button
             productCard.querySelector('.decrease_button').addEventListener('click', (event) => {
@@ -113,7 +113,7 @@ async function loadProducts(super_user = null) {
             });
         } else {
             // If the user is super, replace money container with an edit button
-            productCard.querySelector('#money_container').innerHTML = '<button class="simple_button" id="edit_product">Edit</button>';
+            productCard.querySelector('#money_container').innerHTML = '<button class="simple_button" id="edit_product" data-i18n="edit"></button>';
             // Add event listener to open product edit form
             productCard.querySelector('#edit_product').addEventListener('click', () => {
                 openProductForm(item);

@@ -23,14 +23,14 @@ async function showNotification(message, type="info") {
 
         switch (type) {
             case "info":
-                toast_title.textContent = "Info Message";
+                toast_title.textContent = t('toast_info');
                 toast.querySelector('.wave').style.fill= 'var(--blue)';
                 toast.querySelector('.icon_container').style.background= 'var(--blue)';
                 toast.querySelector('.toast_icon').style.color= 'var(--secondary)';
                 toast.querySelector('.toast_title').style.color= 'var(--blue)';
                 break;
             case "error":
-                toast_title.textContent = "Error Message";
+                toast_title.textContent =  t('toast_error');
                 toast.querySelector('.wave').style.fill= 'var(--red)';
                 toast.querySelector('.icon_container').style.background= 'var(--red)';
                 toast.querySelector('.toast_icon').style.color= 'var(--secondary)';

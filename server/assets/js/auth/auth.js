@@ -15,7 +15,7 @@ document.getElementById('form_auth').addEventListener('submit', async function (
 
         // Check if password and repeat password match
         if (auth.get('Password') !== auth.get('Repeat_Password')) {
-            await showNotification("Passwords Must Match", "error");
+            await showNotification(t("not_matching_password"), "error");
             return; // Stop submission
         }
 
@@ -33,7 +33,7 @@ document.getElementById('form_auth').addEventListener('submit', async function (
         .then(async data => {
             if (data.status === 'error') {
                 // Show error notification from server response
-                await showNotification(data.message, 'error');
+                await showNotification(t(data.message), 'error');
             } else if (data.status === 'success') {
                 // Redirect on successful login/signup
                 window.location.href = '/main.php';

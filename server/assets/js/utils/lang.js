@@ -1,17 +1,22 @@
+let translations;
+let currentLang;
+
 function setLanguage(lang) {
-    fetch(`../../../components/lang/lang-${lang}.json`)
+    return fetch(`../../../components/lang/lang-${lang}.json`) // ✅ Return the promise!
         .then(response => response.json())
         .then(data => {
-            localStorage.setItem("lang", lang);
-            document.documentElement.lang = lang; // update <html lang="">
+            translations = data;
+            currentLang = lang;
+            document.documentElement.lang = lang;
 
-            observer.disconnect(); // 🔴 Stop observing temporarily
-            updateTexts(data);
-            observer.observe(document.body, { childList: true, subtree: true }); // 🟢 Resume observing
+            observer.disconnect();
+            updateTexts();
+            observer.observe(document.body, { childList: true, subtree: true });
         });
 }
 
-function updateTexts(translations) {
+
+function updateTexts() {
     // Update text content
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
@@ -37,16 +42,26 @@ function updateTexts(translations) {
     });
 }
 
+function t(key, params = {}) {
+    let text = translations[key] || key;
+    for (const [k, v] of Object.entries(params)) {
+        text = text.replace(`{${k}}`, v);
+    }
+    return text;
+}
+
 // Run on page load
-document.addEventListener("DOMContentLoaded", () => {
-    let currentLang = localStorage.getItem("lang") || "en"; // default to English
-    setLanguage(currentLang);
-});
+window.languageReady = (async () => {
+    currentLang = localStorage.getItem("lang") || "en";
+    await setLanguage(currentLang);
+})();
+
+
 
 // Create the observer
-const observer = new MutationObserver(() => {
-    let currentLang = localStorage.getItem("lang") || "en"; // default English;
-    setLanguage(currentLang);
+const observer = new MutationObserver(async () => {
+    currentLang = localStorage.getItem("lang") || "en";
+    await setLanguage(currentLang);
 });
 
 // Start observing

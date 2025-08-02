@@ -39,11 +39,11 @@ function login() {
             echo json_encode(['status' => 'success']);
         } else {
             // Invalid password
-            echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+            echo json_encode(['status' => 'error', 'message' => 'error_invalid_email_password']);
         }
     } else {
         // User not found
-        echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+        echo json_encode(['status' => 'error', 'message' => 'error_invalid_email_password']);
     }
     exit();
 }

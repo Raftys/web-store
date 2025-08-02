@@ -56,7 +56,7 @@ function loadProduct(data) {
 
     // If there is an offer, display "Special Offer"; otherwise, remove the offer element
     if (data.offer === '0') {
-        document.getElementById('product_offer').innerText = 'Special Offer';
+        document.getElementById('product_offer').innerText = t('special_offer');
     } else {
         document.getElementById('product_offer').remove();
     }
@@ -71,10 +71,10 @@ function loadProduct(data) {
     const priceFormatted = parseFloat(data.price).toFixed(2);
 
     // Display product price
-    document.getElementById('product_price').innerText = `Τιμή: ${priceFormatted}€`;
+    document.getElementById('product_price').innerText = `${t('total')} ${priceFormatted}€`;
 
     // Display price per item
-    document.getElementById('product_price_per_item').innerText = `Τιμή ανά τεμάχιο: ${priceFormatted}€`;
+    document.getElementById('product_price_per_item').innerText = `${t('per_item')} ${priceFormatted}€`;
 
     // Create clickable image thumbnails gallery
     createThumbnailGallery(data.images);

@@ -50,7 +50,7 @@ function changeUserInfo() {
         .then(response => response.json())
         .then(async () => {
             // After successful update, refresh user info on the page
-            await showNotification('Successfully Changed User Info','success');
+            await showNotification(t('success_change_user_info'),'success');
             await fetchUser(await getUserInfo());
         })
         .catch(error => {
