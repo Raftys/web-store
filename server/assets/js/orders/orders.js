@@ -39,7 +39,7 @@ async function displayOrders(display_orders = null) {
 
     display_orders = display_orders || orders;
 
-    if (Object.keys(display_orders).length > 0) {
+    if (Object.keys(display_orders).length > 1) {
         const productTemplate = await loadHtmlComponent('../../components/built/card/orders.html');
 
         for (const pos in display_orders) {
