@@ -127,6 +127,7 @@
   "order_id": "Order Id:",
   "status_change": "Status Changed",
   "box_now_change": "Box Now Id Changed",
+  "order_complete": "Order Completed",
 
   "_Toasts": "=========================== Toasts ===========================",
   "toast_success": "Success Message",

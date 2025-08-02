@@ -97,13 +97,12 @@ async function completeOrder() {
         method: 'POST',
         body: order_info
     })
-        .then(response => {
-            if (!response.ok) throw new Error('Network error: ' + response.statusText);
-            console.log("Order Submitted");
-             resetCart();
-             document.getElementById('payment_window').remove();
-             window.location.href = '../../main.php';
-        })
+        .then(response =>  response.json())
+        .then (data => {
+            resetCart();
+            document.getElementById('payment_window').remove();
+            window.location.href = `../../main.php?page=order_info&order_id=${data}&new=1`;
+    })
         .catch(error => {
             alert("Error: " + error);
             console.error('Order submission failed:', error);

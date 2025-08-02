@@ -8,6 +8,12 @@ let user_address = [];
 // Initialize order view and user access on window load
 document.addEventListener('DOMContentLoaded', async function () {
     await window.languageReady;
+
+    const new_order = getQueryParameter('new');
+    if (new_order==='1') {
+        await showNotification(t('order_complete'),'success');
+    }
+
     fetchOrder();
     const super_user = getQueryParameter('user');
     if (super_user !== 'super') {

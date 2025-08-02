@@ -108,5 +108,5 @@ function createOrder($user_info) {
         insert('order_items', $insert_keys_items, $insert_values_items);
     }
 
-    return "Done";
+    return $order_id;
 }
