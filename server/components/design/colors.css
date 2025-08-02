@@ -1,17 +1,17 @@
 :root {
     /* Base Colors */
     --white: #ffffff;
-    --black: #000000;
+    --black: #1E1E1E;
     --black_low: #00000066;
-    --white_low: #ffffff1A;
+    --white_low: #ffffff66;
 
     /* Greens */
-    --green_low: #22c55e;
+    --green_low: #28A745;
     --green: #32cd32;
 
     /* Red */
     --red: #FF0000FF;
-    --red_low: #FF0000CC;
+    --red_low: #B22222;
 
     /* Blue */
     --blue: #3b82f6;

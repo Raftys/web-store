@@ -71,11 +71,11 @@
 
 .form label .form_input {
     background-color: var(--tertiary_low);
-    color: var(--primary);
+    color: var(--tertiary);
     width: auto;
     padding: 20px 05px 05px 10px;
     outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
+    border: 1px solid var(--tertiary_low);
     border-radius: 10px;
 }
 

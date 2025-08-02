@@ -42,7 +42,7 @@ function toggleChoice(newIconSelector) {
     const previousIcon = document.querySelector(address);
     if (previousIcon) {
         previousIcon.setAttribute('fill', 'none');
-        previousIcon.setAttribute('stroke', 'currentColor');
+        previousIcon.setAttribute('stroke', 'var(--tertiary)');
     }
 
     // Update the selected icon reference

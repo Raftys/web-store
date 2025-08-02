@@ -13,8 +13,8 @@
 
 /* Dark Theme */
 :root[data-theme="dark"] {
-    --primary: var(--green);
-    --primary_low: var(--green_low);
+    --primary: var(--green_low);
+    --primary_low: var(--green);
     --secondary: var(--black);
     --secondary_low: var(--black_low);
     --tertiary: var(--white);

@@ -16,7 +16,7 @@
     padding: 8px;
     margin: 8px;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px var(--tertiary_low);
+    box-shadow: 0 0 5px var(--tertiary_low);
     display: flex;
     background-color: var(--secondary);
     gap: 5px;

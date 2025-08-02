@@ -6,7 +6,7 @@
 
 .dropdown_title {
     background-color: var(--primary);
-    color: var(--secondary);
+    color: var(--tertiary);
     padding: 10px 15px;
     font-size: 15px;
     font-weight: bold;
@@ -21,10 +21,10 @@
     position: absolute;
     z-index: 1;
     min-width: 200px;
-    background-color: var(--tertiary);
+    background-color: var(--secondary);
     border: 2px solid var(--primary_low);
     border-radius: 0 15px 15px 15px;
-    box-shadow: 0 8px 16px 0 var(--tertiary);
+    box-shadow: 0 8px 16px 0 var(--secondary);
 }
 
 .dropdown_items p {
@@ -38,12 +38,12 @@
 
 .dropdown_items p:hover {
     background-color: var(--primary);
-    color: var(--secondary);
+    color: var(--tertiary);
 }
 
 .dropdown_items p:focus {
     background-color: #212121;
-    color: var(--secondary);
+    color: var(--tertiary);
 }
 
 .dropdown_items:hover {

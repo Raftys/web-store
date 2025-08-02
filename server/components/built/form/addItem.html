@@ -1,47 +1,47 @@
 <div class="form_overlay" onclick="closeForm()">
     <div class="popup_form">
         <button id="popup_close_btn" class="popup_close" onclick="closeForm()">&times;</button>
-        <h2>Add New Item</h2>
+        <h2 class="title" data-i18n="shop_add_new_product"></h2>
         <div class="checkbox_container">
-            <label >Offer*</label>
+            <label class="input_label" data-i18n="add_new_product_offer"></label>
             <label class="checkbox_container">
                 <input type="checkbox" id="checkbox">
                 <div class="checkmark"></div>
             </label>
         </div>
-        <div class="flex_container">
-            <div class="left_column">
-                <div class="flex_container" id="main_image_container" style="width: 100%"></div>
-                <div class="flex_container" id="images_container" style="width: 100%"></div>
+        <div class="flex_container" style="margin: 0">
+            <div class="column centering">
+                <div id="main_image_container" style="width: 300px"></div>
+                <div id="images_container" style="width: 300px"></div>
             </div>
-            <div class="right_column">
+            <div class="column">
                 <div class="flex_input">
-                    <label for="title" >Title*</label>
-                    <input class="input_field" type='text' placeholder="Title" id="title" onkeyup="toggleSubmitButton()" required>
+                    <label for="title" class="input_label" data-i18n="add_new_product_title"></label>
+                    <input class="input_field" type='text' data-i18n-placeholder="add_new_product_title" id="title" onkeyup="toggleSubmitButton()" required>
                 </div>
                 <div class="flex_input">
-                    <label for="small_description" >Small Description*</label>
-                    <input class="input_field" type='text' placeholder="Small Description" id="small_description" onkeyup="toggleSubmitButton()" required>
+                    <label for="small_description" class="input_label" data-i18n="add_new_product_small_description"></label>
+                    <input class="input_field" type='text' data-i18n-placeholder="add_new_product_small_description" id="small_description" onkeyup="toggleSubmitButton()" required>
                 </div>
                 <div class="flex_input">
-                    <label for="description" >Description*</label>
-                    <textarea class="description_field" placeholder="Description" id="description" onkeyup="toggleSubmitButton()" required></textarea>
+                    <label for="description" class="input_label" data-i18n="add_new_product_description"></label>
+                    <textarea class="description_field" data-i18n-placeholder="add_new_product_description" id="description" onkeyup="toggleSubmitButton()" required></textarea>
                 </div>
                 <div class="flex_container" style="width: 40%">
                     <div class="flex_input">
-                        <label for="price">Price*</label>
-                        <input class="input_field" type='number' placeholder="Price" id="price" onkeyup="toggleSubmitButton()" required>
+                        <label for="price" class="input_label" data-i18n="add_new_product_price"></label>
+                        <input class="input_field" type='number' data-i18n-placeholder="add_new_product_price" id="price" onkeyup="toggleSubmitButton()" required>
                     </div>
                     <div class="flex_input">
-                        <label for="add_item_quantity">Quantity*</label>
-                        <input class="input_field" type='number' placeholder="Quantity" id="add_item_quantity" onkeyup="toggleSubmitButton()" required>
+                        <label for="add_item_quantity" class="input_label" data-i18n="add_new_product_quantity"></label>
+                        <input class="input_field" type='number' data-i18n-placeholder="add_new_product_quantity" id="add_item_quantity" onkeyup="toggleSubmitButton()" required>
                     </div>
                 </div>
             </div>
         </div>
         <div class="flex_container">
-            <button class="simple_button" id='button_add_item' disabled>Submit</button>
-            <button class="simple_button" id='button_delete_item' style="background: var(--background_red)" disabled>Delete Item</button>
+            <button class="simple_button" id='button_add_item' disabled data-i18n="submit"></button>
+            <button class="simple_button" id='button_delete_item' style="background: var(--quaternary)" disabled data-i18n="add_new_product_delete"></button>
         </div>
     </div>
 </div>

@@ -78,6 +78,9 @@
   "payment_receipt": "Receipt",
   "payment_receipt_number": "Receipt Number",
   "payment_complete": "Complete Payment",
+  "payment_method_iris": "IRIS",
+  "payment_method_iban": "IBAN",
+  "payment_method_visa": "VISA",
 
   "_Box NOW": "=========================== Box Now ===========================",
   "box_now_need_help": "Do you need help finding your closest Box Now Locker ID ?",
@@ -98,6 +101,11 @@
   "order_payment_method": "Payment Method:",
   "order_receipt_title": "Receipt:",
   "order_update_box_now": "Update Box Now ID",
+
+  "_Toasts": "=========================== Toasts ===========================",
+  "toast_success": "Success Message",
+  "toast_info": "Info Message",
+  "toast_error": "Error Message",
 
   "_Box Now": "=========================== Box Now ===========================",
   "help_first_hero": "Welcome! This guide will help you find the ID of the BoxNow locker you need to easily pick up your order.",
@@ -130,10 +138,17 @@
   "settings_greek": "Greek",
   "settings_profile": "Account Information",
   "settings_change_password": "Change Password",
-  "settings": "rgioeheojoijoij",
-  "settings": "rgioeheojoijoij",
-  "settings": "rgioeheojoijoij",
-  "settings": "rgioeheojoijoij",
+
+  "_All Products": "=========================== All Products ===========================",
+  "shop_add_new_product": "Add New Product",
+  "add_new_product_offer": "Offer*",
+  "add_new_product_title": "Title*",
+  "add_new_product_small_description": "Small Description*",
+  "add_new_product_description": "Description*",
+  "add_new_product_price": "Price*",
+  "add_new_product_quantity": "Quantity*",
+  "add_new_product_delete": "Delete Product",
+  "add_new_product_upload_image_title": "Click to upload images",
 
   "_Texts": "=========================== Texts ===========================",
   "home_page_first_hero_title": "Hero 1 Title ",

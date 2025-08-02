@@ -23,7 +23,7 @@
 <div class="flex_container">
     <h1 class="big_title" id="order_title"></h1>
     <img src="" alt="status" class="tiny_image" id="status_image">
-    <p class="small_text" id="status_text"></p>
+    <p class="text centering" id="status_text"></p>
 
     <!-- Status Dropdown (Admin only) -->
     <?php if (isset($_SESSION['super_user']) && $_SESSION['super_user'] === '1'): ?>
@@ -66,7 +66,7 @@
                 <span data-i18n="cart_checkout_shipping_fee"></span>
                 <span id="shipping"></span>
             </div>
-            <label class="product_price order_total_price" id="total_price"></label>
+            <label class="product_price order_total_price big_text" id="total_price"></label>
         </div>
     </div>
 
@@ -76,19 +76,19 @@
         <div class="flex_container">
             <div class="flex_container column left_column">
                 <div class="flex_input">
-                    <label for="full_name" data-i18n="full_name"></label>
+                    <label for="full_name" data-i18n="full_name" class="input_label"></label>
                     <input class="input_field" type='text' id="full_name" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="email" data-i18n="email"></label>
+                    <label for="email" data-i18n="email" class="input_label"></label>
                     <input class="input_field" type='text'  id="email" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="phone" data-i18n="phone"></label>
+                    <label for="phone" data-i18n="phone" class="input_label"></label>
                     <input class="input_field" type='text' id="phone" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="address" data-i18n="address"></label>
+                    <label for="address" data-i18n="address" class="input_label"></label>
                     <input class="input_field" type='text' id="address" disabled>
                 </div>
             </div>
@@ -96,19 +96,19 @@
             <!-- Right Column -->
             <div class="flex_container column right_column">
                 <div class="flex_input">
-                    <label for="zip_code" data-i18n="zip_code"></label>
+                    <label for="zip_code" data-i18n="zip_code" class="input_label"></label>
                     <input class="input_field" type='text' id="zip_code" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="city" data-i18n="city"></label>
+                    <label for="city" data-i18n="city" class="input_label"></label>
                     <input class="input_field" type='text'  id="city" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="country" data-i18n="country"></label>
+                    <label for="country" data-i18n="country" class="input_label"></label>
                     <input class="input_field" type='text' id="country" disabled>
                 </div>
                 <div class="flex_input">
-                    <label for="box_now" data-i18n="box_now"></label>
+                    <label for="box_now" data-i18n="box_now" class="input_label"></label>
                     <input class="input_field" type='text' id="box_now" onkeyup="toggleUpdateButton()">
                 </div>
             </div>
